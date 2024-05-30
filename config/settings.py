@@ -27,7 +27,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account',
     'hificom',
+    'djoser',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -116,3 +118,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CUSTOM SETTINGS
 
 AUTH_USER_MODEL = 'account.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
+
+DJOSER = {
+    'PASSWORD_RESET_CONFIRM_URL': '/password/reset/confirm/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': '/username/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': '/activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': False,
+    'SEND_CONFIRMATION_EMAIL': False,
+    'SERIALIZERS': {},
+    'LOGIN_FIELD': 'email',
+    'USER_CREATE_PASSWORD_RETYPE': True,
+}
