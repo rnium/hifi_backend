@@ -135,3 +135,8 @@ DJOSER = {
     'LOGIN_FIELD': 'email',
     'USER_CREATE_PASSWORD_RETYPE': True,
 }
+
+try:
+    from config.local_settings import *
+except ImportError:
+    pass
