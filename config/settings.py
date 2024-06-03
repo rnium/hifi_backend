@@ -137,6 +137,6 @@ DJOSER = {
 }
 
 try:
-    from config.local_settings import *
+    from .local_settings import *
 except ImportError:
     pass
