@@ -6,12 +6,10 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-class Feature(models.Model):
-    title = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=200, unique=True)
-    
-    def __str__(self):
-        return self.title
+class Carousel(models.Model):
+    banner = models.ImageField(upload_to='features')
+    link = models.URLField()
+    added_at = models.DateTimeField(auto_now_add=True)
 
 
 class Category(models.Model):
@@ -20,15 +18,20 @@ class Category(models.Model):
         ('brand', 'Brand Category'),
         ('feature', 'Feature Category'),
     )
+    display_child_types = (
+        ('all', 'All Categories'),
+        ('none', 'Display No Childs'),
+        *category_types
+    )
     title = models.CharField(max_length=100)
     cat_type = models.CharField(max_length=20, default='general', choices=category_types)
     slug = models.SlugField(max_length=200, unique=True)
     parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='parent_cat')
-    feature = models.ForeignKey(Feature, null=True, blank=True, on_delete=models.CASCADE)
     minprice = models.FloatField(default=0)
     maxprice = models.FloatField(default=0)
     logo = models.ImageField(upload_to='category', null=True, blank=True)
     description = models.CharField(max_length=500, null=True, blank=True)
+    display_childs = models.CharField(max_length=20, default='brand', choices=display_child_types)
     priority = models.IntegerField(default=0)
 
     class Meta:
@@ -42,8 +45,34 @@ class Category(models.Model):
         super().save()
 
 
+class TitleAlias(models.Model):
+    alias = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return self.alias
+
+
+class SpecificationTable(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    aliases = models.ManyToManyField(TitleAlias, related_name='tables')
+
+    def __str__(self):
+        return self.title
+
+
+class Specification(models.Model):
+    table = models.ForeignKey(SpecificationTable, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    aliases = models.ManyToManyField(TitleAlias, related_name='specs')
+
+    def __str__(self):
+        return self.title
+
+
 class Product(models.Model):
-    categories = models.ManyToManyField(Category, related_name='categories')
+    category = models.ForeignKey(Category, related_name='products')
+    tags = models.ManyToManyField(Category, related_name='tagged_products')
     model = models.CharField(max_length=100)
     title = models.CharField(max_length=200)
     details = models.TextField(null=True, blank=True)
@@ -57,10 +86,15 @@ class Product(models.Model):
     is_upcoming = models.BooleanField(default=False)
     added_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    priority = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
-    
+
+class ProductSpec(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    specification = models.ForeignKey(Specification, on_delete=models.CASCADE)
+    value = models.CharField(max_length=1000)
 
 class ProductImage(models.Model):
     main = models.ImageField(upload_to='product/main')
@@ -68,25 +102,8 @@ class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 
-class SpecTable(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-
-
-class Spec(models.Model):
-    table = models.ForeignKey(SpecTable, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
-    value = models.CharField(max_length=250)
-    is_featured = models.BooleanField(default=False)
-
-
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     account = models.ForeignKey(User, on_delete=models.CASCADE)
     rating = models.FloatField(default=1)
     description = models.CharField(max_length=1000)
-
-
-class Carousel(models.Model):
-    banner = models.ImageField(upload_to='features')
-    link = models.URLField()
