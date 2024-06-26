@@ -45,4 +45,5 @@ main_categories = [
     },
 ]
 
-print(len(list(filter(lambda i: i['priority'] > 2, main_categories))))
+if __name__ == "__main__":
+    print(len(list(filter(lambda i: i['priority'] > 2, main_categories))))

@@ -38,14 +38,14 @@ class Category(models.Model):
     priority = models.IntegerField(default=0)
 
     class Meta:
-        ordering = ['-priority']
+        ordering = ['-priority', 'id']
 
     def __str__(self):
         return self.title
     
-    def save(self):
+    def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
-        super().save()
+        super().save(*args, **kwargs)
 
 
 class TitleAlias(models.Model):
