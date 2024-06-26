@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 
 User = get_user_model()
 
@@ -9,7 +10,7 @@ User = get_user_model()
 class Carousel(models.Model):
     banner = models.ImageField(upload_to='features')
     link = models.URLField()
-    added_at = models.DateTimeField(auto_now_add=True)
+    added_at = models.DateTimeField(default=timezone.now)
 
 
 class Category(models.Model):
@@ -17,6 +18,7 @@ class Category(models.Model):
         ('general', 'General Category'),
         ('brand', 'Brand Category'),
         ('feature', 'Feature Category'),
+        ('tag', 'Tag Under Feature'),
     )
     display_child_types = (
         ('all', 'All Categories'),
@@ -32,6 +34,7 @@ class Category(models.Model):
     logo = models.ImageField(upload_to='category', null=True, blank=True)
     description = models.CharField(max_length=500, null=True, blank=True)
     display_childs = models.CharField(max_length=20, default='brand', choices=display_child_types)
+    get_features_from_child = models.BooleanField(default=False)
     priority = models.IntegerField(default=0)
 
     class Meta:
@@ -71,7 +74,7 @@ class Specification(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey(Category, related_name='products')
+    category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
     tags = models.ManyToManyField(Category, related_name='tagged_products')
     model = models.CharField(max_length=100)
     title = models.CharField(max_length=200)
@@ -90,6 +93,16 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        ordering = ['-priority']
+
+
+class KeyFeature(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    value = models.CharField(max_length=500)
+
 
 class ProductSpec(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
