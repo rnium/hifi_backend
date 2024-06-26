@@ -24,12 +24,13 @@ class User(AbstractUser):
     username = models.CharField(max_length=150, unique=True, null=True, blank=True)
     phone = models.CharField(max_length=20)
     address = models.CharField(max_length=512, null=True, blank=True)
+    avatar = models.ImageField(upload_to='avatars', null=True, blank=True)
     user_type = models.CharField(max_length=20, default='customer', choices=(
         ('admin', 'Admin User'),
         ('customer', 'Customer'),
     ))
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['phone', 'first_name', 'last_name', 'address']
+    REQUIRED_FIELDS = ['phone', 'first_name', 'last_name', 'address', 'avatar']
     EMAIL_FIELD = 'email'
     objects = CustomUserManager()
