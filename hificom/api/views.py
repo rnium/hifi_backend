@@ -1,6 +1,6 @@
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from hificom.models import Category
-from .serializer import CategorySerializer
+from .serializer import CategorySerializer, CategoryWithChildSerializer
 from .permission import IsAdminOrReadOnly
 
 class CategoriesView(ListCreateAPIView):
@@ -19,3 +19,12 @@ class CategoriesView(ListCreateAPIView):
             parent_id = int(parent)
             categories = categories.filter(parent__id=parent_id)
         return categories
+
+ 
+class ViewCategory(RetrieveUpdateDestroyAPIView):
+    serializer_class = CategoryWithChildSerializer
+    permission_classes = [IsAdminOrReadOnly]
+    queryset = Category.objects.all()
+
+    def get_object(self):
+        return Category.objects.get(slug=self.kwargs.get('slug'))
