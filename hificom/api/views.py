@@ -3,7 +3,19 @@ from hificom.models import Category
 from .serializer import CategorySerializer
 from .permission import IsAdminOrReadOnly
 
-class CategoryView(ListCreateAPIView):
+class CategoriesView(ListCreateAPIView):
     serializer_class = CategorySerializer
-    queryset = Category.objects.all()
     permission_classes = [IsAdminOrReadOnly]
+
+    def get_queryset(self):
+        cat_type = self.request.GET.get('type', 'all')
+        parent= self.request.GET.get('parent', 'null')
+        categories = Category.objects.all()
+        if cat_type != 'all':
+            categories = categories.filter(cat_type=cat_type)
+        if parent == 'null':
+            categories = categories.filter(parent=None)
+        elif parent != 'null' and  parent.isdigit():
+            parent_id = int(parent)
+            categories = categories.filter(parent__id=parent_id)
+        return categories

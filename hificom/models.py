@@ -33,7 +33,7 @@ class Category(models.Model):
     maxprice = models.FloatField(default=0)
     logo = models.ImageField(upload_to='category', null=True, blank=True)
     description = models.CharField(max_length=500, null=True, blank=True)
-    display_childs = models.CharField(max_length=20, default='brand', choices=display_child_types)
+    display_childs = models.CharField(max_length=20, default='none', choices=display_child_types)
     get_features_from_child = models.BooleanField(default=False)
     priority = models.IntegerField(default=0)
 

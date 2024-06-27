@@ -2,8 +2,10 @@ from django.contrib import admin
 from hificom import models
 # Register your models here.
 
+class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
 
-admin.site.register(models.Category)
+admin.site.register(models.Category, CategoryAdmin)
 admin.site.register(models.SpecificationTable)
 admin.site.register(models.Specification)
 admin.site.register(models.Product)
