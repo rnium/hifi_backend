@@ -3,7 +3,7 @@ from rest_framework import serializers
 from hificom.models import Category
 
 class CategorySerializer(ModelSerializer):
-    parent = serializers.StringRelatedField()
+    parent_name = serializers.SerializerMethodField()
     class Meta:
         model = Category
         fields = '__all__'
@@ -11,6 +11,10 @@ class CategorySerializer(ModelSerializer):
         extra_kwargs = {
             'get_features_from_child': {'write_only': True}
         }
+    
+    def get_parent_name(self, obj):
+        if p:=obj.parent:
+            return p.title
 
 class CategoryWithChildSerializer(CategorySerializer):
     childs = serializers.SerializerMethodField()

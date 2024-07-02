@@ -19,6 +19,10 @@ class CategoriesView(ListCreateAPIView):
             parent_id = int(parent)
             categories = categories.filter(parent__id=parent_id)
         return categories
+    
+    def create(self, request, *args, **kwargs):
+        print(request.data, flush=1)
+        return super().create(request, *args, **kwargs)
 
  
 class ViewCategory(RetrieveUpdateDestroyAPIView):
