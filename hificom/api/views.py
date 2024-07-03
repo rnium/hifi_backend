@@ -1,7 +1,12 @@
+from django.shortcuts import get_object_or_404
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework import status
 from hificom.models import Category
 from .serializer import CategorySerializer, CategoryDetailSerializer
 from .permission import IsAdminOrReadOnly
+from . import utils
 
 class CategoriesView(ListCreateAPIView):
     serializer_class = CategorySerializer
@@ -28,3 +33,15 @@ class ViewCategory(RetrieveUpdateDestroyAPIView):
 
     def get_object(self):
         return Category.objects.get(slug=self.kwargs.get('slug'))
+
+
+@api_view(['POST'])
+@permission_classes([IsAdminOrReadOnly])
+def update_tables(request, slug):
+    cat = get_object_or_404(Category, slug=slug)
+    utils.update_cat_tables(cat, request.data)
+    # try:
+    #     utils.update_cat_tables(cat, request.data)
+    # except Exception as e:
+    #     return Response({'detail': f'Error while updating: {str(e)}'}, status=status.HTTP_400_BAD_REQUEST)
+    return Response('Gotcha')
