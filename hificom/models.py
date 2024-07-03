@@ -58,7 +58,7 @@ class TitleAlias(models.Model):
 class SpecificationTable(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    aliases = models.ManyToManyField(TitleAlias, related_name='tables')
+    aliases = models.ManyToManyField(TitleAlias, related_name='tables', blank=True)
 
     def __str__(self):
         return self.title
@@ -67,7 +67,7 @@ class SpecificationTable(models.Model):
 class Specification(models.Model):
     table = models.ForeignKey(SpecificationTable, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
-    aliases = models.ManyToManyField(TitleAlias, related_name='specs')
+    aliases = models.ManyToManyField(TitleAlias, related_name='specs', blank=True)
 
     def __str__(self):
         return self.title
