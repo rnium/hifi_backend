@@ -47,6 +47,15 @@ class Category(models.Model):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
+    @property
+    def category_tree(self):
+        cats = []
+        current = self
+        while current:
+            cats.append(current)
+            current = current.parent
+        return cats[-1::-1]
+
 
 class TitleAlias(models.Model):
     alias = models.CharField(max_length=200)
@@ -60,6 +69,9 @@ class SpecificationTable(models.Model):
     title = models.CharField(max_length=200)
     aliases = models.ManyToManyField(TitleAlias, related_name='tables', blank=True)
 
+    class Meta:
+        ordering = ['id']
+    
     def __str__(self):
         return self.title
 

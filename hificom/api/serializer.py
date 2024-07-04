@@ -2,6 +2,12 @@ from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
 from hificom.models import Category, SpecificationTable, Specification
 
+class CategoryBasicSerializer(ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['id', 'slug', 'title']
+
+
 class CategorySerializer(ModelSerializer):
     parent_name = serializers.SerializerMethodField()
     class Meta:
@@ -26,6 +32,7 @@ class SpecificationSerializer(ModelSerializer):
     def get_aliases(self, obj):
         return [ a.alias for a in obj.aliases.all()]
 
+
 class SpecTableSerializer(ModelSerializer):
     specs = serializers.SerializerMethodField()
     aliases = serializers.SerializerMethodField()
@@ -39,9 +46,12 @@ class SpecTableSerializer(ModelSerializer):
     def get_aliases(self, obj):
         return [ a.alias for a in obj.aliases.all()]
 
+
 class CategoryDetailSerializer(CategorySerializer):
     childs = serializers.SerializerMethodField()
     tables = serializers.SerializerMethodField()
+    category_tree = serializers.SerializerMethodField()
+    tree_tables = serializers.SerializerMethodField()
     
     def get_childs(self, obj):
         childs_qs = obj.child_cat.all()
@@ -50,3 +60,10 @@ class CategoryDetailSerializer(CategorySerializer):
     def get_tables(self, obj):
         tables_qs = obj.specificationtable_set.all()
         return SpecTableSerializer(tables_qs, many=True).data
+    
+    def get_category_tree(self, obj):
+        return CategoryBasicSerializer(obj.category_tree, many=True).data
+    
+    def get_tree_tables(self, obj):
+        tables = SpecificationTable.objects.filter(category__in=obj.category_tree)
+        return SpecTableSerializer(tables, many=True).data
