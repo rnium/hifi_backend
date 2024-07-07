@@ -1,10 +1,14 @@
 from django.shortcuts import get_object_or_404
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
-from hificom.models import Category
-from .serializer import CategorySerializer, CategoryDetailSerializer
+import json
+from hificom.models import Category, Product
+from .serializer import (CategorySerializer, 
+                         CategoryDetailSerializer, 
+                         ProductImageSerializer,
+                         ProductCreateSerializer)
 from .permission import IsAdminOrReadOnly
 from . import utils
 
@@ -39,9 +43,20 @@ class ViewCategory(RetrieveUpdateDestroyAPIView):
 @permission_classes([IsAdminOrReadOnly])
 def update_tables(request, slug):
     cat = get_object_or_404(Category, slug=slug)
-    utils.update_cat_tables(cat, request.data)
-    # try:
-    #     utils.update_cat_tables(cat, request.data)
-    # except Exception as e:
-    #     return Response({'detail': f'Error while updating: {str(e)}'}, status=status.HTTP_400_BAD_REQUEST)
-    return Response('Gotcha')
+    try:
+        utils.update_cat_tables(cat, request.data)
+    except Exception as e:
+        return Response({'detail': f'Error while updating: {str(e)}'}, status=status.HTTP_400_BAD_REQUEST)
+    return Response('Updated')
+
+@api_view(['POST'])
+@permission_classes([IsAdminOrReadOnly])
+def add_product(request, slug):
+    data = json.loads(request.data['json'])
+    data['images'] = request.FILES.getlist('images')
+    serializer = ProductCreateSerializer(data=data)
+    if serializer.is_valid():
+        serializer.save()
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response('testing')

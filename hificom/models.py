@@ -12,7 +12,6 @@ class Carousel(models.Model):
     link = models.URLField()
     added_at = models.DateTimeField(default=timezone.now)
 
-
 class Category(models.Model):
     category_types = (
         ('general', 'General Category'),
@@ -42,11 +41,11 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
-    
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
-
+    
     @property
     def category_tree(self):
         cats = []
@@ -88,13 +87,12 @@ class Specification(models.Model):
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
     tags = models.ManyToManyField(Category, related_name='tagged_products')
-    model = models.CharField(max_length=100)
     title = models.CharField(max_length=200)
     details = models.TextField(null=True, blank=True)
     slug = models.SlugField(max_length=300, unique=True)
     price = models.FloatField(default=0)
     discount = models.FloatField(default=0)
-    in_stock = models.BooleanField(default=False)
+    in_stock = models.BooleanField(default=True)
     is_featured = models.BooleanField(default=False)
     stock_count = models.IntegerField(default=0)
     rating = models.FloatField(default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
@@ -102,18 +100,29 @@ class Product(models.Model):
     added_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     priority = models.IntegerField(default=0)
+    
+    class Meta:
+        ordering = ['-priority']
 
     def __str__(self):
         return self.title
     
-    class Meta:
-        ordering = ['-priority']
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
 
 class KeyFeature(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    value = models.CharField(max_length=500)
+    value = models.CharField(max_length=500, null=True, blank=True)
+
+    @property
+    def feature(self):
+        if val:=self.value:
+            return f"{self.title}: {val}"
+        else:
+            return self.title
 
 
 class ProductSpec(models.Model):
@@ -121,10 +130,11 @@ class ProductSpec(models.Model):
     specification = models.ForeignKey(Specification, on_delete=models.CASCADE)
     value = models.CharField(max_length=1000)
 
+
 class ProductImage(models.Model):
     main = models.ImageField(upload_to='product/main')
-    thumbnail = models.ImageField(upload_to='product/thumbnail')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
 
 
 class Review(models.Model):

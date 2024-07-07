@@ -1,6 +1,6 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, Serializer
 from rest_framework import serializers
-from hificom.models import Category, SpecificationTable, Specification
+from hificom.models import Category, SpecificationTable, Specification, Product, ProductImage
 
 class CategoryBasicSerializer(ModelSerializer):
     class Meta:
@@ -67,3 +67,30 @@ class CategoryDetailSerializer(CategorySerializer):
     def get_tree_tables(self, obj):
         tables = SpecificationTable.objects.filter(category__in=obj.category_tree)
         return SpecTableSerializer(tables, many=True).data
+
+
+class ProductImageSerializer(ModelSerializer):
+    class Meta:
+        model = ProductImage
+        fields = ['main']
+
+
+class ProductDetailSerializer(ModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+
+class ProductCreateSerializer(ModelSerializer):
+    images = serializers.ListField(
+        child = serializers.ImageField(),
+        required = False
+    )
+    class Meta:
+        model = Product
+        exclude = ['tags', 'slug']
+    
+    def create(self, validated_data):
+        images = validated_data.pop('images')
+        print(images, flush=1)
+        return super().create(validated_data)
