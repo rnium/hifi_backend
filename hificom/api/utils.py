@@ -1,5 +1,5 @@
 from typing import Dict, List
-from hificom.models import Category, SpecificationTable, Specification, TitleAlias
+from hificom.models import Category, SpecificationTable, Specification, ProductSpec, ProductImage, TitleAlias, Product
 from django.db.models import Model
 
 def delete_db_objects(model: Model, ids: List[int]):
@@ -54,4 +54,27 @@ def update_cat_tables(cat: Category, data: List[Dict]):
         if aliases:=table_data.get('aliases'):
             set_aliases(table, aliases)
         update_specs(table, table_data['specs'])
-        
+
+
+def update_product_specs(product: Product, tables):
+    for table_data in tables:
+        for spec_data in table_data['specs']:
+            if value:=spec_data['value']:
+                table_spec = Specification.objects.get(id=spec_data['id'], table__id=table_data['id'])
+                prod_spec = ProductSpec.objects.filter(specification=table_spec).first()
+                if prod_spec:
+                    prod_spec.value = value
+                    prod_spec.save()
+                else:
+                    ProductSpec.objects.create(
+                        product = product,
+                        specification = table_spec,
+                        value = value
+                    )
+            else:
+                prod_spec = ProductSpec.objects.filter(specification__id=spec_data['id']).first()
+                if prod_spec:
+                    prod_spec.delete()
+
+def add_product_images(product: Product, images):
+    img_list = [{'product': product, 'main': img} for img in images]

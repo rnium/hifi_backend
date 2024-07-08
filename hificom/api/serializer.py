@@ -1,6 +1,7 @@
 from rest_framework.serializers import ModelSerializer, Serializer
 from rest_framework import serializers
 from hificom.models import Category, SpecificationTable, Specification, Product, ProductImage
+from . import utils
 
 class CategoryBasicSerializer(ModelSerializer):
     class Meta:
@@ -72,7 +73,7 @@ class CategoryDetailSerializer(CategorySerializer):
 class ProductImageSerializer(ModelSerializer):
     class Meta:
         model = ProductImage
-        fields = ['main']
+        fields = '__all__'
 
 
 class ProductDetailSerializer(ModelSerializer):
@@ -94,5 +95,10 @@ class ProductCreateSerializer(ModelSerializer):
     def create(self, validated_data):
         images = validated_data.pop('images')
         tables = validated_data.pop('tables')
-        print(tables, flush=1)
-        return super().create(validated_data)
+        product = super().create(validated_data)
+        utils.update_product_specs(product, tables)
+        img_list = [{'product': product, 'main': img} for img in images]
+        image_serializer = ProductImageSerializer(img_list, many=True)
+        if image_serializer.is_valid():
+            image_serializer.save()
+        return product
