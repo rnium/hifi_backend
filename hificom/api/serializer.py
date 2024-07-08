@@ -86,11 +86,13 @@ class ProductCreateSerializer(ModelSerializer):
         child = serializers.ImageField(),
         required = False
     )
+    tables = serializers.ListField()
     class Meta:
         model = Product
         exclude = ['tags', 'slug']
     
     def create(self, validated_data):
         images = validated_data.pop('images')
-        print(images, flush=1)
+        tables = validated_data.pop('tables')
+        print(tables, flush=1)
         return super().create(validated_data)

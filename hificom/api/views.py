@@ -49,6 +49,7 @@ def update_tables(request, slug):
         return Response({'detail': f'Error while updating: {str(e)}'}, status=status.HTTP_400_BAD_REQUEST)
     return Response('Updated')
 
+
 @api_view(['POST'])
 @permission_classes([IsAdminOrReadOnly])
 def add_product(request, slug):
