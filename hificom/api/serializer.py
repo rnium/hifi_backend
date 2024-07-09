@@ -89,7 +89,28 @@ class KeyFeatureSerializer(ModelSerializer):
     
     def get_feature(self, obj):
         return obj.feature
+
+
+class ProductBasicSerializer(ModelSerializer):
+    priceSale = serializers.SerializerMethodField()
+    cover = serializers.SerializerMethodField()
+    class Meta:
+        model = Product
+        fields = [
+            'id', 
+            'title', 
+            'price',
+            'priceSale',
+            'in_stock',
+            'cover',
+        ]
+    
+    def get_priceSale(self, obj):
+        if dis:=obj.discount:
+            return obj.price - dis
         
+    def get_cover(self, obj):
+        return obj.productimage_set.first().main.url
 
 class ProductCreateSerializer(ModelSerializer):
     images = serializers.ListField(
@@ -100,7 +121,7 @@ class ProductCreateSerializer(ModelSerializer):
     key_features = serializers.ListField()
     class Meta:
         model = Product
-        exclude = ['tags', 'slug']
+        exclude = ['slug']
     
     def create(self, validated_data):
         images = validated_data.pop('images')
@@ -119,3 +140,5 @@ class ProductCreateSerializer(ModelSerializer):
         else:
             print(kf_serializer.errors, flush=1)
         return product
+
+
