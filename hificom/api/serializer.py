@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer, Serializer
 from rest_framework import serializers
-from hificom.models import Category, SpecificationTable, Specification, Product, ProductImage
+from hificom.models import Category, SpecificationTable, Specification, Product, ProductImage, KeyFeature
 from . import utils
 
 class CategoryBasicSerializer(ModelSerializer):
@@ -81,6 +81,15 @@ class ProductDetailSerializer(ModelSerializer):
         model = Product
         fields = '__all__'
 
+class KeyFeatureSerializer(ModelSerializer):
+    feature = serializers.SerializerMethodField()
+    class Meta:
+        model = KeyFeature
+        fields = '__all__'
+    
+    def get_feature(self, obj):
+        return obj.feature
+        
 
 class ProductCreateSerializer(ModelSerializer):
     images = serializers.ListField(
@@ -88,6 +97,7 @@ class ProductCreateSerializer(ModelSerializer):
         required = False
     )
     tables = serializers.ListField()
+    key_features = serializers.ListField()
     class Meta:
         model = Product
         exclude = ['tags', 'slug']
@@ -95,10 +105,17 @@ class ProductCreateSerializer(ModelSerializer):
     def create(self, validated_data):
         images = validated_data.pop('images')
         tables = validated_data.pop('tables')
+        key_features = validated_data.pop('key_features')
         product = super().create(validated_data)
         utils.update_product_specs(product, tables)
-        img_list = [{'product': product, 'main': img} for img in images]
-        image_serializer = ProductImageSerializer(img_list, many=True)
+        img_list = [{'product': product.id, 'main': img} for img in images]
+        image_serializer = ProductImageSerializer(data=img_list, many=True)
         if image_serializer.is_valid():
             image_serializer.save()
+        kf_list = [{**kf, 'product': product.id} for kf in key_features]
+        kf_serializer = KeyFeatureSerializer(data=kf_list, many=True)
+        if kf_serializer.is_valid():
+            kf_serializer.save()
+        else:
+            print(kf_serializer.errors, flush=1)
         return product
