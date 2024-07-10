@@ -1,13 +1,15 @@
 from django.shortcuts import get_object_or_404
-from rest_framework.generics import ListCreateAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListAPIView, ListCreateAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
+from django.db.models import Q
 import json
 from hificom.models import Category, Product
 from .serializer import (CategorySerializer, 
                          CategoryDetailSerializer, 
                          ProductImageSerializer,
+                         ProductBasicSerializer,
                          ProductCreateSerializer)
 from .permission import IsAdminOrReadOnly
 from . import utils
@@ -37,6 +39,21 @@ class ViewCategory(RetrieveUpdateDestroyAPIView):
 
     def get_object(self):
         return Category.objects.get(slug=self.kwargs.get('slug'))
+
+class CategoryProductsView(ListAPIView):
+    serializer_class = ProductBasicSerializer
+
+    def get_queryset(self):
+        return Product.objects.filter(category__slug=self.kwargs.get('slug'))
+
+
+class TaggedProductsView(ListAPIView):
+    serializer_class = ProductBasicSerializer
+
+    def get_queryset(self):
+        slug = self.kwargs.get('slug')
+        return Product.objects.filter(Q(category__slug=slug) | Q(tags__slug=slug)).distinct()
+
 
 
 @api_view(['POST'])

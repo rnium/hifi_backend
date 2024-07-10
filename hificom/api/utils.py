@@ -2,6 +2,7 @@ from typing import Dict, List
 from hificom.models import Category, SpecificationTable, Specification, ProductSpec, ProductImage, TitleAlias, Product
 from django.db.models import Model
 
+
 def delete_db_objects(model: Model, ids: List[int]):
     if not ids:
         return

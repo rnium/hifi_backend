@@ -98,7 +98,8 @@ class ProductBasicSerializer(ModelSerializer):
         model = Product
         fields = [
             'id', 
-            'title', 
+            'title',
+            'slug',
             'price',
             'priceSale',
             'in_stock',
@@ -110,7 +111,13 @@ class ProductBasicSerializer(ModelSerializer):
             return obj.price - dis
         
     def get_cover(self, obj):
-        return obj.productimage_set.first().main.url
+        if cover_img:=obj.productimage_set.first():
+            request = self.context.get('request')
+            if request:
+                return request.build_absolute_uri(cover_img.main.url)
+            else:
+                return cover_img.main.url
+
 
 class ProductCreateSerializer(ModelSerializer):
     images = serializers.ListField(
