@@ -1,0 +1,66 @@
+laptop:
+  - laptop-all:
+    - asus:
+      - zenbook
+      - vivobook
+      - expertbook
+      - rog
+      - tuf
+    - acer:
+      - aspire
+      - extensa
+      - travelmate
+    - lenovo:
+      - yoga
+      - thinkpad
+    - hp:
+      - elite
+      - pavilion
+      - probook
+      - victus
+    - dell
+    - msi
+    - oled-laptop
+    - 4k-laptop
+    - 2k-laptop
+    - qhd-laptop
+  - gaming-laptop
+  - business-laptop
+  - professional-laptop
+  - intel-laptop:
+    - pentium-celeron-laptop
+    - core-i3-laptop
+    - core-i5-laptop
+    - core-i7-laptop
+    - core-i9-laptop
+  - amd-laptop:
+    - ryzen-3-laptop
+    - ryzen-5-laptop
+    - ryzen-7-laptop
+    - ryzen-9-laptop
+  - accessories:
+    - laptop-ram:
+      - adata-laptop-ram
+      - apacer-laptop-ram
+      - corsair-laptop-ram
+      - hp-laptop-ram
+      - netac-laptop-ram
+      - corsair-laptop-ram
+    - laptop-battery:
+      - asus-battery
+      - dell-battery
+    - laptop-charger
+    - laptop-display
+    - laptop-cooler
+    - laptop-backpack
+
+
+monitor:
+  - acer
+  - dahua
+  - hikvision
+  - msi
+  - viewsonic
+  - hp
+
+

@@ -16,6 +16,7 @@ class Category(models.Model):
     category_types = (
         ('general', 'General Category'),
         ('brand', 'Brand Category'),
+        ('series', 'Series Category'),
         ('feature', 'Feature Category'),
         ('tag', 'Tag Under Feature'),
     )
@@ -55,6 +56,12 @@ class Category(models.Model):
             current = current.parent
         return cats[-1::-1]
 
+
+class CategoryGroup(models.Model):
+    root = models.ForeignKey(Category, on_delete=models.CASCADE)
+    categories = models.ManyToManyField(Category, related_name='groups')
+    priority = models.IntegerField(default=0)
+     
 
 class TitleAlias(models.Model):
     alias = models.CharField(max_length=200)
