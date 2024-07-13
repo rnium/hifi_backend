@@ -19,7 +19,7 @@ def check_cat_tree(cat_tree):
                 check_cat_tree(i[root])
             elif type(i) == str:
                 if not len(list(filter(lambda cat: cat['slug'] == i, all_categories))):
-                    raise CategoryConfigNotFoundError(i)    
+                    raise CategoryConfigNotFoundError(i) 
 
 
 def create_or_update_cat(slug, parent):
@@ -51,3 +51,9 @@ def load_cat_tree(tree, parent = None):
                 create_or_update_cat(i, parent)
 
 
+def check_cat_groups(groups: dict):
+    for root_cat_slug in groups:
+        for group_slug in groups[root_cat_slug]:
+            for cat_slug in groups[root_cat_slug][group_slug]:
+                if not len(list(filter(lambda cat: cat['slug'] == cat_slug, all_categories))):
+                    raise CategoryConfigNotFoundError(cat_slug)

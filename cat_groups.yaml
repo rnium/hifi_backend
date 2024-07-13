@@ -1,0 +1,77 @@
+laptop:
+  laptop-processor-brand:
+    - intel-laptop
+    - amd-laptop
+    - snapdragon-laptop
+
+  laptop-processor-type:
+    - core-i3-laptop
+    - core-i5-laptop
+    - core-i7-laptop
+    - core-i9-laptop
+    - ryzen-3-laptop
+    - ryzen-5-laptop
+    - ryzen-7-laptop
+    - ryzen-9-laptop
+
+  laptop-processor-series:
+    - intel-10th-gen-laptop
+    - intel-11th-gen-laptop
+    - intel-12th-gen-laptop
+    - intel-13th-gen-laptop
+    - intel-14th-gen-laptop
+    - ryzen-3000-series-laptop
+    - ryzen-4000-series-laptop
+    - ryzen-5000-series-laptop
+    - ryzen-6000-series-laptop
+    - ryzen-7000-series-laptop
+    - ryzen-8000-series-laptop
+  
+  laptop-display-types:
+    - qhd-laptop
+    - 2k-laptop
+    - 4k-laptop
+    - oled-laptop
+    - ips-panel-laptop
+
+  laptop-display-size:
+    - less-than-14-inch-laptop
+    - 14.1-inch-to-15-inch-laptop
+    - 15.1-inch-to-16-inch-laptop
+    - 16.1-inch-to-17-inch-laptop
+    - 17.1-inch-to-18-inch-laptop
+  
+  laptop-ram-capacity:
+    - 4gb-ram-laptop
+    - 8gb-ram-laptop
+    - 16gb-ram-laptop
+    - 32gb-ram-laptop
+    - 48gb-ram-laptop
+    - 64gb-ram-laptop
+    - 128gb-ram-laptop
+  
+  laptop-ram-type:
+    - ddr4-ram-laptop
+    - ddr5-ram-laptop
+  
+  laptop-storage:
+    - 128gb-ssd-laptop
+    - 256gb-ssd-laptop
+    - 512gb-ssd-laptop
+    - 1tb-ssd-laptop
+    - 2tb-ssd-laptop
+    - 4tb-ssd-laptop
+    - 8tb-ssd-laptop
+    - 512gb-hdd-laptop
+    - 1tb-hdd-laptop
+  
+  laptop-graphics:
+    - laptop-shared-graphics
+    - 2gb-dedicated-laptop-graphics
+    - 4gb-dedicated-laptop-graphics
+    - 6gb-dedicated-laptop-graphics
+    - 8gb-dedicated-laptop-graphics
+    - 10gb-dedicated-laptop-graphics
+    - 12gb-dedicated-laptop-graphics
+    - 16gb-dedicated-laptop-graphics
+  

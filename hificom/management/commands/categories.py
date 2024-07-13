@@ -212,6 +212,213 @@ laptop_processor_models = [
     }
 ]
 
+laptop_processor_series = [
+    {
+        'title': 'Intel 10th Gen',
+        'slug': 'intel-10th-gen-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Intel 11th Gen',
+        'slug': 'intel-11th-gen-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Intel 12th Gen',
+        'slug': 'intel-12th-gen-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Intel 13th Gen',
+        'slug': 'intel-13th-gen-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Intel 14th Gen',
+        'slug': 'intel-14th-gen-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Ryzen 3000 Series',
+        'slug': 'ryzen-3000-series-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Ryzen 4000 Series',
+        'slug': 'ryzen-4000-series-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Ryzen 5000 Series',
+        'slug': 'ryzen-5000-series-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Ryzen 6000 Series',
+        'slug': 'ryzen-6000-series-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Ryzen 7000 Series',
+        'slug': 'ryzen-7000-series-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Ryzen 8000 Series',
+        'slug': 'ryzen-8000-series-laptop',
+        'cat_type': 'tag'
+    }
+]
+
+laptop_display_variants = [
+    {
+        'title': 'Less than 14 Inch Laptop',
+        'slug': 'less-than-14-inch-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '14.1 Inch to 15 Inch Laptop',
+        'slug': '14.1-inch-to-15-inch-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '15.1 Inch to 16 Inch Laptop',
+        'slug': '15.1-inch-to-16-inch-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '16.1 Inch to 17 Inch Laptop',
+        'slug': '16.1-inch-to-17-inch-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '17.1 Inch to 18 Inch Laptop',
+        'slug': '17.1-inch-to-18-inch-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'QHD',
+        'slug': 'qhd-laptop',
+        'priority': 3,
+        'cat_type': 'tag'
+    },
+    {
+        'title': '2K',
+        'slug': '2k-laptop',
+        'priority': 3,
+        'cat_type': 'tag'
+    },
+    {
+        'title': '4K',
+        'slug': '4k-laptop',
+        'priority': 3,
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'OLED',
+        'slug': 'oled-laptop',
+        'priority': 3,
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'IPS Panel',
+        'slug': 'ips-panel-laptop',
+        'priority': 3,
+        'cat_type': 'tag'
+    },
+]
+
+laptop_storage_variants = [
+    {
+        'title': '128GB SSD Laptop',
+        'slug': '128gb-ssd-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '256GB SSD Laptop',
+        'slug': '256gb-ssd-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '512GB SSD Laptop',
+        'slug': '512gb-ssd-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '1TB SSD Laptop',
+        'slug': '1tb-ssd-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '2TB SSD Laptop',
+        'slug': '2tb-ssd-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '4TB SSD Laptop',
+        'slug': '4tb-ssd-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '8TB SSD Laptop',
+        'slug': '8tb-ssd-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '512GB HDD Laptop',
+        'slug': '512gb-hdd-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '1TB HDD Laptop',
+        'slug': '1tb-hdd-laptop',
+        'cat_type': 'tag'
+    }
+]
+
+laptop_graphics_variants = [
+    {
+        'title': 'Laptop Shared Graphics',
+        'slug': 'laptop-shared-graphics',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '2GB Dedicated Laptop Graphics',
+        'slug': '2gb-dedicated-laptop-graphics',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '4GB Dedicated Laptop Graphics',
+        'slug': '4gb-dedicated-laptop-graphics',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '6GB Dedicated Laptop Graphics',
+        'slug': '6gb-dedicated-laptop-graphics',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '8GB Dedicated Laptop Graphics',
+        'slug': '8gb-dedicated-laptop-graphics',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '10GB Dedicated Laptop Graphics',
+        'slug': '10gb-dedicated-laptop-graphics',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '12GB Dedicated Laptop Graphics',
+        'slug': '12gb-dedicated-laptop-graphics',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '16GB Dedicated Laptop Graphics',
+        'slug': '16gb-dedicated-laptop-graphics',
+        'cat_type': 'tag'
+    }
+]
+
 laptop_serieses = [
     {
         'title': 'Zenbook',
@@ -299,31 +506,52 @@ laptop_serieses = [
     },
 ]
 
-laptop_features = [
+laptop_ram_tags = [
     {
-        'title': 'OLED Laptop',
-        'slug': 'oled-laptop',
-        'priority': 3,
-        'cat_type': 'feature'
+        'title': '4GB Ram Laptop',
+        'slug': '4gb-ram-laptop',
+        'cat_type': 'tag'
     },
     {
-        'title': '4K Laptop',
-        'slug': '4k-laptop',
-        'priority': 3,
-        'cat_type': 'feature'
+        'title': '8GB Ram Laptop',
+        'slug': '8gb-ram-laptop',
+        'cat_type': 'tag'
     },
     {
-        'title': '2K Laptop',
-        'slug': '2k-laptop',
-        'priority': 3,
-        'cat_type': 'feature'
+        'title': '16GB Ram Laptop',
+        'slug': '16gb-ram-laptop',
+        'cat_type': 'tag'
     },
     {
-        'title': 'QHD Laptop',
-        'slug': 'qhd-laptop',
-        'priority': 3,
-        'cat_type': 'feature'
+        'title': '32GB Ram Laptop',
+        'slug': '32gb-ram-laptop',
+        'cat_type': 'tag'
     },
+    {
+        'title': '48GB Ram Laptop',
+        'slug': '48gb-ram-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '64GB Ram Laptop',
+        'slug': '64gb-ram-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': '128GB Ram Laptop',
+        'slug': '128gb-ram-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'DDR4 Ram Laptop',
+        'slug': 'ddr4-ram-laptop',
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'DDR5 Ram Laptop',
+        'slug': 'ddr5-ram-laptop',
+        'cat_type': 'tag'
+    }
 ]
 
 laptop_acceesories = [
@@ -453,8 +681,12 @@ all_categories = [
     *laptop_brands,
     *laptop_processor_types,
     *laptop_processor_models,
+    *laptop_processor_series,
+    *laptop_display_variants,
+    *laptop_storage_variants,
+    *laptop_graphics_variants,
     *laptop_serieses,
-    *laptop_features,
+    *laptop_ram_tags,
     *laptop_acceesories,
     *laptop_ram_brands,
     *laptop_battery_brands,
@@ -465,5 +697,7 @@ all_categories = [
 
 with open('cat_tree.yaml') as f:
     cat_tree = yaml.load(f, yaml.SafeLoader)
-    
-      
+
+with open('cat_groups.yaml') as f:
+    cat_groups = yaml.load(f, yaml.SafeLoader)
+
