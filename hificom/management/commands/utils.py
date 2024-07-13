@@ -1,48 +1,98 @@
 import yaml
+
+
 main_categories = [
     {
         'title': 'Laptop',
+        'slug': 'laptop',
         'priority': 5,
         'get_features_from_child': True
     },
     {
         'title': 'Desktop',
+        'slug': 'desktop',
         'priority': 4,
         'get_features_from_child': True
     },
     {
         'title': 'PC Component',
+        'slug': 'pc-component',
         'priority': 4,
     },
     {
         'title': 'Monitor',
+        'slug': 'monitor',
         'priority': 4,
         'get_features_from_child': True
     },
     {
         'title': 'Accessories',
+        'slug': 'accessories',
         'priority': 3,
     },
     {
         'title': 'Networking',
+        'slug': 'networking',
         'priority': 3,
     },
     {
         'title': 'Printer',
+        'slug': 'printer',
         'priority': 3,
         'get_features_from_child': True
     },
     {
         'title': 'Office Equipment',
+        'slug': 'office-equipment',
         'priority': 3,
     },
     {
         'title': 'Sound System',
+        'slug': 'sound-system',
         'priority': 2,
     },
     {
         'title': 'Software',
+        'slug': 'software',
         'priority': 2,
+    },
+]
+
+laptop_subcategories = [
+    {
+        'title': 'All Laptop',
+        'slug': 'all-laptop',
+        'priority': 3,
+    },
+    {
+        'title': 'Gaming Laptop',
+        'slug': 'gaming-laptop',
+        'priority': 2,
+    },
+    {
+        'title': 'Business Laptop',
+        'slug': 'business-laptop',
+        'priority': 2,
+    },
+    {
+        'title': 'Professional Laptop',
+        'slug': 'professional-laptop',
+        'priority': 2,
+    },
+    {
+        'title': 'Intel Laptop',
+        'slug': 'intel-laptop',
+        'priority': 1,
+    },
+    {
+        'title': 'AMD Laptop',
+        'slug': 'amd-laptop',
+        'priority': 1,
+    },
+    {
+        'title': 'Accessories',
+        'slug': 'laptop-accessories',
+        'priority': 1,
     },
 ]
 
@@ -88,7 +138,7 @@ laptop_brands = [
 laptop_serieses = [
     {
         'title': 'Zenbook',
-        'slug': 'Zenbook',
+        'slug': 'zenbook',
         'priority': 1,
         'cat_type': 'series'
     },
@@ -199,34 +249,150 @@ laptop_features = [
     },
 ]
 
-laptop_types = [
+laptop_acceesories = [
     {
-        'title': 'Gaming Laptop',
-        'slug': 'gaming-laptop',
-        'priority': 2,
+        'title': 'Laptop Ram',
+        'slug': 'laptop-ram',
+        'priority': 3,
     },
     {
-        'title': 'Business Laptop',
-        'slug': 'business-laptop',
-        'priority': 2,
+        'title': 'Laptop Battery',
+        'slug': 'laptop-battery',
+        'priority': 3,
     },
     {
-        'title': 'Professional Laptop',
-        'slug': 'professional-laptop',
-        'priority': 2,
+        'title': 'Laptop Charger',
+        'slug': 'laptop-charger',
+        'priority': 3,
+    },
+    {
+        'title': 'Laptop Display',
+        'slug': 'laptop-display',
+        'priority': 3,
+    },
+    {
+        'title': 'Laptop Cooler',
+        'slug': 'laptop-cooler',
+        'priority': 3,
+    },
+    {
+        'title': 'Laptop Backpack',
+        'slug': 'laptop-backpack',
+        'priority': 3,
     },
 ]
 
+laptop_ram_brands = [
+    {
+        'title': 'Adata',
+        'slug': 'adata-laptop-ram',
+        'cat_type': 'brand',
+        'priority': 1,
+    },
+    {
+        'title': 'Apacer',
+        'slug': 'apacer-laptop-ram',
+        'cat_type': 'brand',
+        'priority': 1,
+    },
+    {
+        'title': 'Corsair',
+        'slug': 'corsair-laptop-ram',
+        'cat_type': 'brand',
+        'priority': 1,
+    },
+    {
+        'title': 'HP',
+        'slug': 'hp-laptop-ram',
+        'cat_type': 'brand',
+        'priority': 1,
+    },
+    {
+        'title': 'Netac',
+        'slug': 'netac-laptop-ram',
+        'cat_type': 'brand',
+        'priority': 1,
+    },
+]
+
+laptop_battery_brands = [
+    {
+        'title': 'Asus',
+        'slug': 'asus-laptop-battery',
+        'cat_type': 'brand',
+        'priority': 1,
+    },
+    {
+        'title': 'Dell',
+        'slug': 'dell-laptop-battery',
+        'cat_type': 'brand',
+        'priority': 1,
+    },
+]
+
+monitor_brands = [
+    {
+        'title': 'Dahua',
+        'slug': 'dahua-monitor',
+        'cat_type': 'brand',
+        'priority': 3,
+    },
+    {
+        'title': 'Acer',
+        'slug': 'acer-monitor',
+        'cat_type': 'brand',
+        'priority': 1,
+    },
+    {
+        'title': 'Hikvision',
+        'slug': 'hikvision-monitor',
+        'cat_type': 'brand',
+        'priority': 1,
+    },
+    {
+        'title': 'MSI',
+        'slug': 'msi-monitor',
+        'cat_type': 'brand',
+        'priority': 1,
+    },
+    {
+        'title': 'Viewsonic',
+        'slug': 'viewsonic-monitor',
+        'cat_type': 'brand',
+        'priority': 1,
+    },
+    {
+        'title': 'HP',
+        'slug': 'hp-monitor',
+        'cat_type': 'brand',
+        'priority': 1,
+    },
+]
+
+
+all_categories = [
+    *main_categories,
+    *laptop_subcategories,
+    *laptop_brands,
+    *laptop_serieses,
+    *laptop_features,
+    *laptop_acceesories,
+    *laptop_ram_brands,
+    *laptop_battery_brands,
+    *monitor_brands
+]
 
 def traverse_cat(cat_tree, parent: str | None = None):
     if type(cat_tree) == list:
         for i in cat_tree:
             if type(i) == dict:
                 root = list(i.keys())[0]
-                print(f"{parent} -> {root}")
+                if not len(list(filter(lambda cat: cat['slug'] == root, all_categories))):
+                    print(f'{i} Not Found')
                 traverse_cat(i[root], root)
             elif type(i) == str:
-                print(f"{parent} -> {i}")
+                if not len(list(filter(lambda cat: cat['slug'] == i, all_categories))):
+                    print(f'{i} Not Found')
 
 def browse_yaml(tree):
     for root in tree.keys():

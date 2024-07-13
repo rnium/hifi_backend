@@ -1,5 +1,5 @@
 laptop:
-  - laptop-all:
+  - all-laptop:
     - asus:
       - zenbook
       - vivobook
@@ -45,10 +45,9 @@ laptop:
       - corsair-laptop-ram
       - hp-laptop-ram
       - netac-laptop-ram
-      - corsair-laptop-ram
     - laptop-battery:
-      - asus-battery
-      - dell-battery
+      - asus-laptop-battery
+      - dell-laptop-battery
     - laptop-charger
     - laptop-display
     - laptop-cooler
@@ -56,11 +55,11 @@ laptop:
 
 
 monitor:
-  - acer
-  - dahua
-  - hikvision
-  - msi
-  - viewsonic
-  - hp
+  - acer-monitor
+  - dahua-monitor
+  - hikvision-monitor
+  - msi-monitor
+  - viewsonic-monitor
+  - hp-monitor
 
 
