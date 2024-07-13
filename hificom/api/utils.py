@@ -62,7 +62,7 @@ def update_product_specs(product: Product, tables):
         for spec_data in table_data['specs']:
             if value:=spec_data['value']:
                 table_spec = Specification.objects.get(id=spec_data['id'], table__id=table_data['id'])
-                prod_spec = ProductSpec.objects.filter(specification=table_spec).first()
+                prod_spec = ProductSpec.objects.filter(specification=table_spec, product=product).first()
                 if prod_spec:
                     prod_spec.value = value
                     prod_spec.save()

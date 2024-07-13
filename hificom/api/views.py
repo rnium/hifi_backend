@@ -74,7 +74,10 @@ def add_product(request, slug):
     data['images'] = request.FILES.getlist('images')
     serializer = ProductCreateSerializer(data=data)
     if serializer.is_valid():
-        serializer.save()
+        try:
+            serializer.save()
+        except Exception as e:
+            return Response({'detail': f'Cannot add product. Error: {str(e)}'}, status=status.HTTP_400_BAD_REQUEST)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     return Response('testing')
