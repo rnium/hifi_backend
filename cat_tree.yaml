@@ -27,9 +27,11 @@ laptop:
   - gaming-laptop
   - business-laptop
   - professional-laptop
+  - snapdragon-laptop
   - intel-laptop:
-    - pentium-celeron-laptop
-    - core-i3-laptop
+    - pentium-and-celeron-laptop
+    - core-i3-laptop:
+      - core-13-1215u
     - core-i5-laptop
     - core-i7-laptop
     - core-i9-laptop

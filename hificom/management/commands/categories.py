@@ -90,6 +90,11 @@ laptop_subcategories = [
         'priority': 1,
     },
     {
+        'title': 'Snapdragon Laptop',
+        'slug': 'snapdragon-laptop',
+        'priority': 1,
+    },
+    {
         'title': 'Accessories',
         'slug': 'laptop-accessories',
         'priority': 1,
@@ -133,6 +138,78 @@ laptop_brands = [
         'priority': 2,
         'cat_type': 'brand'
     },
+]
+
+laptop_processor_types = [
+    {
+        'title': 'Intel Pentium & Celeron Laptop',
+        'slug': 'pentium-and-celeron-laptop',
+        'priority': 0,
+        'cat_type': 'series'
+    },
+    {
+        'title': 'Intel Core i3',
+        'slug': 'core-i3-laptop',
+        'priority': 3,
+        'cat_type': 'series'
+    },
+    {
+        'title': 'Intel Core i3',
+        'slug': 'core-i3-laptop',
+        'priority': 3,
+        'cat_type': 'series'
+    },
+    {
+        'title': 'Intel Core i5',
+        'slug': 'core-i5-laptop',
+        'priority': 3,
+        'cat_type': 'series'
+    },
+    {
+        'title': 'Intel Core i7',
+        'slug': 'core-i7-laptop',
+        'priority': 3,
+        'cat_type': 'series'
+    },
+    {
+        'title': 'Intel Core i9',
+        'slug': 'core-i9-laptop',
+        'priority': 3,
+        'cat_type': 'series'
+    },
+    {
+        'title': 'AMD Ryzen 3',
+        'slug': 'ryzen-3-laptop',
+        'priority': 3,
+        'cat_type': 'series'
+    },
+    {
+        'title': 'AMD Ryzen 5',
+        'slug': 'ryzen-5-laptop',
+        'priority': 3,
+        'cat_type': 'series'
+    },
+    {
+        'title': 'AMD Ryzen 7',
+        'slug': 'ryzen-7-laptop',
+        'priority': 3,
+        'cat_type': 'series'
+    },
+    {
+        'title': 'AMD Ryzen 9',
+        'slug': 'ryzen-9-laptop',
+        'priority': 3,
+        'cat_type': 'series'
+    },
+]
+
+laptop_processor_models = [
+    {
+        'title': 'Intel Core i3-1215U',
+        'slug': 'core-13-1215u',
+        'priority': 0,
+        'cat_type': 'series'
+    }
 ]
 
 laptop_serieses = [
@@ -374,6 +451,8 @@ all_categories = [
     *main_categories,
     *laptop_subcategories,
     *laptop_brands,
+    *laptop_processor_types,
+    *laptop_processor_models,
     *laptop_serieses,
     *laptop_features,
     *laptop_acceesories,
@@ -382,26 +461,9 @@ all_categories = [
     *monitor_brands
 ]
 
-def traverse_cat(cat_tree, parent: str | None = None):
-    if type(cat_tree) == list:
-        for i in cat_tree:
-            if type(i) == dict:
-                root = list(i.keys())[0]
-                if not len(list(filter(lambda cat: cat['slug'] == root, all_categories))):
-                    print(f'{i} Not Found')
-                traverse_cat(i[root], root)
-            elif type(i) == str:
-                if not len(list(filter(lambda cat: cat['slug'] == i, all_categories))):
-                    print(f'{i} Not Found')
 
-def browse_yaml(tree):
-    for root in tree.keys():
-        traverse_cat(tree[root], root)
 
 with open('cat_tree.yaml') as f:
-    tree = yaml.load(f, yaml.SafeLoader)
+    cat_tree = yaml.load(f, yaml.SafeLoader)
     
-
-
-if __name__ == "__main__":
-    browse_yaml(tree)
+      

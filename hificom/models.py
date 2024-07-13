@@ -43,9 +43,6 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
     
     @property
     def category_tree(self):
