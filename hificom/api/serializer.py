@@ -1,6 +1,7 @@
 from rest_framework.serializers import ModelSerializer, Serializer
 from rest_framework import serializers
-from hificom.models import Category, SpecificationTable, Specification, Product, ProductImage, KeyFeature
+from hificom.models import (Category, CategoryGroup, SpecificationTable, Specification, 
+                            Product, ProductImage, KeyFeature)
 from . import utils
 
 class CategoryBasicSerializer(ModelSerializer):
@@ -22,6 +23,17 @@ class CategorySerializer(ModelSerializer):
     def get_parent_name(self, obj):
         if p:=obj.parent:
             return p.title
+
+class CategoryGroupSerializer(ModelSerializer):
+    categories = serializers.SerializerMethodField()
+
+    class Meta:
+        model = CategoryGroup
+        fields = ['title', 'categories']
+
+    def get_categories(self, obj):
+        categories = obj.categories.all()
+        return CategoryBasicSerializer(categories, many=True).data
 
 
 class SpecificationSerializer(ModelSerializer):

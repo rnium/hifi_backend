@@ -5,10 +5,11 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.db.models import Q
 import json
-from hificom.models import Category, Product
+from hificom.models import Category, CategoryGroup, Product
 from .serializer import (CategorySerializer, 
                          CategoryDetailSerializer, 
                          ProductImageSerializer,
+                         CategoryGroupSerializer,
                          ProductBasicSerializer,
                          ProductCreateSerializer)
 from .permission import IsAdminOrReadOnly
@@ -30,6 +31,13 @@ class CategoriesView(ListCreateAPIView):
             parent_id = int(parent)
             categories = categories.filter(parent__id=parent_id)
         return categories
+    
+class CategoryGroupsView(ListAPIView):
+    serializer_class = CategoryGroupSerializer
+
+    def get_queryset(self):
+        root_slug = self.kwargs.get('slug')
+        return CategoryGroup.objects.filter(root__slug=root_slug)
 
  
 class ViewCategory(RetrieveUpdateDestroyAPIView):
