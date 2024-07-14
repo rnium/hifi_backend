@@ -1,9 +1,9 @@
-from hificom.models import Category
-from .categories import all_categories
+from hificom.models import Category, CategoryGroup
+from .categories import ALL_CATEGORIES, ALL_GROUPS
 
-class CategoryConfigNotFoundError(BaseException):
-    def __init__(self, name) -> None:
-        super().__init__(f'{name} Not Found')
+class ConfigNotFoundError(BaseException):
+    def __init__(self, config_type, name) -> None:
+        super().__init__(f'{config_type} with name {name} Not Found')
 
 
 def check_cat_tree(cat_tree):
@@ -14,16 +14,16 @@ def check_cat_tree(cat_tree):
         for i in cat_tree:
             if type(i) == dict:
                 root = list(i.keys())[0]
-                if not len(list(filter(lambda cat: cat['slug'] == root, all_categories))):
-                    raise CategoryConfigNotFoundError(root)
+                if not len(list(filter(lambda cat: cat['slug'] == root, ALL_CATEGORIES))):
+                    raise ConfigNotFoundError('Category', root)
                 check_cat_tree(i[root])
             elif type(i) == str:
-                if not len(list(filter(lambda cat: cat['slug'] == i, all_categories))):
-                    raise CategoryConfigNotFoundError(i) 
+                if not len(list(filter(lambda cat: cat['slug'] == i, ALL_CATEGORIES))):
+                    raise ConfigNotFoundError('Category', i) 
 
 
 def create_or_update_cat(slug, parent):
-    cat_data = list(filter(lambda cat: cat['slug'] == slug, all_categories))[0]
+    cat_data = list(filter(lambda cat: cat['slug'] == slug, ALL_CATEGORIES))[0]
     cat = Category.objects.filter(slug=slug).first()
     if cat:
         for attr_name, val in cat_data.items():
@@ -54,6 +54,34 @@ def load_cat_tree(tree, parent = None):
 def check_cat_groups(groups: dict):
     for root_cat_slug in groups:
         for group_slug in groups[root_cat_slug]:
+            if not len(list(filter(lambda group: group['slug'] == group_slug, ALL_GROUPS))):
+                raise ConfigNotFoundError('Group', group_slug)
             for cat_slug in groups[root_cat_slug][group_slug]:
-                if not len(list(filter(lambda cat: cat['slug'] == cat_slug, all_categories))):
-                    raise CategoryConfigNotFoundError(cat_slug)
+                if not len(list(filter(lambda cat: cat['slug'] == cat_slug, ALL_CATEGORIES))):
+                    raise ConfigNotFoundError('Category', cat_slug)
+
+
+def create_or_update_group(group_slug, root_cat):
+    group_data = list(filter(lambda group: group['slug'] == group_slug, ALL_GROUPS))
+    group = CategoryGroup.objects.filter(slug=group_slug).first()
+    if not group:
+        group = CategoryGroup(**group_data, root=root_cat)
+        group.save()
+    else:
+        for attr_name, val in group_data.items():
+            setattr(group, attr_name, val)
+        group.parent = root_cat
+        group.save()
+    return group
+
+
+def load_cat_groups(groups: dict):
+    for root_cat_slug in groups:
+        root_cat = Category.objects.get(slug=root_cat_slug)
+        for group_slug in groups[root_cat_slug]:
+            group = create_or_update_group(group_slug, root_cat)
+            for cat_slug in groups[root_cat_slug][group_slug]:
+                if not len(list(filter(lambda cat: cat['slug'] == cat_slug, ALL_CATEGORIES))):
+                    raise ConfigNotFoundError('Category', cat_slug)
+                
+

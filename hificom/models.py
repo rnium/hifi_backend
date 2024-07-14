@@ -27,7 +27,7 @@ class Category(models.Model):
     )
     title = models.CharField(max_length=100)
     cat_type = models.CharField(max_length=20, default='general', choices=category_types)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, db_index=True)
     parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='child_cat')
     minprice = models.FloatField(default=0)
     maxprice = models.FloatField(default=0)
@@ -55,9 +55,14 @@ class Category(models.Model):
 
 
 class CategoryGroup(models.Model):
+    slug = models.SlugField(max_length=200, unique=True, db_index=True)
+    title = models.CharField(max_length=200)
     root = models.ForeignKey(Category, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category, related_name='groups')
     priority = models.IntegerField(default=0)
+    
+    def __str__(self) -> str:
+        return self.title
      
 
 class TitleAlias(models.Model):
@@ -93,7 +98,7 @@ class Product(models.Model):
     tags = models.ManyToManyField(Category, related_name='tagged_products')
     title = models.CharField(max_length=200)
     details = models.TextField(null=True, blank=True)
-    slug = models.SlugField(max_length=300, unique=True)
+    slug = models.SlugField(max_length=300, unique=True, db_index=True)
     price = models.FloatField(default=0)
     discount = models.FloatField(default=0)
     in_stock = models.BooleanField(default=True)

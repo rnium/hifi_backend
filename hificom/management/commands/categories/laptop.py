@@ -1,63 +1,3 @@
-import yaml
-
-
-main_categories = [
-    {
-        'title': 'Laptop',
-        'slug': 'laptop',
-        'priority': 5,
-        'get_features_from_child': True
-    },
-    {
-        'title': 'Desktop',
-        'slug': 'desktop',
-        'priority': 4,
-        'get_features_from_child': True
-    },
-    {
-        'title': 'PC Component',
-        'slug': 'pc-component',
-        'priority': 4,
-    },
-    {
-        'title': 'Monitor',
-        'slug': 'monitor',
-        'priority': 4,
-        'get_features_from_child': True
-    },
-    {
-        'title': 'Accessories',
-        'slug': 'accessories',
-        'priority': 3,
-    },
-    {
-        'title': 'Networking',
-        'slug': 'networking',
-        'priority': 3,
-    },
-    {
-        'title': 'Printer',
-        'slug': 'printer',
-        'priority': 3,
-        'get_features_from_child': True
-    },
-    {
-        'title': 'Office Equipment',
-        'slug': 'office-equipment',
-        'priority': 3,
-    },
-    {
-        'title': 'Sound System',
-        'slug': 'sound-system',
-        'priority': 2,
-    },
-    {
-        'title': 'Software',
-        'slug': 'software',
-        'priority': 2,
-    },
-]
-
 laptop_subcategories = [
     {
         'title': 'All Laptop',
@@ -635,48 +575,7 @@ laptop_battery_brands = [
     },
 ]
 
-monitor_brands = [
-    {
-        'title': 'Dahua',
-        'slug': 'dahua-monitor',
-        'cat_type': 'brand',
-        'priority': 3,
-    },
-    {
-        'title': 'Acer',
-        'slug': 'acer-monitor',
-        'cat_type': 'brand',
-        'priority': 1,
-    },
-    {
-        'title': 'Hikvision',
-        'slug': 'hikvision-monitor',
-        'cat_type': 'brand',
-        'priority': 1,
-    },
-    {
-        'title': 'MSI',
-        'slug': 'msi-monitor',
-        'cat_type': 'brand',
-        'priority': 1,
-    },
-    {
-        'title': 'Viewsonic',
-        'slug': 'viewsonic-monitor',
-        'cat_type': 'brand',
-        'priority': 1,
-    },
-    {
-        'title': 'HP',
-        'slug': 'hp-monitor',
-        'cat_type': 'brand',
-        'priority': 1,
-    },
-]
-
-
-all_categories = [
-    *main_categories,
+ALL_LAPTOP_CATEGORIES = [
     *laptop_subcategories,
     *laptop_brands,
     *laptop_processor_types,
@@ -690,14 +589,57 @@ all_categories = [
     *laptop_acceesories,
     *laptop_ram_brands,
     *laptop_battery_brands,
-    *monitor_brands
 ]
 
 
+# GROUPS
 
-with open('cat_tree.yaml') as f:
-    cat_tree = yaml.load(f, yaml.SafeLoader)
+LAPTOP_GROUPS = [
+    {
+        'title': 'Processor Brand',
+        'slug': 'laptop-processor-brand',
+        'priority': 5
+    },
+    {
+        'title': 'Processor Type',
+        'slug': 'laptop-processor-type',
+        'priority': 4
+    },
+    {
+        'title': 'Processor Series',
+        'slug': 'laptop-processor-series',
+        'priority': 4
+    },
+    {
+        'title': 'Display Type',
+        'slug': 'laptop-display-types',
+        'priority': 3
+    },
+    {
+        'title': 'Display Size',
+        'slug': 'laptop-display-size',
+        'priority': 3
+    },
+    {
+        'title': 'RAM',
+        'slug': 'laptop-ram-capacity',
+        'priority': 3
+    },
+    {
+        'title': 'RAM Type',
+        'slug': 'laptop-ram-type',
+        'priority': 3
+    },
+    {
+        'title': 'Storage',
+        'slug': 'laptop-storage',
+        'priority': 3
+    },
+    {
+        'title': 'Graphics',
+        'slug': 'laptop-graphics',
+        'priority': 3
+    },
+]
 
-with open('cat_groups.yaml') as f:
-    cat_groups = yaml.load(f, yaml.SafeLoader)
 
