@@ -2,42 +2,45 @@ laptop_subcategories = [
     {
         'title': 'All Laptop',
         'slug': 'all-laptop',
-        'priority': 3,
+        'priority': 10,
     },
     {
         'title': 'Gaming Laptop',
         'slug': 'gaming-laptop',
-        'priority': 2,
+        'priority': 9,
     },
     {
         'title': 'Business Laptop',
         'slug': 'business-laptop',
-        'priority': 2,
+        'priority': 9,
     },
     {
         'title': 'Professional Laptop',
         'slug': 'professional-laptop',
-        'priority': 2,
+        'priority': 9,
     },
     {
-        'title': 'Intel',
+        'title': 'Intel Laptop',
+        'short_title': 'Intel',
         'slug': 'intel-laptop',
-        'priority': 1,
+        'priority': 8,
     },
     {
-        'title': 'AMD',
+        'title': 'AMD Laptop',
+        'short_title': 'AMD',
         'slug': 'amd-laptop',
-        'priority': 1,
+        'priority': 8,
     },
     {
+        'short_title': 'Snapdragon Laptop',
         'title': 'Snapdragon',
         'slug': 'snapdragon-laptop',
-        'priority': 1,
+        'priority': 8,
     },
     {
         'title': 'Accessories',
         'slug': 'laptop-accessories',
-        'priority': 0,
+        'priority': 7,
     },
 ]
 

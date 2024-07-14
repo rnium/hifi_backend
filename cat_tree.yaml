@@ -47,7 +47,7 @@ laptop:
     - ryzen-6000-series-laptop
     - ryzen-7000-series-laptop
     - ryzen-8000-series-laptop
-  - accessories:
+  - laptop-accessories:
     - laptop-ram:
       - adata-laptop-ram
       - apacer-laptop-ram
