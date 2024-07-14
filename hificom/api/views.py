@@ -47,7 +47,7 @@ class ViewCategory(RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
 
     def get_object(self):
-        return Category.objects.get(slug=self.kwargs.get('slug'))
+        return get_object_or_404(Category, slug=self.kwargs.get('slug'))
 
 class CategoryProductsView(ListAPIView):
     serializer_class = ProductBasicSerializer
