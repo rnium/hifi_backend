@@ -54,7 +54,7 @@ laptop:
     - ddr4-ram-laptop
     - ddr5-ram-laptop
   
-  laptop-storage:
+  laptop-ssd:
     - 128gb-ssd-laptop
     - 256gb-ssd-laptop
     - 512gb-ssd-laptop
@@ -62,6 +62,8 @@ laptop:
     - 2tb-ssd-laptop
     - 4tb-ssd-laptop
     - 8tb-ssd-laptop
+  
+  laptop-hdd:
     - 512gb-hdd-laptop
     - 1tb-hdd-laptop
   

@@ -26,6 +26,7 @@ class Category(models.Model):
         *category_types
     )
     title = models.CharField(max_length=100)
+    short_title = models.CharField(max_length=100, null=True, blank=True)
     cat_type = models.CharField(max_length=20, default='general', choices=category_types)
     slug = models.SlugField(max_length=200, unique=True, db_index=True)
     parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='child_cat')
@@ -38,7 +39,7 @@ class Category(models.Model):
     priority = models.IntegerField(default=0)
 
     class Meta:
-        ordering = ['-priority', 'id']
+        ordering = ['cat_type', '-priority', 'id']
 
     def __str__(self):
         return self.title

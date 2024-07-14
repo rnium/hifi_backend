@@ -37,7 +37,8 @@ class CategoryGroupsView(ListAPIView):
 
     def get_queryset(self):
         root_slug = self.kwargs.get('slug')
-        return CategoryGroup.objects.filter(root__slug=root_slug)
+        root_cat = get_object_or_404(Category, slug=root_slug)
+        return CategoryGroup.objects.filter(root__in=root_cat.category_tree)
 
  
 class ViewCategory(RetrieveUpdateDestroyAPIView):

@@ -20,24 +20,24 @@ laptop_subcategories = [
         'priority': 2,
     },
     {
-        'title': 'Intel Laptop',
+        'title': 'Intel',
         'slug': 'intel-laptop',
         'priority': 1,
     },
     {
-        'title': 'AMD Laptop',
+        'title': 'AMD',
         'slug': 'amd-laptop',
         'priority': 1,
     },
     {
-        'title': 'Snapdragon Laptop',
+        'title': 'Snapdragon',
         'slug': 'snapdragon-laptop',
         'priority': 1,
     },
     {
         'title': 'Accessories',
         'slug': 'laptop-accessories',
-        'priority': 1,
+        'priority': 0,
     },
 ]
 
@@ -82,7 +82,7 @@ laptop_brands = [
 
 laptop_processor_types = [
     {
-        'title': 'Intel Pentium & Celeron Laptop',
+        'title': 'Intel Pentium & Celeron',
         'slug': 'pentium-and-celeron-laptop',
         'priority': 0,
         'cat_type': 'series'
@@ -212,27 +212,27 @@ laptop_processor_series = [
 
 laptop_display_variants = [
     {
-        'title': 'Less than 14 Inch Laptop',
+        'title': 'Less than 14 Inch',
         'slug': 'less-than-14-inch-laptop',
         'cat_type': 'tag'
     },
     {
-        'title': '14.1 Inch to 15 Inch Laptop',
+        'title': '14.1 Inch to 15 Inch',
         'slug': '14.1-inch-to-15-inch-laptop',
         'cat_type': 'tag'
     },
     {
-        'title': '15.1 Inch to 16 Inch Laptop',
+        'title': '15.1 Inch to 16 Inch',
         'slug': '15.1-inch-to-16-inch-laptop',
         'cat_type': 'tag'
     },
     {
-        'title': '16.1 Inch to 17 Inch Laptop',
+        'title': '16.1 Inch to 17 Inch',
         'slug': '16.1-inch-to-17-inch-laptop',
         'cat_type': 'tag'
     },
     {
-        'title': '17.1 Inch to 18 Inch Laptop',
+        'title': '17.1 Inch to 18 Inch',
         'slug': '17.1-inch-to-18-inch-laptop',
         'cat_type': 'tag'
     },
@@ -270,90 +270,108 @@ laptop_display_variants = [
 
 laptop_storage_variants = [
     {
-        'title': '128GB SSD Laptop',
+        'title': '128GB SSD',
+        'short_title': '128GB',
         'slug': '128gb-ssd-laptop',
         'cat_type': 'tag'
     },
     {
-        'title': '256GB SSD Laptop',
+        'title': '256GB SSD',
+        'short_title': '256GB',
         'slug': '256gb-ssd-laptop',
         'cat_type': 'tag'
     },
     {
-        'title': '512GB SSD Laptop',
+        'title': '512GB SSD',
+        'short_title': '512GB',
         'slug': '512gb-ssd-laptop',
         'cat_type': 'tag'
     },
     {
-        'title': '1TB SSD Laptop',
+        'title': '1TB SSD',
+        'short_title': '1TB',
         'slug': '1tb-ssd-laptop',
         'cat_type': 'tag'
     },
     {
-        'title': '2TB SSD Laptop',
+        'title': '2TB SSD',
+        'short_title': '2TB',
         'slug': '2tb-ssd-laptop',
         'cat_type': 'tag'
     },
     {
-        'title': '4TB SSD Laptop',
+        'title': '4TB SSD',
+        'short_title': '4TB',
         'slug': '4tb-ssd-laptop',
         'cat_type': 'tag'
     },
     {
-        'title': '8TB SSD Laptop',
+        'title': '8TB SSD',
+        'short_title': '8TB',
         'slug': '8tb-ssd-laptop',
         'cat_type': 'tag'
     },
     {
-        'title': '512GB HDD Laptop',
+        'title': '512GB HDD',
+        'short_title': '512GB',
         'slug': '512gb-hdd-laptop',
         'cat_type': 'tag'
     },
     {
-        'title': '1TB HDD Laptop',
+        'title': '1TB HDD',
+        'short_title': '1TB',
         'slug': '1tb-hdd-laptop',
         'cat_type': 'tag'
     }
 ]
 
+
 laptop_graphics_variants = [
     {
         'title': 'Laptop Shared Graphics',
+        'short_title': 'Shared',
         'slug': 'laptop-shared-graphics',
         'cat_type': 'tag'
     },
     {
-        'title': '2GB Dedicated Laptop Graphics',
+        'title': '2GB Dedicated Graphics',
+        'short_title': '2GB',
         'slug': '2gb-dedicated-laptop-graphics',
         'cat_type': 'tag'
     },
     {
-        'title': '4GB Dedicated Laptop Graphics',
+        'title': '4GB Dedicated Graphics',
+        'short_title': '4GB',
         'slug': '4gb-dedicated-laptop-graphics',
         'cat_type': 'tag'
     },
     {
-        'title': '6GB Dedicated Laptop Graphics',
+        'title': '6GB Dedicated Graphics',
+        'short_title': '6GB',
         'slug': '6gb-dedicated-laptop-graphics',
         'cat_type': 'tag'
     },
     {
-        'title': '8GB Dedicated Laptop Graphics',
+        'title': '8GB Dedicated Graphics',
+        'short_title': '8GB',
         'slug': '8gb-dedicated-laptop-graphics',
         'cat_type': 'tag'
     },
     {
-        'title': '10GB Dedicated Laptop Graphics',
+        'title': '10GB Dedicated Graphics',
+        'short_title': '10GB',
         'slug': '10gb-dedicated-laptop-graphics',
         'cat_type': 'tag'
     },
     {
-        'title': '12GB Dedicated Laptop Graphics',
+        'title': '12GB Dedicated Graphics',
+        'short_title': '12GB',
         'slug': '12gb-dedicated-laptop-graphics',
         'cat_type': 'tag'
     },
     {
-        'title': '16GB Dedicated Laptop Graphics',
+        'title': '16GB Dedicated Graphics',
+        'short_title': '16GB',
         'slug': '16gb-dedicated-laptop-graphics',
         'cat_type': 'tag'
     }
@@ -449,50 +467,60 @@ laptop_serieses = [
 laptop_ram_tags = [
     {
         'title': '4GB Ram Laptop',
+        'short_title': '4GB',
         'slug': '4gb-ram-laptop',
         'cat_type': 'tag'
     },
     {
         'title': '8GB Ram Laptop',
+        'short_title': '8GB',
         'slug': '8gb-ram-laptop',
         'cat_type': 'tag'
     },
     {
         'title': '16GB Ram Laptop',
+        'short_title': '16GB',
         'slug': '16gb-ram-laptop',
         'cat_type': 'tag'
     },
     {
         'title': '32GB Ram Laptop',
+        'short_title': '32GB',
         'slug': '32gb-ram-laptop',
         'cat_type': 'tag'
     },
     {
         'title': '48GB Ram Laptop',
+        'short_title': '48GB',
         'slug': '48gb-ram-laptop',
         'cat_type': 'tag'
     },
     {
         'title': '64GB Ram Laptop',
+        'short_title': '64GB',
         'slug': '64gb-ram-laptop',
         'cat_type': 'tag'
     },
     {
         'title': '128GB Ram Laptop',
+        'short_title': '128GB',
         'slug': '128gb-ram-laptop',
         'cat_type': 'tag'
     },
     {
         'title': 'DDR4 Ram Laptop',
+        'short_title': 'DDR4',
         'slug': 'ddr4-ram-laptop',
         'cat_type': 'tag'
     },
     {
         'title': 'DDR5 Ram Laptop',
+        'short_title': 'DDR5',
         'slug': 'ddr5-ram-laptop',
         'cat_type': 'tag'
     }
 ]
+
 
 laptop_acceesories = [
     {
@@ -631,8 +659,13 @@ LAPTOP_GROUPS = [
         'priority': 3
     },
     {
-        'title': 'Storage',
-        'slug': 'laptop-storage',
+        'title': 'SSD Capacity',
+        'slug': 'laptop-ssd',
+        'priority': 3
+    },
+    {
+        'title': 'HDD Capacity',
+        'slug': 'laptop-hdd',
         'priority': 3
     },
     {
