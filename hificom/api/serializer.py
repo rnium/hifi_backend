@@ -7,7 +7,7 @@ from . import utils
 class CategoryBasicSerializer(ModelSerializer):
     class Meta:
         model = Category
-        fields = ['id', 'slug', 'title']
+        fields = ['id', 'slug', 'title', 'short_title']
 
 
 class CategorySerializer(ModelSerializer):
@@ -65,6 +65,7 @@ class CategoryDetailSerializer(CategorySerializer):
     tables = serializers.SerializerMethodField()
     category_tree = serializers.SerializerMethodField()
     tree_tables = serializers.SerializerMethodField()
+    groups = serializers.SerializerMethodField()
     
     def get_childs(self, obj):
         childs_qs = obj.child_cat.all()
@@ -80,6 +81,11 @@ class CategoryDetailSerializer(CategorySerializer):
     def get_tree_tables(self, obj):
         tables = SpecificationTable.objects.filter(category__in=obj.category_tree)
         return SpecTableSerializer(tables, many=True).data
+    
+    def get_groups(self, obj):
+        cat_groups = CategoryGroup.objects.filter(root__in=obj.category_tree)
+        return CategoryGroupSerializer(cat_groups, many=True).data
+    
 
 
 class ProductImageSerializer(ModelSerializer):
