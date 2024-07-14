@@ -1,5 +1,6 @@
 from hificom.models import Category, CategoryGroup
 from .categories import ALL_CATEGORIES, ALL_GROUPS
+from typing import List
 
 class ConfigNotFoundError(BaseException):
     def __init__(self, config_type, name) -> None:
@@ -62,7 +63,7 @@ def check_cat_groups(groups: dict):
 
 
 def create_or_update_group(group_slug, root_cat):
-    group_data = list(filter(lambda group: group['slug'] == group_slug, ALL_GROUPS))
+    group_data = list(filter(lambda group: group['slug'] == group_slug, ALL_GROUPS))[0]
     group = CategoryGroup.objects.filter(slug=group_slug).first()
     if not group:
         group = CategoryGroup(**group_data, root=root_cat)
@@ -74,14 +75,18 @@ def create_or_update_group(group_slug, root_cat):
         group.save()
     return group
 
+def add_categories(categories: List[str], group: CategoryGroup):
+    group.categories.clear()
+    for cat_slug in categories:
+        cat = Category.objects.get(slug=cat_slug)
+        group.categories.add(cat)
 
 def load_cat_groups(groups: dict):
     for root_cat_slug in groups:
         root_cat = Category.objects.get(slug=root_cat_slug)
         for group_slug in groups[root_cat_slug]:
             group = create_or_update_group(group_slug, root_cat)
-            for cat_slug in groups[root_cat_slug][group_slug]:
-                if not len(list(filter(lambda cat: cat['slug'] == cat_slug, ALL_CATEGORIES))):
-                    raise ConfigNotFoundError('Category', cat_slug)
+            categories = groups[root_cat_slug][group_slug]
+            add_categories(categories, group)
                 
 

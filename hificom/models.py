@@ -18,7 +18,7 @@ class Category(models.Model):
         ('brand', 'Brand Category'),
         ('series', 'Series Category'),
         ('feature', 'Feature Category'),
-        ('tag', 'Tag Under Feature'),
+        ('tag', 'Tag'),
     )
     display_child_types = (
         ('all', 'All Categories'),
@@ -60,6 +60,9 @@ class CategoryGroup(models.Model):
     root = models.ForeignKey(Category, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category, related_name='groups')
     priority = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ['-priority', 'id']
     
     def __str__(self) -> str:
         return self.title
