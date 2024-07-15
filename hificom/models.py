@@ -109,7 +109,7 @@ class Product(models.Model):
     in_stock = models.BooleanField(default=True)
     is_featured = models.BooleanField(default=False)
     stock_count = models.IntegerField(default=0)
-    rating = models.FloatField(default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    rating = models.FloatField(default=0)
     is_upcoming = models.BooleanField(default=False)
     added_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -154,5 +154,5 @@ class ProductImage(models.Model):
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     account = models.ForeignKey(User, on_delete=models.CASCADE)
-    rating = models.FloatField(default=1)
+    rating = models.FloatField(default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
     description = models.CharField(max_length=1000)

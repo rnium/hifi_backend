@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer, Serializer
 from rest_framework import serializers
-from hificom.models import (Category, CategoryGroup, SpecificationTable, Specification, 
+from hificom.models import (Category, CategoryGroup, SpecificationTable, ProductSpec, Specification, 
                             Product, ProductImage, KeyFeature)
 from . import utils
 
@@ -59,6 +59,15 @@ class SpecTableSerializer(ModelSerializer):
     def get_aliases(self, obj):
         return [ a.alias for a in obj.aliases.all()]
 
+class ProductSpecSerializer(ModelSerializer):
+    title = serializers.SerializerMethodField()
+
+    class Meta:
+        model = ProductSpec
+        fields = ['title', 'value']
+
+    def get_title(self, obj):
+        return obj.specification.title
 
 class CategoryDetailSerializer(CategorySerializer):
     childs = serializers.SerializerMethodField()
@@ -133,6 +142,37 @@ class ProductSemiDetailSerializer(ProductBasicSerializer):
     
     def get_key_features(self, obj):
         return [kf.feature for kf in obj.keyfeature_set.all()]
+    
+
+class ProductDetailSerializer(ProductSemiDetailSerializer):
+    images = serializers.SerializerMethodField()
+    spec_tables = serializers.SerializerMethodField()
+    num_ratings = serializers.SerializerMethodField()
+
+    def get_images(self, obj):
+        images = obj.productimage_set.all()
+        request = self.context.get('request')
+        if request:
+            return [{'id': img.id, 'url': request.build_absolute_uri(img.main.url)} for img in images]
+        else:
+            return [{'id': img.id, 'url': img.main.url} for img in images]
+    
+    def get_spec_tables(self, obj):
+        product_specs = obj.productspec_set.all()
+        table_ids = product_specs.values_list('specification__table', flat=True).distinct()
+        tables = SpecificationTable.objects.filter(id__in=table_ids)
+        data = []
+        for table in tables:
+            table_specs = product_specs.filter(specification__table=table)
+            table_data = {
+                'title': table.title,
+                'specs': ProductSpecSerializer(table_specs, many=True).data
+            }
+            data.append(table_data)
+        return data
+
+    def get_num_ratings(self, obj):
+        return obj.review_set.all().count()
 
 
 

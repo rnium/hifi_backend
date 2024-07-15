@@ -10,4 +10,5 @@ urlpatterns = [
     path('categories/<str:slug>/allproducts/', views.AllProductsSemiDetailView.as_view(), name="all_products_full"),
     path('t/<str:slug>/products/', views.TaggedProductsView.as_view(), name="tagged_products"),
     path('categories/<str:slug>/addproduct/', views.add_product, name="add_product"),
+    path('product/<str:slug>/', views.ProductDetailView.as_view(), name="view_detailed_product"),
 ]

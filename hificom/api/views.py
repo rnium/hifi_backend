@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from rest_framework.generics import ListAPIView, ListCreateAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
@@ -11,6 +11,7 @@ from .serializer import (CategorySerializer,
                          ProductSemiDetailSerializer,
                          CategoryGroupSerializer,
                          ProductBasicSerializer,
+                         ProductDetailSerializer,
                          ProductCreateSerializer)
 from .permission import IsAdminOrReadOnly
 from .pagination import ProductsPagination
@@ -32,7 +33,7 @@ class CategoriesView(ListCreateAPIView):
             parent_id = int(parent)
             categories = categories.filter(parent__id=parent_id)
         return categories
-    
+
 class CategoryGroupsView(ListAPIView):
     serializer_class = CategoryGroupSerializer
 
@@ -41,7 +42,7 @@ class CategoryGroupsView(ListAPIView):
         root_cat = get_object_or_404(Category, slug=root_slug)
         return CategoryGroup.objects.filter(root__in=root_cat.category_tree)
 
- 
+
 class ViewCategory(RetrieveUpdateDestroyAPIView):
     serializer_class = CategoryDetailSerializer
     permission_classes = [IsAdminOrReadOnly]
@@ -74,6 +75,13 @@ class AllProductsSemiDetailView(ListAPIView):
     def get_queryset(self):
         slug = self.kwargs.get('slug')
         return Product.objects.filter(Q(category__slug=slug) | Q(tags__slug=slug)).distinct()
+
+class ProductDetailView(RetrieveAPIView):
+    serializer_class = ProductDetailSerializer
+    queryset = Product.objects.all()
+
+    def get_object(self):
+        return get_object_or_404(Product, slug=self.kwargs.get('slug'))
 
 
 @api_view(['POST'])
