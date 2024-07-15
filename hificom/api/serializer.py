@@ -87,18 +87,6 @@ class CategoryDetailSerializer(CategorySerializer):
         return CategoryGroupSerializer(cat_groups, many=True).data
     
 
-
-class ProductImageSerializer(ModelSerializer):
-    class Meta:
-        model = ProductImage
-        fields = '__all__'
-
-
-class ProductDetailSerializer(ModelSerializer):
-    class Meta:
-        model = Product
-        fields = '__all__'
-
 class KeyFeatureSerializer(ModelSerializer):
     feature = serializers.SerializerMethodField()
     class Meta:
@@ -135,6 +123,23 @@ class ProductBasicSerializer(ModelSerializer):
                 return request.build_absolute_uri(cover_img.main.url)
             else:
                 return cover_img.main.url
+
+
+class ProductSemiDetailSerializer(ProductBasicSerializer):
+    key_features = serializers.SerializerMethodField()
+    class Meta:
+        model = Product
+        fields = '__all__'
+    
+    def get_key_features(self, obj):
+        return [kf.feature for kf in obj.keyfeature_set.all()]
+
+
+
+class ProductImageSerializer(ModelSerializer):
+    class Meta:
+        model = ProductImage
+        fields = '__all__'
 
 
 class ProductCreateSerializer(ModelSerializer):

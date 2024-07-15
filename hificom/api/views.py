@@ -6,14 +6,14 @@ from rest_framework import status
 from django.db.models import Q
 import json
 from hificom.models import Category, CategoryGroup, Product
-from rest_framework.pagination import PageNumberPagination
 from .serializer import (CategorySerializer, 
                          CategoryDetailSerializer, 
-                         ProductImageSerializer,
+                         ProductSemiDetailSerializer,
                          CategoryGroupSerializer,
                          ProductBasicSerializer,
                          ProductCreateSerializer)
 from .permission import IsAdminOrReadOnly
+from .pagination import ProductsPagination
 from . import utils
 
 class CategoriesView(ListCreateAPIView):
@@ -45,7 +45,6 @@ class CategoryGroupsView(ListAPIView):
 class ViewCategory(RetrieveUpdateDestroyAPIView):
     serializer_class = CategoryDetailSerializer
     permission_classes = [IsAdminOrReadOnly]
-    pagination_class = PageNumberPagination
     queryset = Category.objects.all()
 
     def get_object(self):
@@ -53,6 +52,7 @@ class ViewCategory(RetrieveUpdateDestroyAPIView):
 
 class CategoryProductsView(ListAPIView):
     serializer_class = ProductBasicSerializer
+    pagination_class = ProductsPagination
 
     def get_queryset(self):
         return Product.objects.filter(category__slug=self.kwargs.get('slug'))
@@ -60,11 +60,20 @@ class CategoryProductsView(ListAPIView):
 
 class TaggedProductsView(ListAPIView):
     serializer_class = ProductBasicSerializer
-    pagination_class = PageNumberPagination
+    pagination_class = ProductsPagination
+    
     def get_queryset(self):
         slug = self.kwargs.get('slug')
         return Product.objects.filter(Q(category__slug=slug) | Q(tags__slug=slug)).distinct()
 
+
+class AllProductsSemiDetailView(ListAPIView):
+    serializer_class = ProductSemiDetailSerializer
+    pagination_class = ProductsPagination
+    
+    def get_queryset(self):
+        slug = self.kwargs.get('slug')
+        return Product.objects.filter(Q(category__slug=slug) | Q(tags__slug=slug)).distinct()
 
 
 @api_view(['POST'])

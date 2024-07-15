@@ -1,45 +1,61 @@
 laptop_subcategories = [
     {
         'title': 'All Laptop',
+        'seo_title': 'All Brand Laptop at HiFi Computer',
+        'description': 'Discover unbeatable discounts on all major laptop brands at HiFi Computer, available throughout Bangladesh! Browse our extensive collection, select your ideal laptop, and enjoy doorstep delivery. Shop now and save big! Find laptops for every need and budget at the best price, ensuring you get the most value from HiFi Computer\'s diverse selection.',
         'slug': 'all-laptop',
         'priority': 10,
     },
     {
         'title': 'Gaming Laptop',
         'slug': 'gaming-laptop',
+        'seo_title': 'Top Gaming Laptops in Bangladesh',
+        'description': 'Elevate your gaming experience with top-tier gaming laptops from HiFi Computer, available across Bangladesh! Explore our premium selection, choose your ultimate gaming machine, and have it delivered straight to your doorstep. Dive into immersive gameplay with HiFi Computer\'s gaming laptops, ensuring exceptional performance and reliability at the best price.',
         'priority': 9,
     },
     {
         'title': 'Business Laptop',
         'slug': 'business-laptop',
+        'seo_title': 'Best Business Laptops in Bangladesh',
+        'description': 'Enhance your productivity with our range of business laptops at HiFi Computer. Find the perfect laptop to meet your professional needs, available throughout Bangladesh with special discounts and doorstep delivery. Maximize efficiency and cost-effectiveness with HiFi Computer\'s business laptops, ensuring top-notch performance and durability at the best price.',
         'priority': 9,
     },
     {
         'title': 'Professional Laptop',
         'slug': 'professional-laptop',
+        'seo_title': 'Top Professional Laptops in Bangladesh',
+        'description': 'Achieve peak performance with our selection of professional laptops at HiFi Computer. Browse high-performance models designed for demanding tasks, available across Bangladesh with convenient doorstep delivery. Experience unmatched reliability and innovation with HiFi Computer\'s professional laptops, delivering superior quality and value at the best price.',
         'priority': 9,
     },
     {
         'title': 'Intel Laptop',
         'short_title': 'Intel',
         'slug': 'intel-laptop',
+        'seo_title': 'Best Intel Laptops in Bangladesh',
+        'description': 'Explore the best Intel-powered laptops at HiFi Computer. Discover a range of models offering superior performance and efficiency, available throughout Bangladesh with doorstep delivery. Power your productivity with HiFi Computer\'s Intel laptops, ensuring cutting-edge technology and performance at the best price for every budget.',
         'priority': 8,
     },
     {
         'title': 'AMD Laptop',
         'short_title': 'AMD',
         'slug': 'amd-laptop',
+        'seo_title': 'Top AMD Laptops in Bangladesh',
+        'description': 'Find the best AMD laptops at HiFi Computer. Enjoy powerful performance and innovative features, available across Bangladesh with special discounts and doorstep delivery. Unleash creativity and productivity with HiFi Computer\'s AMD laptops, delivering exceptional value and performance at the best price in the market.',
         'priority': 8,
     },
     {
         'short_title': 'Snapdragon Laptop',
         'title': 'Snapdragon',
         'slug': 'snapdragon-laptop',
-        'priority': 8,
+        'seo_title': 'Best Snapdragon Laptops in Bangladesh',
+        'description': 'Discover the latest Snapdragon laptops at HiFi Computer. Experience cutting-edge technology and long-lasting battery life, available throughout Bangladesh with doorstep delivery. Stay connected longer and work efficiently with HiFi Computer\'s Snapdragon laptops, offering exceptional value and reliability at the best price.',
+        'priority': 7,
     },
     {
         'title': 'Accessories',
         'slug': 'laptop-accessories',
+        'seo_title': 'Laptop Accessories in Bangladesh',
+        'description': 'Complete your laptop setup with essential accessories from HiFi Computer. Browse our wide selection of accessories available throughout Bangladesh with doorstep delivery. Enhance your computing experience with HiFi Computer\'s comprehensive range of laptop accessories, ensuring you get the best functionality and value at the best price.',
         'priority': 7,
     },
 ]
@@ -49,100 +65,123 @@ laptop_brands = [
         'title': 'Asus',
         'slug': 'asus',
         'priority': 3,
-        'cat_type': 'brand'
+        'cat_type': 'brand',
+        'seo_title': 'Asus Laptops in Bangladesh',
+        'description': 'Discover a wide range of Asus laptops at HiFi Computer, offering exceptional performance and style. Whether for gaming, business, or everyday use, Asus laptops deliver reliability and innovation at the best price in Bangladesh. Explore our selection and find the perfect Asus laptop to meet your needs, with doorstep delivery available.',
     },
     {
         'title': 'Lenovo',
         'slug': 'lenovo',
         'priority': 3,
-        'cat_type': 'brand'
+        'cat_type': 'brand',
+        'seo_title': 'Lenovo Laptops in Bangladesh',
+        'description': 'Explore the latest Lenovo laptops at HiFi Computer, renowned for their durability and performance. From business to gaming, Lenovo offers cutting-edge technology at the best price in Bangladesh. Choose from our diverse range of models and enjoy doorstep delivery for your convenience.',
     },
     {
         'title': 'HP',
         'slug': 'hp',
         'priority': 3,
-        'cat_type': 'brand'
+        'cat_type': 'brand',
+        'seo_title': 'HP Laptops in Bangladesh',
+        'description': 'Find top-quality HP laptops at HiFi Computer, designed for reliability and performance. Whether for professional tasks or gaming, HP laptops provide unmatched value at the best price in Bangladesh. Browse our collection, select your ideal model, and benefit from doorstep delivery across the country.',
     },
     {
         'title': 'Acer',
         'slug': 'acer',
         'priority': 2,
-        'cat_type': 'brand'
+        'cat_type': 'brand',
+        'seo_title': 'Acer Laptops in Bangladesh',
+        'description': 'Shop for Acer laptops at HiFi Computer, known for their innovation and affordability. Acer offers a wide range of laptops for gaming, business, and everyday use at competitive prices in Bangladesh. Explore our selection, find the perfect Acer laptop for your needs, and enjoy doorstep delivery across the country.',
     },
     {
         'title': 'Dell',
         'slug': 'dell',
         'priority': 2,
-        'cat_type': 'brand'
+        'cat_type': 'brand',
+        'seo_title': 'Dell Laptops in Bangladesh',
+        'description': 'Discover Dell laptops at HiFi Computer, renowned for their performance and reliability. Dell offers a comprehensive range of laptops at competitive prices in Bangladesh, catering to both business and personal use. Choose your Dell laptop from our selection and enjoy doorstep delivery for added convenience.',
     },
     {
         'title': 'MSI',
         'slug': 'msi',
         'priority': 2,
-        'cat_type': 'brand'
+        'cat_type': 'brand',
+        'seo_title': 'MSI Laptops in Bangladesh',
+        'description': 'Explore MSI laptops at HiFi Computer, designed for gamers and professionals seeking performance and style. MSI offers cutting-edge technology at competitive prices in Bangladesh, ensuring superior gaming and productivity experiences. Browse our MSI laptop selection, choose your ideal model, and enjoy doorstep delivery across the country.',
     },
 ]
-
 laptop_processor_types = [
     {
         'title': 'Intel Pentium & Celeron',
         'slug': 'pentium-and-celeron-laptop',
         'priority': 0,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'Intel Pentium & Celeron Laptops in Bangladesh',
+        'description': 'Explore budget-friendly Intel Pentium and Celeron laptops at HiFi Computer. Perfect for everyday tasks, these laptops offer reliability and performance at an affordable price in Bangladesh. Choose from our selection and enjoy doorstep delivery for your convenience.',
     },
     {
         'title': 'Intel Core i3',
         'slug': 'core-i3-laptop',
         'priority': 3,
-        'cat_type': 'series'
-    },
-    {
-        'title': 'Intel Core i3',
-        'slug': 'core-i3-laptop',
-        'priority': 3,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'Intel Core i3 Laptops in Bangladesh',
+        'description': 'Discover Intel Core i3 laptops at HiFi Computer, designed for efficient multitasking and productivity. Ideal for everyday use, these laptops deliver reliable performance at a competitive price in Bangladesh. Browse our selection, choose your ideal model, and enjoy doorstep delivery across the country.',
     },
     {
         'title': 'Intel Core i5',
         'slug': 'core-i5-laptop',
         'priority': 3,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'Intel Core i5 Laptops in Bangladesh',
+        'description': 'Find Intel Core i5 laptops at HiFi Computer, offering powerful performance for demanding tasks and gaming. These laptops combine speed and efficiency at a competitive price in Bangladesh. Explore our selection, find the perfect Intel Core i5 laptop for your needs, and enjoy doorstep delivery across the country.',
     },
     {
         'title': 'Intel Core i7',
         'slug': 'core-i7-laptop',
         'priority': 3,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'Intel Core i7 Laptops in Bangladesh',
+        'description': 'Experience superior performance with Intel Core i7 laptops at HiFi Computer, designed for intensive tasks and gaming. These laptops deliver exceptional speed and power efficiency at a competitive price in Bangladesh. Browse our selection, choose your ideal Intel Core i7 laptop, and enjoy doorstep delivery across the country.',
     },
     {
         'title': 'Intel Core i9',
         'slug': 'core-i9-laptop',
         'priority': 3,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'Intel Core i9 Laptops in Bangladesh',
+        'description': 'Discover ultimate performance with Intel Core i9 laptops at HiFi Computer, perfect for gaming and professional use. These laptops offer unparalleled speed and multitasking capabilities at a competitive price in Bangladesh. Explore our selection, find your ideal Intel Core i9 laptop, and benefit from doorstep delivery across the country.',
     },
     {
         'title': 'AMD Ryzen 3',
         'slug': 'ryzen-3-laptop',
         'priority': 3,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'AMD Ryzen 3 Laptops in Bangladesh',
+        'description': 'Explore AMD Ryzen 3 laptops at HiFi Computer, offering efficient multitasking and entry-level gaming performance. These laptops deliver excellent value and performance at a competitive price in Bangladesh. Browse our selection, choose your ideal AMD Ryzen 3 laptop, and enjoy doorstep delivery across the country.',
     },
     {
         'title': 'AMD Ryzen 5',
         'slug': 'ryzen-5-laptop',
         'priority': 3,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'AMD Ryzen 5 Laptops in Bangladesh',
+        'description': 'Find AMD Ryzen 5 laptops at HiFi Computer, delivering powerful performance for gaming and multitasking. These laptops offer superior speed and efficiency at a competitive price in Bangladesh. Explore our selection, choose your ideal AMD Ryzen 5 laptop, and benefit from doorstep delivery across the country.',
     },
     {
         'title': 'AMD Ryzen 7',
         'slug': 'ryzen-7-laptop',
         'priority': 3,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'AMD Ryzen 7 Laptops in Bangladesh',
+        'description': 'Experience high-performance computing with AMD Ryzen 7 laptops at HiFi Computer, designed for demanding tasks and gaming. These laptops deliver exceptional speed and multitasking capabilities at a competitive price in Bangladesh. Browse our selection, choose your ideal AMD Ryzen 7 laptop, and enjoy doorstep delivery across the country.',
     },
     {
         'title': 'AMD Ryzen 9',
         'slug': 'ryzen-9-laptop',
         'priority': 3,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'AMD Ryzen 9 Laptops in Bangladesh',
+        'description': 'Discover ultimate power with AMD Ryzen 9 laptops at HiFi Computer, offering top-tier performance for gaming and professional use. These laptops provide superior speed and efficiency at a competitive price in Bangladesh. Explore our selection, find your ideal AMD Ryzen 9 laptop, and benefit from doorstep delivery across the country.',
     },
 ]
 
@@ -159,57 +198,79 @@ laptop_processor_series = [
     {
         'title': 'Intel 10th Gen',
         'slug': 'intel-10th-gen-laptop',
-        'cat_type': 'tag'
+        'cat_type': 'tag',
+        'seo_title': 'Intel 10th Gen Laptops in Bangladesh',
+        'description': 'Discover Intel 10th Gen laptops at HiFi Computer, offering reliable performance and efficiency. These laptops are ideal for a range of tasks, from everyday computing to gaming, at competitive prices in Bangladesh. Explore our selection, find your perfect Intel 10th Gen laptop, and enjoy doorstep delivery across the country.',
     },
     {
         'title': 'Intel 11th Gen',
         'slug': 'intel-11th-gen-laptop',
-        'cat_type': 'tag'
+        'cat_type': 'tag',
+        'seo_title': 'Intel 11th Gen Laptops in Bangladesh',
+        'description': 'Explore the latest Intel 11th Gen laptops at HiFi Computer, featuring enhanced performance and advanced features. These laptops offer superior speed and efficiency for multitasking and gaming at competitive prices in Bangladesh. Browse our selection, choose your ideal Intel 11th Gen laptop, and benefit from doorstep delivery across the country.',
     },
     {
         'title': 'Intel 12th Gen',
         'slug': 'intel-12th-gen-laptop',
-        'cat_type': 'tag'
+        'cat_type': 'tag',
+        'seo_title': 'Intel 12th Gen Laptops in Bangladesh',
+        'description': 'Find Intel 12th Gen laptops at HiFi Computer, delivering next-level performance and innovation. These laptops are designed to meet the demands of modern computing, from gaming to professional tasks, at competitive prices in Bangladesh. Explore our selection, choose your ideal Intel 12th Gen laptop, and enjoy doorstep delivery across the country.',
     },
     {
         'title': 'Intel 13th Gen',
         'slug': 'intel-13th-gen-laptop',
-        'cat_type': 'tag'
+        'cat_type': 'tag',
+        'seo_title': 'Intel 13th Gen Laptops in Bangladesh',
+        'description': 'Discover Intel 13th Gen laptops at HiFi Computer, offering cutting-edge technology and performance. These laptops provide exceptional speed and efficiency for intensive tasks and gaming at competitive prices in Bangladesh. Browse our selection, find your perfect Intel 13th Gen laptop, and benefit from doorstep delivery across the country.',
     },
     {
         'title': 'Intel 14th Gen',
         'slug': 'intel-14th-gen-laptop',
-        'cat_type': 'tag'
+        'cat_type': 'tag',
+        'seo_title': 'Intel 14th Gen Laptops in Bangladesh',
+        'description': 'Explore Intel 14th Gen laptops at HiFi Computer, featuring advanced performance and innovative features. These laptops are designed to enhance productivity and gaming experiences at competitive prices in Bangladesh. Browse our selection, choose your ideal Intel 14th Gen laptop, and enjoy doorstep delivery across the country.',
     },
     {
         'title': 'Ryzen 3000 Series',
         'slug': 'ryzen-3000-series-laptop',
-        'cat_type': 'tag'
+        'cat_type': 'tag',
+        'seo_title': 'Ryzen 3000 Series Laptops in Bangladesh',
+        'description': 'Find AMD Ryzen 3000 Series laptops at HiFi Computer, offering efficient performance and affordability. These laptops are perfect for multitasking and light gaming at competitive prices in Bangladesh. Explore our selection, choose your ideal Ryzen 3000 Series laptop, and enjoy doorstep delivery across the country.',
     },
     {
         'title': 'Ryzen 4000 Series',
         'slug': 'ryzen-4000-series-laptop',
-        'cat_type': 'tag'
+        'cat_type': 'tag',
+        'seo_title': 'Ryzen 4000 Series Laptops in Bangladesh',
+        'description': 'Discover AMD Ryzen 4000 Series laptops at HiFi Computer, delivering enhanced performance and power efficiency. These laptops offer exceptional speed and multitasking capabilities for gaming and professional use at competitive prices in Bangladesh. Browse our selection, choose your ideal Ryzen 4000 Series laptop, and benefit from doorstep delivery across the country.',
     },
     {
         'title': 'Ryzen 5000 Series',
         'slug': 'ryzen-5000-series-laptop',
-        'cat_type': 'tag'
+        'cat_type': 'tag',
+        'seo_title': 'Ryzen 5000 Series Laptops in Bangladesh',
+        'description': 'Explore AMD Ryzen 5000 Series laptops at HiFi Computer, featuring top-tier performance and innovation. These laptops are designed for gaming enthusiasts and professionals seeking superior speed and efficiency at competitive prices in Bangladesh. Browse our selection, choose your ideal Ryzen 5000 Series laptop, and enjoy doorstep delivery across the country.',
     },
     {
         'title': 'Ryzen 6000 Series',
         'slug': 'ryzen-6000-series-laptop',
-        'cat_type': 'tag'
+        'cat_type': 'tag',
+        'seo_title': 'Ryzen 6000 Series Laptops in Bangladesh',
+        'description': 'Find AMD Ryzen 6000 Series laptops at HiFi Computer, offering cutting-edge technology and performance. These laptops deliver exceptional speed and efficiency for gaming and demanding tasks at competitive prices in Bangladesh. Discover our selection, choose your ideal Ryzen 6000 Series laptop, and benefit from doorstep delivery across the country.',
     },
     {
         'title': 'Ryzen 7000 Series',
         'slug': 'ryzen-7000-series-laptop',
-        'cat_type': 'tag'
+        'cat_type': 'tag',
+        'seo_title': 'Ryzen 7000 Series Laptops in Bangladesh',
+        'description': 'Discover AMD Ryzen 7000 Series laptops at HiFi Computer, featuring ultimate performance and innovation. These laptops are designed for gamers and professionals seeking unrivaled speed and multitasking capabilities at competitive prices in Bangladesh. Browse our selection, choose your ideal Ryzen 7000 Series laptop, and enjoy doorstep delivery across the country.',
     },
     {
         'title': 'Ryzen 8000 Series',
         'slug': 'ryzen-8000-series-laptop',
-        'cat_type': 'tag'
+        'cat_type': 'tag',
+        'seo_title': 'Ryzen 8000 Series Laptops in Bangladesh',
+        'description': 'Explore AMD Ryzen 8000 Series laptops at HiFi Computer, offering advanced performance and efficiency. These laptops deliver exceptional speed and multitasking capabilities for gaming and professional use at competitive prices in Bangladesh. Browse our selection, choose your ideal Ryzen 8000 Series laptop, and benefit from doorstep delivery across the country.',
     }
 ]
 
@@ -385,85 +446,113 @@ laptop_serieses = [
         'title': 'Zenbook',
         'slug': 'zenbook',
         'priority': 1,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'Asus Zenbook Laptops at HiFi Computer',
+        'description': 'Discover Asus Zenbook laptops at HiFi Computer, featuring sleek designs and powerful performance. Explore a range of models perfect for professionals and enthusiasts alike, available at competitive prices in Bangladesh. Enjoy doorstep delivery and elevate your computing experience with Asus Zenbook laptops.',
     },
     {
         'title': 'Vivobook',
         'slug': 'vivobook',
         'priority': 0,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'Asus Vivobook Laptops at HiFi Computer',
+        'description': 'Explore Asus Vivobook laptops at HiFi Computer, offering versatile performance and stylish designs. Find a variety of models suited for everyday use and multimedia tasks, available at competitive prices in Bangladesh. Benefit from doorstep delivery and discover the perfect Asus Vivobook for your needs.',
     },
     {
         'title': 'Expertbook',
         'slug': 'expertbook',
         'priority': 0,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'Asus Expertbook Laptops at HiFi Computer',
+        'description': 'Find Asus Expertbook laptops at HiFi Computer, designed for professionals seeking reliability and performance. Discover durable builds and advanced features, available at competitive prices in Bangladesh. Enjoy doorstep delivery and enhance your productivity with Asus Expertbook laptops.',
     },
     {
         'title': 'ROG',
         'slug': 'rog',
         'priority': 0,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'ROG Laptops at HiFi Computer',
+        'description': 'Immerse yourself in gaming with ROG laptops at HiFi Computer, offering powerful performance and cutting-edge features. Explore a range of models designed for gamers, available at competitive prices in Bangladesh. Enjoy doorstep delivery and elevate your gaming experience with ROG laptops.',
     },
     {
         'title': 'TUF',
         'slug': 'tuf',
         'priority': 0,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'Asus TUF Gaming Laptops at HiFi Computer',
+        'description': 'Discover Asus TUF gaming laptops at HiFi Computer, delivering durability and performance for gaming enthusiasts. Explore rugged designs and powerful specifications, available at competitive prices in Bangladesh. Benefit from doorstep delivery and enhance your gaming setup with Asus TUF laptops.',
     },
     {
         'title': 'Aspire',
         'slug': 'aspire',
         'priority': 0,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'Acer Aspire Laptops at HiFi Computer',
+        'description': 'Explore Acer Aspire laptops at HiFi Computer, offering reliable performance and value. Discover a range of models suited for everyday computing and multimedia tasks, available at competitive prices in Bangladesh. Enjoy doorstep delivery and find the perfect Acer Aspire laptop for your needs.',
     },
     {
         'title': 'Extensa',
         'slug': 'extensa',
         'priority': 0,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'Acer Extensa Laptops at HiFi Computer',
+        'description': 'Find Acer Extensa laptops at HiFi Computer, designed for essential computing needs and productivity. Explore budget-friendly options and reliable performance, available at competitive prices in Bangladesh. Benefit from doorstep delivery and choose an Acer Extensa laptop that fits your requirements.',
     },
     {
         'title': 'Travelmate',
         'slug': 'travelmate',
         'priority': 0,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'Acer Travelmate Laptops at HiFi Computer',
+        'description': 'Discover Acer Travelmate laptops at HiFi Computer, ideal for business professionals on the go. Explore durable builds and advanced security features, available at competitive prices in Bangladesh. Enjoy doorstep delivery and enhance your productivity with Acer Travelmate laptops.',
     },
     {
         'title': 'Yoga',
         'slug': 'yoga',
         'priority': 0,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'Lenovo Yoga Laptops at HiFi Computer',
+        'description': 'Explore Lenovo Yoga laptops at HiFi Computer, featuring versatile designs for work and play. Discover 2-in-1 flexibility and powerful performance, available at competitive prices in Bangladesh. Benefit from doorstep delivery and find the perfect Lenovo Yoga laptop for your lifestyle.',
     },
     {
         'title': 'Thinkpad',
         'slug': 'thinkpad',
         'priority': 0,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'Lenovo ThinkPad Laptops at HiFi Computer',
+        'description': 'Find Lenovo ThinkPad laptops at HiFi Computer, known for their durability and business-grade features. Explore a range of models designed for professionals, available at competitive prices in Bangladesh. Enjoy doorstep delivery and elevate your productivity with Lenovo ThinkPad laptops.',
     },
     {
         'title': 'Elite',
         'slug': 'elite',
         'priority': 0,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'HP Elite Laptops at HiFi Computer',
+        'description': 'Discover HP Elite laptops at HiFi Computer, offering premium design and performance for business professionals. Explore secure and manageable options, available at competitive prices in Bangladesh. Benefit from doorstep delivery and choose an HP Elite laptop for your business needs.',
     },
     {
         'title': 'Pavilion',
         'slug': 'pavilion',
         'priority': 0,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'HP Pavilion Laptops at HiFi Computer',
+        'description': 'Explore HP Pavilion laptops at HiFi Computer, featuring stylish designs and reliable performance. Discover a range of models for everyday computing and entertainment, available at competitive prices in Bangladesh. Enjoy doorstep delivery and find the perfect HP Pavilion laptop for your lifestyle.',
     },
     {
         'title': 'Probook',
         'slug': 'probook',
         'priority': 0,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'HP Probook Laptops at HiFi Computer',
+        'description': 'Find HP Probook laptops at HiFi Computer, designed for professionals seeking performance and reliability. Explore business-ready features and durable builds, available at competitive prices in Bangladesh. Benefit from doorstep delivery and enhance your productivity with HP Probook laptops.',
     },
     {
         'title': 'Victus',
         'slug': 'victus',
         'priority': 0,
-        'cat_type': 'series'
+        'cat_type': 'series',
+        'seo_title': 'HP Victus Gaming Laptops at HiFi Computer',
+        'description': 'Immerse yourself in gaming with HP Victus gaming laptops at HiFi Computer, offering powerful performance and immersive experiences. Explore a range of models designed for gamers, available at competitive prices in Bangladesh. Enjoy doorstep delivery and elevate your gaming setup with HP Victus laptops.',
     },
 ]
 
