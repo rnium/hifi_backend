@@ -6,6 +6,7 @@ from rest_framework import status
 from django.db.models import Q
 import json
 from hificom.models import Category, CategoryGroup, Product
+from rest_framework.pagination import PageNumberPagination
 from .serializer import (CategorySerializer, 
                          CategoryDetailSerializer, 
                          ProductImageSerializer,
@@ -44,6 +45,7 @@ class CategoryGroupsView(ListAPIView):
 class ViewCategory(RetrieveUpdateDestroyAPIView):
     serializer_class = CategoryDetailSerializer
     permission_classes = [IsAdminOrReadOnly]
+    pagination_class = PageNumberPagination
     queryset = Category.objects.all()
 
     def get_object(self):
@@ -58,7 +60,7 @@ class CategoryProductsView(ListAPIView):
 
 class TaggedProductsView(ListAPIView):
     serializer_class = ProductBasicSerializer
-
+    pagination_class = PageNumberPagination
     def get_queryset(self):
         slug = self.kwargs.get('slug')
         return Product.objects.filter(Q(category__slug=slug) | Q(tags__slug=slug)).distinct()
