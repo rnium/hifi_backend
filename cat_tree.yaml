@@ -98,7 +98,15 @@ laptop:
   - 12gb-dedicated-laptop-graphics
   - 16gb-dedicated-laptop-graphics
   
+desktop:
+  - brand-pc
+  - all-in-one-pc
 
+pc-component:
+  - processor
+  - ram
+  - pc-casing
+  - power-supply
 
 monitor:
   - acer-monitor
@@ -108,4 +116,32 @@ monitor:
   - viewsonic-monitor
   - hp-monitor
 
+accessories:
+  - keyboard
+  - mouse
+  - ups
 
+networking:
+  - router
+  - pocket-router
+  - wifi-adapter
+
+printer:
+  - brother
+  - hp
+  - canon
+
+office-equipment:
+  - scanner
+  - projector
+  - photocopy-machine
+
+sound-system:
+  - speaker-system
+  - headphones
+  - microlab
+
+software:
+  - productivity-software
+  - windows
+  - antivirus

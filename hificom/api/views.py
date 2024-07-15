@@ -83,6 +83,13 @@ class ProductDetailView(RetrieveAPIView):
     def get_object(self):
         return get_object_or_404(Product, slug=self.kwargs.get('slug'))
 
+class RelatedProductsView(ListAPIView):
+    serializer_class = ProductBasicSerializer
+    
+    def get_queryset(self):
+        slug = self.kwargs.get('slug')
+        prod = get_object_or_404(Product, slug=slug)
+        return Product.objects.filter(tags__in=prod.tags.all()).distinct()
 
 @api_view(['POST'])
 @permission_classes([IsAdminOrReadOnly])
