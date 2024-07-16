@@ -127,9 +127,9 @@ networking:
   - wifi-adapter
 
 printer:
-  - brother
-  - hp
-  - canon
+  - brother-printer
+  - hp-printer
+  - canon-printer
 
 office-equipment:
   - scanner
