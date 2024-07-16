@@ -150,6 +150,7 @@ class ProductDetailSerializer(ProductSemiDetailSerializer):
     images = serializers.SerializerMethodField()
     spec_tables = serializers.SerializerMethodField()
     num_ratings = serializers.SerializerMethodField()
+    category_tree = serializers.SerializerMethodField()
 
     def get_images(self, obj):
         images = obj.productimage_set.all()
@@ -175,6 +176,9 @@ class ProductDetailSerializer(ProductSemiDetailSerializer):
 
     def get_num_ratings(self, obj):
         return obj.review_set.all().count()
+    
+    def get_category_tree(self, obj):
+        return CategoryBasicSerializer(obj.category.category_tree, many=True).data
 
 
 
