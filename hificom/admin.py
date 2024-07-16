@@ -5,6 +5,10 @@ from hificom import models
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
+class ProductGroupAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
+
+
 admin.site.register(models.Category, CategoryAdmin)
 admin.site.register(models.CategoryGroup)
 admin.site.register(models.SpecificationTable)
@@ -15,4 +19,5 @@ admin.site.register(models.ProductSpec)
 admin.site.register(models.ProductImage)
 admin.site.register(models.Review)
 admin.site.register(models.Carousel)
+admin.site.register(models.ProductCollection, ProductGroupAdmin)
 admin.site.register(models.TitleAlias)

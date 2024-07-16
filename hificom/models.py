@@ -9,8 +9,12 @@ User = get_user_model()
 
 class Carousel(models.Model):
     banner = models.ImageField(upload_to='features')
-    link = models.URLField()
+    link = models.URLField(null=True, blank=True)
     added_at = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        ordering = ['-added_at']
+  
 
 class Category(models.Model):
     category_types = (
@@ -150,10 +154,14 @@ class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 
-class ProductGroup(models.Model):
+class ProductCollection(models.Model):
     title = models.CharField(max_length=100)
-    slug = models.CharField(max_length=100, db_index=True)
-    products = models.ManyToManyField(Product, related_name='groups')
+    slug = models.CharField(max_length=100, unique=True, db_index=True)
+    products = models.ManyToManyField(Product, related_name='collections')
+    priority = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ['-priority', 'id']
 
 
 class Review(models.Model):

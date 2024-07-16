@@ -5,17 +5,43 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.db.models import Q
 import json
-from hificom.models import Category, CategoryGroup, Product
+from hificom.models import (Category, 
+                            CategoryGroup, 
+                            Product,
+                            ProductCollection,
+                            Carousel)
+
 from .serializer import (CategorySerializer, 
                          CategoryDetailSerializer, 
                          ProductSemiDetailSerializer,
                          CategoryGroupSerializer,
                          ProductBasicSerializer,
                          ProductDetailSerializer,
-                         ProductCreateSerializer)
+                         ProductCreateSerializer,
+                         CarouselSerializer,
+                         ProductCollectionSerializer)
+
 from .permission import IsAdminOrReadOnly
 from .pagination import ProductsPagination
 from . import utils
+
+
+
+@api_view()
+def user_homepage(request):
+    data = {
+        'carousels': CarouselSerializer(
+            Carousel.objects.all()[:10],
+            many=True,
+            context={'request': request}
+        ).data,
+        'collections': ProductCollectionSerializer(
+            ProductCollection.objects.all(),
+            many=True
+        ).data,
+    }
+    return Response(data)
+
 
 class CategoriesView(ListCreateAPIView):
     serializer_class = CategorySerializer

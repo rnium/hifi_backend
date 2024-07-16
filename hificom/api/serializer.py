@@ -1,8 +1,9 @@
 from rest_framework.serializers import ModelSerializer, Serializer
 from rest_framework import serializers
-from hificom.models import (Category, CategoryGroup, SpecificationTable, ProductSpec, Specification, 
-                            Product, ProductImage, KeyFeature)
+from hificom.models import (Category, CategoryGroup, SpecificationTable, ProductSpec, 
+                            Specification, Product, ProductImage, KeyFeature, Carousel, ProductCollection)
 from . import utils
+
 
 class CategoryBasicSerializer(ModelSerializer):
     class Meta:
@@ -212,3 +213,19 @@ class ProductCreateSerializer(ModelSerializer):
         return product
 
 
+class CarouselSerializer(ModelSerializer):
+    banner = serializers.SerializerMethodField()
+    class Meta:
+        model = Carousel
+        fields = '__all__'
+    
+    def get_banner(self, obj):
+        if req:=self.context.get('request'):
+            return req.build_absolute_uri(obj.banner.url)
+        return obj.banner.url
+
+class ProductCollectionSerializer(ModelSerializer):
+    products = ProductBasicSerializer(many=True, read_only=True)
+    class Meta:
+        model = ProductCollection
+        exclude = ['priority']
