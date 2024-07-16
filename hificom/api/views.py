@@ -37,7 +37,8 @@ def user_homepage(request):
         ).data,
         'collections': ProductCollectionSerializer(
             ProductCollection.objects.all(),
-            many=True
+            many=True,
+            context={'request': request}
         ).data,
     }
     return Response(data)

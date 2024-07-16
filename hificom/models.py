@@ -9,7 +9,7 @@ User = get_user_model()
 
 class Carousel(models.Model):
     banner = models.ImageField(upload_to='features')
-    link = models.URLField(null=True, blank=True)
+    site_link = models.CharField(max_length=200, null=True, blank=True)
     added_at = models.DateTimeField(default=timezone.now)
 
     class Meta:

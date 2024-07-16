@@ -118,6 +118,7 @@ class ProductBasicSerializer(ModelSerializer):
             'slug',
             'price',
             'priceSale',
+            'discount',
             'in_stock',
             'cover',
         ]
@@ -225,7 +226,14 @@ class CarouselSerializer(ModelSerializer):
         return obj.banner.url
 
 class ProductCollectionSerializer(ModelSerializer):
-    products = ProductBasicSerializer(many=True, read_only=True)
+    products = serializers.SerializerMethodField()
     class Meta:
         model = ProductCollection
         exclude = ['priority']
+
+    def get_products(self, obj):
+        return ProductBasicSerializer(
+            obj.products.all(), 
+            many=True,
+            context=self.context
+        ).data
