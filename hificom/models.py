@@ -150,6 +150,11 @@ class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 
+class ProductGroup(models.Model):
+    title = models.CharField(max_length=100)
+    slug = models.CharField(max_length=100, db_index=True)
+    products = models.ManyToManyField(Product, related_name='groups')
+
 
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

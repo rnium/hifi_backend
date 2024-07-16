@@ -11,5 +11,5 @@ urlpatterns = [
     path('t/<str:slug>/products/', views.TaggedProductsView.as_view(), name="tagged_products"),
     path('categories/<str:slug>/addproduct/', views.add_product, name="add_product"),
     path('product/<str:slug>/', views.ProductDetailView.as_view(), name="detailed_product"),
-    path('relatedproducts/<str:slug>/', views.RelatedProductsView.as_view(), name="related_products"),
+    path('relatedproducts/<int:pk>/', views.RelatedProductsView.as_view(), name="related_products"),
 ]

@@ -87,8 +87,8 @@ class RelatedProductsView(ListAPIView):
     serializer_class = ProductBasicSerializer
     
     def get_queryset(self):
-        slug = self.kwargs.get('slug')
-        prod = get_object_or_404(Product, slug=slug)
+        pk = self.kwargs.get('pk')
+        prod = get_object_or_404(Product, pk=pk)
         return Product.objects.filter(tags__in=prod.tags.all()).distinct()
 
 @api_view(['POST'])

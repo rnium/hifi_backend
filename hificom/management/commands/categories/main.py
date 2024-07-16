@@ -2,7 +2,7 @@ MAIN_CATEGORIES = [
     {
         'title': 'Laptop',
         'slug': 'laptop',
-        'priority': 5,
+        'priority': 10,
         'get_features_from_child': True,
         'seo_title': 'Laptops at HiFi Computer',
         'description': 'Discover a wide range of laptops at HiFi Computer, featuring top brands and models for every need. Whether you need a laptop for gaming, business, or everyday use, find the perfect device at competitive prices. Enjoy doorstep delivery and unbeatable discounts on laptops across Bangladesh.',
@@ -10,7 +10,7 @@ MAIN_CATEGORIES = [
     {
         'title': 'Desktop',
         'slug': 'desktop',
-        'priority': 4,
+        'priority': 9,
         'get_features_from_child': True,
         'seo_title': 'Desktops at HiFi Computer',
         'description': 'Explore powerful desktop computers at HiFi Computer, designed for gaming, professional use, and more. Discover reliable brands and customizable options at competitive prices in Bangladesh. Benefit from doorstep delivery and exclusive discounts on desktops.',
@@ -18,14 +18,14 @@ MAIN_CATEGORIES = [
     {
         'title': 'PC Component',
         'slug': 'pc-component',
-        'priority': 4,
+        'priority': 8,
         'seo_title': 'PC Components at HiFi Computer',
         'description': 'Find essential PC components and upgrades at HiFi Computer. Browse a wide selection of processors, graphics cards, RAM, and more to build or upgrade your PC. Enjoy competitive prices and doorstep delivery on PC components across Bangladesh.',
     },
     {
         'title': 'Monitor',
         'slug': 'monitor',
-        'priority': 4,
+        'priority': 7,
         'get_features_from_child': True,
         'seo_title': 'Monitors at HiFi Computer',
         'description': 'Discover high-quality monitors at HiFi Computer, perfect for gaming, productivity, and creative tasks. Explore a variety of sizes and resolutions from top brands at competitive prices in Bangladesh. Enjoy doorstep delivery and special discounts on monitors.',
@@ -33,21 +33,21 @@ MAIN_CATEGORIES = [
     {
         'title': 'Accessories',
         'slug': 'accessories',
-        'priority': 3,
+        'priority': 6,
         'seo_title': 'Computer Accessories at HiFi Computer',
         'description': 'Complete your setup with computer accessories from HiFi Computer. Explore a wide range of keyboards, mice, adapters, and more at competitive prices in Bangladesh. Benefit from doorstep delivery and find all the accessories you need in one place.',
     },
     {
         'title': 'Networking',
         'slug': 'networking',
-        'priority': 3,
+        'priority': 5,
         'seo_title': 'Networking Equipment at HiFi Computer',
         'description': 'Enhance your connectivity with networking equipment from HiFi Computer. Discover routers, switches, extenders, and cables from top brands at competitive prices in Bangladesh. Enjoy doorstep delivery and build a reliable network with our range of networking solutions.',
     },
     {
         'title': 'Printer',
         'slug': 'printer',
-        'priority': 3,
+        'priority': 4,
         'get_features_from_child': True,
         'seo_title': 'Printers at HiFi Computer',
         'description': 'Shop for printers at HiFi Computer, offering a variety of models for home and office use. Find reliable brands and multifunction printers at competitive prices in Bangladesh. Enjoy doorstep delivery and explore our selection of printers to find the perfect fit for your needs.',
@@ -69,7 +69,7 @@ MAIN_CATEGORIES = [
     {
         'title': 'Software',
         'slug': 'software',
-        'priority': 2,
+        'priority': 1,
         'seo_title': 'Software at HiFi Computer',
         'description': 'Explore essential software solutions at HiFi Computer, including operating systems, productivity software, security suites, and more. Find trusted brands and competitive prices in Bangladesh. Enjoy doorstep delivery and secure your devices with our range of software.',
     },
