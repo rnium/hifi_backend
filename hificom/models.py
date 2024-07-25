@@ -58,6 +58,11 @@ class Category(models.Model):
             cats.append(current)
             current = current.parent
         return cats[-1::-1]
+    
+    def update_minmax_price(self, price):
+        self.minprice = min(self.minprice, price)
+        self.max = max(self.maxprice, price)
+        self.save()
 
 
 class CategoryGroup(models.Model):
@@ -128,6 +133,8 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+        for tag in self.tags.all():
+            tag.update_minmax_price(self.price - self.discount)
 
 
 class KeyFeature(models.Model):
