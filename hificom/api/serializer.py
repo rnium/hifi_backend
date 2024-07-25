@@ -209,6 +209,8 @@ class ProductCreateSerializer(ModelSerializer):
         image_serializer = ProductImageSerializer(data=img_list, many=True)
         if image_serializer.is_valid():
             image_serializer.save()
+        else:
+            print(image_serializer.errors, flush=1)
         kf_list = [{**kf, 'product': product.id} for kf in key_features]
         kf_serializer = KeyFeatureSerializer(data=kf_list, many=True)
         if kf_serializer.is_valid():

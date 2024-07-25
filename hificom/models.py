@@ -150,7 +150,7 @@ class ProductSpec(models.Model):
 
 
 class ProductImage(models.Model):
-    main = models.ImageField(upload_to='product/main')
+    main = models.ImageField(upload_to='product/main', max_length=500)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 

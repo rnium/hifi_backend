@@ -1,0 +1,25 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy and Reload
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOSTNAME }}
+          username: ${{ secrets.HOST_USER }}
+          password: ${{ secrets.PASSWORD }}
+          port: 22
+          script: |
+            cd /home/rony/hifi_backend/
+            git pull origin
+            source venv/bin/activate
+            python manage.py migrate
+            systemctl reload-or-restart uwsgi
