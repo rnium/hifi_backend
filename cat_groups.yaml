@@ -5,6 +5,7 @@ laptop:
     - snapdragon-laptop
 
   laptop-processor-type:
+    - pentium-and-celeron-laptop
     - core-i3-laptop
     - core-i5-laptop
     - core-i7-laptop
