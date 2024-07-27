@@ -515,6 +515,14 @@ laptop_serieses = [
         'description': 'Discover Acer Travelmate laptops at HiFi Computer, ideal for business professionals on the go. Explore durable builds and advanced security features, available at competitive prices in Bangladesh. Enjoy doorstep delivery and enhance your productivity with Acer Travelmate laptops.',
     },
     {
+        'title': 'IdeaPad',
+        'slug': 'ideapad',
+        'priority': 2,
+        'cat_type': 'series',
+        'seo_title': 'Lenovo IdeaPad Laptops at HiFi Computer',
+        'description': 'Discover Lenovo IdeaPad laptops at HiFi Computer, offering a perfect blend of style and performance. Explore a wide range of models suitable for students, professionals, and everyday users. Enjoy competitive prices, doorstep delivery, and elevate your computing experience with Lenovo IdeaPad laptops.'
+    },
+    {
         'title': 'Yoga',
         'slug': 'yoga',
         'priority': 0,
@@ -525,7 +533,7 @@ laptop_serieses = [
     {
         'title': 'Thinkpad',
         'slug': 'thinkpad',
-        'priority': 0,
+        'priority': 1,
         'cat_type': 'series',
         'seo_title': 'Lenovo ThinkPad Laptops at HiFi Computer',
         'description': 'Find Lenovo ThinkPad laptops at HiFi Computer, known for their durability and business-grade features. Explore a range of models designed for professionals, available at competitive prices in Bangladesh. Enjoy doorstep delivery and elevate your productivity with Lenovo ThinkPad laptops.',

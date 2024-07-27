@@ -11,8 +11,9 @@ laptop:
       - extensa
       - travelmate
     - lenovo:
-      - yoga
+      - ideapad
       - thinkpad
+      - yoga
     - hp:
       - elite
       - pavilion
