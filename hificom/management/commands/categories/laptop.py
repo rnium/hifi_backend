@@ -109,6 +109,14 @@ laptop_brands = [
         'seo_title': 'MSI Laptops in Bangladesh',
         'description': 'Explore MSI laptops at HiFi Computer, designed for gamers and professionals seeking performance and style. MSI offers cutting-edge technology at competitive prices in Bangladesh, ensuring superior gaming and productivity experiences. Browse our MSI laptop selection, choose your ideal model, and enjoy doorstep delivery across the country.',
     },
+    {
+        'title': 'Huawei',
+        'slug': 'huawei',
+        'priority': 2,
+        'cat_type': 'brand',
+        'seo_title': 'Huawei Laptops in Bangladesh',
+        'description': "Experience seamless performance and stylish design with Huawei laptops. Crafted for both work and play, Huawei laptops offer powerful processors, stunning displays, and long-lasting batteries. Whether you're a student, professional, or gamer, find the perfect Huawei laptop to elevate your digital experience. Enjoy fast delivery and exceptional customer service across Bangladesh.",
+    }
 ]
 laptop_processor_types = [
     {
