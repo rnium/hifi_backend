@@ -3,7 +3,7 @@ from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveAPIV
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
-from django.db.models import Q
+from django.db.models import Q, Count
 import json
 from hificom.models import (Category, 
                             CategoryGroup, 
@@ -101,8 +101,8 @@ class AllProductsSemiDetailView(ListAPIView):
     
     def get_queryset(self):
         slug = self.kwargs.get('slug')
-        return Product.objects.filter(Q(category__slug=slug) | Q(tags__slug=slug)).distinct()
-
+        return utils.filter_products(slug, self.request)
+    
 class ProductDetailView(RetrieveAPIView):
     serializer_class = ProductDetailSerializer
     queryset = Product.objects.all()

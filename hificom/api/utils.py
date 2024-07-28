@@ -1,6 +1,6 @@
 from typing import Dict, List
 from hificom.models import Category, SpecificationTable, Specification, ProductSpec, ProductImage, TitleAlias, Product
-from django.db.models import Model
+from django.db.models import Model, Count, Q
 
 
 def delete_db_objects(model: Model, ids: List[int]):
@@ -77,5 +77,28 @@ def update_product_specs(product: Product, tables):
                 if prod_spec:
                     prod_spec.delete()
 
-def add_product_images(product: Product, images):
-    img_list = [{'product': product, 'main': img} for img in images]
+
+def filter_products(slug: str, request):
+    pricefrom = request.GET.get('pricefrom')
+    priceto = request.GET.get('priceto')
+    tags = request.GET.get('tags')
+    availibility = request.GET.get('availibility')
+    if tags:
+        tag_id_list = list(map(int, tags.split(',')))
+        products_with_tag_count = Product.objects.annotate(
+            matching_tags_count=Count('tags', filter=Q(tags__id__in=tag_id_list))
+        )
+        filtered_products = products_with_tag_count.filter(
+            Q(matching_tags_count=len(tag_id_list)) &
+            (Q(category__slug=slug) | Q(tags__slug=slug))
+        ).distinct()
+    else:
+        filtered_products = Product.objects.filter(Q(category__slug=slug) | Q(tags__slug=slug)).distinct()
+    if pricefrom and priceto:
+        pricefrom = int(pricefrom)
+        priceto = int(priceto)
+        filtered_products = filtered_products.filter(price__gte=pricefrom, price__lte=priceto)
+    if availibility:
+        availibility_list = list(map(lambda s: bool(int(s)), availibility.split(',')))
+        filtered_products = filtered_products.filter(in_stock__in=availibility_list)
+    return filtered_products
