@@ -63,7 +63,8 @@ laptop:
     - laptop-display
     - laptop-cooler
     - laptop-backpack
-  - less-than-14-inch-laptop # Feture type categories start
+  # Tags start
+  - less-than-14-inch-laptop
   - 14.1-inch-to-15-inch-laptop
   - 15.1-inch-to-16-inch-laptop
   - 16.1-inch-to-17-inch-laptop
@@ -117,6 +118,55 @@ monitor:
   - msi-monitor
   - viewsonic-monitor
   - hp-monitor
+  - lg-monitor
+  - asus-monitor
+  - dell-monitor
+  - huawei-monitor
+  - lenovo-monitor
+  - benq-monitor
+  - pc-power-monitor
+  - philips-monitor
+  - real-view-monitor
+  - valuetop-monitor
+  # Tags start
+  - below-18-inch-monitor
+  - 19inch-to-22inch-monitor
+  - 23inch-to-24inch-monitor
+  - 24inch-to-26inch-monitor
+  - 27inch-to-30inch-monitor
+  - above-30-inch-monitor
+  - below-hd-monitor
+  - hd-resolution-monitor
+  - fhd-resolution-monitor
+  - 2k-qhd-resolution-monitor
+  - 4k-uhd-resolution-monitor
+  - higher-than-4k-resolution-monitor
+  - tn-panel-monitor
+  - va-panel-monitor
+  - ips-panel-monitor
+  - oled-panel-monitor
+  - below-100hz-monitor
+  - 100hz-monitor
+  - 144hz-monitor
+  - 165hz-monitor
+  - 170hz-monitor
+  - 180hz-monitor
+  - 200hz-monitor
+  - above-200hz-monitor
+  - below-1ms-monitor
+  - 1ms-to-4ms-monitor
+  - 5ms-to-10ms-monitor
+  - 10ms-to-14ms-monitor
+  - above-15-ms
+  - vga-input-monitor
+  - hdmi-input-monitor
+  - usb-input-monitor
+  - usb-type-c-input-monitor
+  - thunderbolt-input-monitor
+  - audio-jack-input-monitor
+  - monitor-with-speaker
+  - monitor-without-speaker
+
 
 accessories:
   - keyboard

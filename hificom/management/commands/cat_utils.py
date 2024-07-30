@@ -6,6 +6,9 @@ class ConfigNotFoundError(BaseException):
     def __init__(self, config_type, name) -> None:
         super().__init__(f'{config_type} with name {name} Not Found')
 
+class CategoryNotFoundError(BaseException):
+    def __init__(self, slug) -> None:
+        super().__init__(f'Category with slug {slug} Not Found')
 
 def check_cat_tree(cat_tree):
     if type(cat_tree) == dict:
@@ -78,7 +81,10 @@ def create_or_update_group(group_slug, root_cat):
 def add_categories(categories: List[str], group: CategoryGroup):
     group.categories.clear()
     for cat_slug in categories:
-        cat = Category.objects.get(slug=cat_slug)
+        try:
+            cat = Category.objects.get(slug=cat_slug)
+        except Category.DoesNotExist:
+            raise CategoryNotFoundError(cat_slug)
         group.categories.add(cat)
 
 def load_cat_groups(groups: dict):

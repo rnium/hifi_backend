@@ -78,3 +78,48 @@ laptop:
     - 12gb-dedicated-laptop-graphics
     - 16gb-dedicated-laptop-graphics
   
+monitor:
+  monitor-screen-size:
+    - below-18-inch-monitor
+    - 19inch-to-22inch-monitor
+    - 23inch-to-24inch-monitor
+    - 24inch-to-26inch-monitor
+    - 27inch-to-30inch-monitor
+    - above-30-inch-monitor
+  monitor-resolution:
+    - below-hd-monitor
+    - hd-resolution-monitor
+    - fhd-resolution-monitor
+    - 2k-qhd-resolution-monitor
+    - 4k-uhd-resolution-monitor
+    - higher-than-4k-resolution-monitor
+  monitor-panel-type:
+    - tn-panel-monitor
+    - va-panel-monitor
+    - ips-panel-monitor
+    - oled-panel-monitor
+  monitor-refresh-rate:
+    - below-100hz-monitor
+    - 100hz-monitor
+    - 144hz-monitor
+    - 165hz-monitor
+    - 170hz-monitor
+    - 180hz-monitor
+    - 200hz-monitor
+    - above-200hz-monitor
+  monitor-response-time:
+    - below-1ms-monitor
+    - 1ms-to-4ms-monitor
+    - 5ms-to-10ms-monitor
+    - 10ms-to-14ms-monitor
+    - above-15-ms
+  monitor-input-type:
+    - vga-input-monitor
+    - hdmi-input-monitor
+    - usb-input-monitor
+    - usb-type-c-input-monitor
+    - thunderbolt-input-monitor
+    - audio-jack-input-monitor
+  monitor-speaker:
+    - monitor-with-speaker
+    - monitor-without-speaker
