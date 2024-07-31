@@ -123,3 +123,46 @@ monitor:
   monitor-speaker:
     - monitor-with-speaker
     - monitor-without-speaker
+
+motherboard:
+  cpu-brand:
+    - intel-motherboard
+    - amd-motherboard
+  motherboard-cpu-generation:
+    - gen-2-3-motherboard
+    - gen-3-motherboard
+    - gen-4-motherboard
+    - gen-5-motherboard
+    - gen-6-7-motherboard
+    - gen-6-7-8-9-motherboard
+    - gen-8-9-motherboard
+    - gen-10-motherboard
+    - gen-10-11-motherboard
+    - gen-12-13-motherboard
+    - gen-12-13-14-motherboard
+    - gen-unmentioned-motherboard
+    - gen-not-applicable-motherboard
+  motherboard-form-factor:
+    - atx-motherboard
+    - e-atx-motherboard
+    - micro-atx-motherboard
+    - itx-motherboard
+    - mini-itx-motherboard
+  motherboard-socket:
+    - am4-socket
+    - am5-socket
+    - lga-775-socket
+    - lga-1150-socket
+    - lga-1151-socket
+    - lga-1200-socket
+    - lga-1700-socket
+  motherboard-ram:
+    - ddr3-motherboard
+    - ddr4-motherboard
+    - ddr5-motherboard
+  motherboard-features:
+    - wifi-motherboard
+    - m.2-motherboard
+    - thunderbolt-motherboard
+    - sli-motherboard
+    - crossfirex-motherboard

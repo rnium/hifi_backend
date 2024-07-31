@@ -2,7 +2,7 @@ import yaml
 from .laptop import ALL_LAPTOP_CATEGORIES, LAPTOP_GROUPS
 from .main import MAIN_CATEGORIES
 from .desktop import DESKTOP_CATEGORIES
-from .components import PC_COMPONENT_CATEGORIES
+from .components import PC_COMPONENT_CATEGORIES, PC_COMPONENT_CATEGORY_GROUPS
 from .monitor import ALL_MONITOR_CATEGORIES, MONITOR_GROUPS
 from .accessories import ACCESSORIES_CATEGORIES
 from .networking import NETWORKING_CATEGORIES
@@ -34,5 +34,6 @@ ALL_CATEGORIES = [
 
 ALL_GROUPS = [
     *LAPTOP_GROUPS,
-    *MONITOR_GROUPS
+    *MONITOR_GROUPS,
+    *PC_COMPONENT_CATEGORY_GROUPS
 ]

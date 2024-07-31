@@ -16,6 +16,7 @@ class Command(BaseCommand):
             check_cat_tree(cat_tree)
         except ConfigNotFoundError as e:
             self.stdout.write("Tree check failded. Details: {}".format(str(e)), self.style.ERROR)
+            return
         except Exception as e:
             self.stdout.write("Tree check failded. Details: {}".format(str(e)), self.style.ERROR)
             return

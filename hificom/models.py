@@ -3,7 +3,8 @@ from django.utils.text import slugify
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth import get_user_model
 from django.utils import timezone
-
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 User = get_user_model()
 
 
@@ -38,7 +39,7 @@ class Category(models.Model):
     maxprice = models.FloatField(default=0)
     logo = models.ImageField(upload_to='category', null=True, blank=True)
     seo_title = models.CharField(max_length=200, null=True, blank=True)
-    description = models.CharField(max_length=500, null=True, blank=True)
+    description = models.CharField(max_length=5000, null=True, blank=True)
     display_childs = models.CharField(max_length=20, default='none', choices=display_child_types)
     get_features_from_child = models.BooleanField(default=False)
     priority = models.IntegerField(default=0)
@@ -59,10 +60,12 @@ class Category(models.Model):
             current = current.parent
         return cats[-1::-1]
     
-    def update_minmax_price(self, price):
-        self.minprice = min(self.minprice, price)
-        self.max = max(self.maxprice, price)
-        self.save()
+    def update_minmax_price(self):
+        product_prices = [prod.price for prod in self.tagged_products.all()]
+        if product_prices:
+            self.minprice = min(product_prices)
+            self.maxprice = max(product_prices)
+            self.save()
 
 
 class CategoryGroup(models.Model):
@@ -133,8 +136,6 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
-        for tag in self.tags.all():
-            tag.update_minmax_price(self.price - self.discount)
 
 
 class KeyFeature(models.Model):
@@ -153,7 +154,7 @@ class KeyFeature(models.Model):
 class ProductSpec(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     specification = models.ForeignKey(Specification, on_delete=models.CASCADE)
-    value = models.CharField(max_length=1000)
+    value = models.CharField(max_length=10000)
 
 
 class ProductImage(models.Model):
