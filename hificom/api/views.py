@@ -3,7 +3,8 @@ from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveAPIV
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
-from django.db.models import Q, Count
+from django.db.models import Q
+from django.contrib.auth import get_user_model
 import json
 from hificom.models import (Category, 
                             CategoryGroup, 
@@ -21,10 +22,10 @@ from .serializer import (CategorySerializer,
                          CarouselSerializer,
                          ProductCollectionSerializer)
 
-from .permission import IsAdminOrReadOnly
+from .permission import IsAdminOrReadOnly, IsAdmin
 from .pagination import ProductsPagination
 from . import utils
-
+User = get_user_model()
 
 
 @api_view()
@@ -143,3 +144,14 @@ def add_product(request, slug):
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     return Response('testing')
+
+@api_view()
+@permission_classes([IsAdmin])
+def dashboard_stats(request):
+    data = {
+        'num_products': Product.objects.count(),
+        'num_users': User.objects.count(),
+        'num_orders': 0,
+        'num_messages': 0,
+    }
+    return Response(data)

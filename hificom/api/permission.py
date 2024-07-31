@@ -6,3 +6,7 @@ class IsAdminOrReadOnly(BasePermission):
             return True
         else:
             return request.user.is_authenticated and request.user.is_staff
+        
+class IsAdmin(BasePermission):
+    def has_permission(self, request, view):
+        return request.user.is_staff

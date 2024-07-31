@@ -3,6 +3,7 @@ from hificom.api import views
 
 urlpatterns = [
     path('homepage/', views.user_homepage, name="user_homepage"),
+    path('homepage/stats/', views.dashboard_stats, name="dashboard_stats"),
     path('categories/', views.CategoriesView.as_view(), name="categories"),
     path('categories/<str:slug>/', views.ViewCategory.as_view(), name="view_category"),
     path('categories/<str:slug>/groups/', views.CategoryGroupsView.as_view(), name="view_category_groups"), # slug of root
