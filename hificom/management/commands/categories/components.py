@@ -19,8 +19,8 @@ main_component_categories = [
         'title': 'Motherboard',
         'slug': 'motherboard',
         'priority': 4,
-        'seo_title': 'RAM at HiFi Computer',
-        'description': 'Boost your PC\'s multitasking capabilities with high-performance RAM from HiFi Computer. Explore a variety of memory modules suitable for gaming, professional applications, and everyday use, available at competitive prices in Bangladesh. Upgrade your system\'s memory capacity and experience smoother performance across applications.',
+        'seo_title': 'Motherboards at HiFi Computer',
+        'description': 'Discover a wide range of high-performance motherboards at HiFi Computer, perfect for gaming, professional applications, and everyday computing needs. Our selection includes top brands and the latest models, ensuring you find the perfect motherboard to enhance your PC\'s performance. Enjoy competitive prices and convenient doorstep delivery across Bangladesh. Upgrade your system with a reliable motherboard from HiFi Computer today.'
     },
     {
         'title': 'PC Casing',
