@@ -133,6 +133,11 @@ pc-component:
     - gen-12-13-14-motherboard
     - gen-unmentioned-motherboard
     - gen-not-applicable-motherboard
+    - amd-3000-series
+    - amd-4000-series
+    - amd-5000-series
+    - amd-7000-series
+    - amd-8000-series
     - atx-motherboard
     - e-atx-motherboard
     - micro-atx-motherboard

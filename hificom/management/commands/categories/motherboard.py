@@ -190,6 +190,49 @@ cpu_generations = [
     }
 ]
 
+cpu_series = [
+    {
+        'title': '3000 Series',
+        'slug': 'amd-3000-series',
+        'priority': 0,
+        'cat_type': 'tag',
+        'seo_title': 'AMD 3000 Series Motherboards at HiFi Computer',
+        'description': 'Explore top-quality motherboards for AMD 3000 Series CPUs at HiFi Computer. Our selection offers exceptional performance and advanced features, ideal for gaming, professional applications, and everyday computing needs. Find the perfect motherboard to complement your AMD 3000 Series CPU and enhance your PC\'s capabilities. Enjoy competitive prices and convenient doorstep delivery across Bangladesh. Shop now and upgrade your system with a reliable motherboard.'
+    },
+    {
+        'title': '4000 Series',
+        'slug': 'amd-4000-series',
+        'priority': 0,
+        'cat_type': 'tag',
+        'seo_title': 'AMD 4000 Series Motherboards at HiFi Computer',
+        'description': 'Discover high-performance motherboards for AMD 4000 Series CPUs at HiFi Computer. Perfect for gamers and professionals, our selection of motherboards offers advanced features and exceptional reliability. Enhance your PC\'s performance with a motherboard that complements your AMD 4000 Series CPU. Enjoy competitive pricing and convenient doorstep delivery across Bangladesh. Shop now to find the ideal motherboard for your AMD 4000 Series processor.'
+    },
+    {
+        'title': '5000 Series',
+        'slug': 'amd-5000-series',
+        'priority': 0,
+        'cat_type': 'tag',
+        'seo_title': 'AMD 5000 Series Motherboards at HiFi Computer',
+        'description': 'Find the best motherboards for AMD 5000 Series CPUs at HiFi Computer. Our range of motherboards delivers top-notch performance and innovative features, making them ideal for gaming, professional use, and everyday tasks. Upgrade your PC with a reliable motherboard that pairs perfectly with your AMD 5000 Series CPU. Benefit from competitive prices and doorstep delivery across Bangladesh. Shop now and boost your system\'s capabilities.'
+    },
+    {
+        'title': '7000 Series',
+        'slug': 'amd-7000-series',
+        'priority': 0,
+        'cat_type': 'tag',
+        'seo_title': 'AMD 7000 Series Motherboards at HiFi Computer',
+        'description': 'Explore high-quality motherboards for AMD 7000 Series CPUs at HiFi Computer. Designed for superior performance and stability, our selection is perfect for gamers and professionals alike. Enhance your computing experience with a motherboard that matches your AMD 7000 Series CPU. Enjoy competitive pricing and convenient doorstep delivery across Bangladesh. Shop now to find the perfect motherboard for your AMD 7000 Series processor.'
+    },
+    {
+        'title': '8000 Series',
+        'slug': 'amd-8000-series',
+        'priority': 0,
+        'cat_type': 'tag',
+        'seo_title': 'AMD 8000 Series Motherboards at HiFi Computer',
+        'description': 'Discover the best motherboards for AMD 8000 Series CPUs at HiFi Computer. Our collection features motherboards that offer advanced features and outstanding performance, ideal for both gaming and professional use. Upgrade your PC with a motherboard that complements your AMD 8000 Series CPU and enhances your system\'s overall capabilities. Enjoy competitive prices and doorstep delivery across Bangladesh. Shop now and elevate your computing experience.'
+    }
+]
+
 motherboard_form_factors = [
     {
         'title': 'ATX',
@@ -352,6 +395,7 @@ ALL_MOTHERBOARD_CATEGORIES = [
     *motherboard_brands,
     *cpu_brands,
     *cpu_generations,
+    *cpu_series,
     *motherboard_form_factors,
     *motherboard_sockets,
     *motherboard_ram,
@@ -362,12 +406,17 @@ MOTHERBOARD_CATEGORY_GROUPS = [
     {
         'title': 'CPU Brand',
         'slug': 'cpu-brand',
-        'priority': 3
+        'priority': 4
     },
     {
-        'title': 'Generation',
+        'title': 'Intel Generation',
         'slug': 'motherboard-cpu-generation',
-        'priority': 3
+        'priority': 4
+    },
+    {
+        'title': 'AMD Series',
+        'slug': 'motherboard-cpu-series',
+        'priority': 4
     },
     {
         'title': 'Form Factor',
