@@ -158,9 +158,32 @@ pc-component:
     - thunderbolt-motherboard
     - sli-motherboard
     - crossfirex-motherboard
-    
-
-  - pc-casing
+  - pc-casing:
+    - thermaltake-casing
+    - pcpower-casing
+    - valuetop-casing
+    - maxgreen-casing
+    - aptech-casing
+    - adottech-casing
+    - skyview-casing
+    # Tags Start
+    - full-tower-pc-casing
+    - mid-tower-pc-casing
+    - mini-tower-pc-casing
+    - micro-tower-pc-casing
+    - atx-motherboard-casing
+    - e-atx-motherboard-casing
+    - micro-atx-motherboard-casing
+    - itx-motherboard-casing
+    - mini-itx-motherboard-casing
+    - pc-casing-w-power-supply
+    - pc-casing-w-drive-bay
+    - pc-casing-w-rgb
+    - pc-casing-w-usb3
+    - pc-casing-w-transparent-sidepanel
+    - black-color-casing
+    - white-color-casing
+    - mixed-color-casing
   - power-supply
 
 monitor:
