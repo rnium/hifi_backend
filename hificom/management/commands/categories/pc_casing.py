@@ -145,16 +145,19 @@ pc_casing_colors = [
         'title': 'Black',
         'slug': 'black-color-casing',
         'priority': 5,
+        'cat_type': 'tag',
     },
     {
         'title': 'White',
         'slug': 'white-color-casing',
         'priority': 5,
+        'cat_type': 'tag',
     },
     {
         'title': 'Mixed',
         'slug': 'mixed-color-casing',
         'priority': 5,
+        'cat_type': 'tag',
     },
 ]
 
