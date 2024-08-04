@@ -56,6 +56,62 @@ casing_brands = [
         'priority': 4,
         'seo_title': 'Skyview Casings at HiFi Computer',
         'description': 'Check out Skyview casings at HiFi Computer, designed for versatility and performance. Ideal for various PC builds, Skyview casings offer ample space, effective cooling, and aesthetic appeal. Build your dream PC with reliable and stylish Skyview casings. Enjoy competitive prices and doorstep delivery across Bangladesh.'
+    },
+    {
+        'title': 'Antec',
+        'slug': 'antec-casing',
+        'cat_type': 'brand',
+        'priority': 4,
+        'seo_title': 'Antec Casings at HiFi Computer',
+        'description': 'Explore a wide range of Antec casings at HiFi Computer. Known for their innovative designs and superior cooling solutions, Antec casings are perfect for gaming and professional PC builds. With robust construction and stylish aesthetics, these casings ensure your components are well-protected and efficiently cooled. Shop now for competitive prices and enjoy convenient doorstep delivery across Bangladesh.'
+    },
+    {
+        'title': 'Corsair',
+        'slug': 'corsair-casing',
+        'cat_type': 'brand',
+        'priority': 4,
+        'seo_title': 'Corsair Casings at HiFi Computer',
+        'description': 'Explore a wide range of Corsair casings at HiFi Computer. Known for their innovative designs and superior cooling solutions, Corsair casings are perfect for gaming and professional PC builds. With robust construction and stylish aesthetics, these casings ensure your components are well-protected and efficiently cooled. Shop now for competitive prices and enjoy convenient doorstep delivery across Bangladesh.'
+    },
+    {
+        'title': 'Deepcool',
+        'slug': 'deepcool-casing',
+        'cat_type': 'brand',
+        'priority': 4,
+        'seo_title': 'Deepcool Casings at HiFi Computer',
+        'description': 'Explore a wide range of Deepcool casings at HiFi Computer. Known for their innovative designs and superior cooling solutions, Deepcool casings are perfect for gaming and professional PC builds. With robust construction and stylish aesthetics, these casings ensure your components are well-protected and efficiently cooled. Shop now for competitive prices and enjoy convenient doorstep delivery across Bangladesh.'
+    },
+    {
+        'title': 'Gamdias',
+        'slug': 'gamdias-casing',
+        'cat_type': 'brand',
+        'priority': 4,
+        'seo_title': 'Gamdias Casings at HiFi Computer',
+        'description': 'Explore a wide range of Gamdias casings at HiFi Computer. Known for their innovative designs and superior cooling solutions, Gamdias casings are perfect for gaming and professional PC builds. With robust construction and stylish aesthetics, these casings ensure your components are well-protected and efficiently cooled. Shop now for competitive prices and enjoy convenient doorstep delivery across Bangladesh.'
+    },
+    {
+        'title': 'Gigabyte',
+        'slug': 'gigabyte-casing',
+        'cat_type': 'brand',
+        'priority': 4,
+        'seo_title': 'Gigabyte Casings at HiFi Computer',
+        'description': 'Explore a wide range of Gigabyte casings at HiFi Computer. Known for their innovative designs and superior cooling solutions, Gigabyte casings are perfect for gaming and professional PC builds. With robust construction and stylish aesthetics, these casings ensure your components are well-protected and efficiently cooled. Shop now for competitive prices and enjoy convenient doorstep delivery across Bangladesh.'
+    },
+    {
+        'title': 'Golden Field',
+        'slug': 'golden-field-casing',
+        'cat_type': 'brand',
+        'priority': 4,
+        'seo_title': 'Golden Field Casings at HiFi Computer',
+        'description': 'Explore a wide range of Golden Field casings at HiFi Computer. Known for their innovative designs and superior cooling solutions, Golden Field casings are perfect for gaming and professional PC builds. With robust construction and stylish aesthetics, these casings ensure your components are well-protected and efficiently cooled. Shop now for competitive prices and enjoy convenient doorstep delivery across Bangladesh.'
+    },
+    {
+        'title': 'Xigmatek',
+        'slug': 'xigmatek-casing',
+        'cat_type': 'brand',
+        'priority': 4,
+        'seo_title': 'Xigmatek Casings at HiFi Computer',
+        'description': 'Explore a wide range of Xigmatek casings at HiFi Computer. Known for their innovative designs and superior cooling solutions, Xigmatek casings are perfect for gaming and professional PC builds. With robust construction and stylish aesthetics, these casings ensure your components are well-protected and efficiently cooled. Shop now for competitive prices and enjoy convenient doorstep delivery across Bangladesh.'
     }
 ]
 

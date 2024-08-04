@@ -166,6 +166,13 @@ pc-component:
     - aptech-casing
     - adottech-casing
     - skyview-casing
+    - antec-casing
+    - corsair-casing
+    - deepcool-casing
+    - gamdias-casing
+    - gigabyte-casing
+    - golden-field-casing
+    - xigmatek-casing
     # Tags Start
     - full-tower-pc-casing
     - mid-tower-pc-casing
