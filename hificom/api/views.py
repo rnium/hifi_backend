@@ -96,15 +96,6 @@ class TaggedProductsView(ListAPIView):
         return Product.objects.filter(Q(category__slug=slug) | Q(tags__slug=slug)).distinct()
 
 
-class AllProductBasicList(ListAPIView):
-    serializer_class = ProductBasicSerializer
-    def get_queryset(self):
-        all_products = Product.objects.all()
-        if ids := self.request.GET.get('ids'):
-            id_list = ids.split(',')
-            return all_products.filter(id__in=id_list)
-
-
 class AllProductsSemiDetailView(ListAPIView):
     serializer_class = ProductSemiDetailSerializer
     pagination_class = ProductsPagination
@@ -165,4 +156,16 @@ def dashboard_stats(request):
         'num_orders': 0,
         'num_messages': 0,
     }
+    return Response(data)
+
+
+@api_view(['POST'])
+def get_cart_products(request):
+    cartinfo: dict = request.data.get('ids')
+    prod_ids = cartinfo.keys()
+    data = []
+    if prod_ids:
+        products = Product.objects.filter(id__in=prod_ids)
+        serializer = ProductBasicSerializer(products, many=True)
+        data = serializer.data
     return Response(data)
