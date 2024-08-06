@@ -161,11 +161,11 @@ def dashboard_stats(request):
 
 @api_view(['POST'])
 def get_cart_products(request):
-    cartinfo: dict = request.data.get('ids')
+    cartinfo: dict = request.data
     prod_ids = cartinfo.keys()
     data = []
     if prod_ids:
         products = Product.objects.filter(id__in=prod_ids)
-        serializer = ProductBasicSerializer(products, many=True)
+        serializer = ProductBasicSerializer(products, many=True, context={'request': request})
         data = serializer.data
     return Response(data)
