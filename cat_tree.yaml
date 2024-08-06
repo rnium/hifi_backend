@@ -191,7 +191,27 @@ pc-component:
     - black-color-casing
     - white-color-casing
     - mixed-color-casing
-  - power-supply
+  - power-supply:
+    - gigabyte-powersupply
+    - msi-powersupply
+    - value-top-powersupply
+    - gamdias-powersupply
+    - fsp-powersupply
+    - deepcool-powersupply
+    - corsair-powersupply
+    - antec-powersupply
+    - cooler-master-powersupply
+    # Tags
+    - upto-500w-powersupply
+    - 501w-to-800w-powersupply
+    - 801w-to-1000w-powersupply
+    - higher-than-1000w-powersupply
+    - 80plus-efficiency-powersupply
+    - 80plus-titanium-efficiency-powersupply
+    - 80plus-platinum-efficiency-powersupply
+    - 80plus-gold-efficiency-powersupply
+    - 80plus-bronze-efficiency-powersupply
+    - 80plus-white-efficiency-powersupply
 
 monitor:
   - acer-monitor
