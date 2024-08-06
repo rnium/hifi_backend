@@ -209,3 +209,20 @@ power-supply:
     - 80plus-gold-efficiency-powersupply
     - 80plus-bronze-efficiency-powersupply
     - 80plus-white-efficiency-powersupply
+
+printer:
+  printer-type:
+    - ink-printer
+    - inkjet-printer
+    - thermal-inkjet-printer
+    - inktank-printer
+    - laser-printer
+  printer-color-output:
+    - color-printer
+    - black-and-white-printer
+    - color-and-black-and-white-printer
+  printer-extra-functionality:
+    - scan-copy-printer
+    - scan-copy-fax-printer
+    - professional-photo-printer
+    - duplex-printer

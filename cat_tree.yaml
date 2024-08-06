@@ -284,6 +284,21 @@ printer:
   - brother-printer
   - hp-printer
   - canon-printer
+  - epson-printer
+  - pantum-printer
+  # Tags
+  - ink-printer
+  - inkjet-printer
+  - thermal-inkjet-printer
+  - inktank-printer
+  - laser-printer
+  - color-printer
+  - black-and-white-printer
+  - color-and-black-and-white-printer
+  - scan-copy-printer
+  - scan-copy-fax-printer
+  - professional-photo-printer
+  - duplex-printer
 
 office-equipment:
   - scanner
