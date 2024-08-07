@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveAPIView, DestroyAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
@@ -119,6 +119,12 @@ class RelatedProductsView(ListAPIView):
         pk = self.kwargs.get('pk')
         prod = get_object_or_404(Product, pk=pk)
         return Product.objects.filter(tags__in=prod.tags.all()).distinct()
+
+ 
+class DeleteProduct(DestroyAPIView):
+    serializer_class = ProductBasicSerializer
+    queryset = Product.objects.all()
+    permission_classes=[IsAdmin]
 
 
 @api_view(['POST'])
