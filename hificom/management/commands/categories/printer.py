@@ -93,6 +93,12 @@ printer_extra_functionality = [
         'slug': 'duplex-printer',
         'cat_type': 'tag',
         'priority': 4
+    },
+    {
+        'title': 'Networking Interface',
+        'slug': 'printer-w-networking-interface',
+        'cat_type': 'tag',
+        'priority': 4
     }
 ]
 

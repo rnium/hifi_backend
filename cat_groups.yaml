@@ -226,3 +226,4 @@ printer:
     - scan-copy-fax-printer
     - professional-photo-printer
     - duplex-printer
+    - printer-w-networking-interface
