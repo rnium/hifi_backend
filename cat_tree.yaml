@@ -69,6 +69,7 @@ laptop:
   - 15.1-inch-to-16-inch-laptop
   - 16.1-inch-to-17-inch-laptop
   - 17.1-inch-to-18-inch-laptop
+  - fhd-laptop
   - qhd-laptop
   - 2k-laptop
   - 4k-laptop
@@ -86,6 +87,8 @@ laptop:
   - 128gb-ssd-laptop
   - 256gb-ssd-laptop
   - 512gb-ssd-laptop
+  - laptop-sata-ssd
+  - laptop-nvme-ssd
   - 1tb-ssd-laptop
   - 2tb-ssd-laptop
   - 4tb-ssd-laptop
@@ -100,6 +103,22 @@ laptop:
   - 10gb-dedicated-laptop-graphics
   - 12gb-dedicated-laptop-graphics
   - 16gb-dedicated-laptop-graphics
+  - intel-uhd-laptop-graphics
+  - intel-iris-xe-laptop-graphics
+  - amd-radeon-laptop-graphics
+  - nvidia-3050-laptop-graphics
+  - nvidia-3060-laptop-graphics
+  - nvidia-3070-laptop-graphics
+  - nvidia-3080-laptop-graphics
+  - nvidia-4050-laptop-graphics
+  - nvidia-4060-laptop-graphics
+  - nvidia-4070-laptop-graphics
+  - amd-radeon-rx-6600m-laptop-graphics
+  - amd-radeon-rx-6700m-laptop-graphics
+  - amd-radeon-rx-6800m-laptop-graphics
+  - amd-radeon-rx-7600m-laptop-graphics
+  - amd-radeon-rx-7700m-laptop-graphics
+  - amd-radeon-rx-7800m-laptop-graphics
   
 desktop:
   - brand-pc

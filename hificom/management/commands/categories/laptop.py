@@ -118,6 +118,7 @@ laptop_brands = [
         'description': "Experience seamless performance and stylish design with Huawei laptops. Crafted for both work and play, Huawei laptops offer powerful processors, stunning displays, and long-lasting batteries. Whether you're a student, professional, or gamer, find the perfect Huawei laptop to elevate your digital experience. Enjoy fast delivery and exceptional customer service across Bangladesh.",
     }
 ]
+
 laptop_processor_types = [
     {
         'title': 'Intel Pentium & Celeron',
@@ -309,6 +310,12 @@ laptop_display_variants = [
         'cat_type': 'tag'
     },
     {
+        'title': 'FHD',
+        'slug': 'fhd-laptop',
+        'priority': 4,
+        'cat_type': 'tag'
+    },
+    {
         'title': 'QHD',
         'slug': 'qhd-laptop',
         'priority': 3,
@@ -397,6 +404,20 @@ laptop_storage_variants = [
     }
 ]
 
+laptop_ssd_type = [
+    {
+        'title': 'SATA SSD',
+        'slug': 'laptop-sata-ssd',
+        'cat_type': 'tag',
+        'priority': 4
+    },
+    {
+        'title': 'NVMe SSD',
+        'slug': 'laptop-nvme-ssd',
+        'cat_type': 'tag',
+        'priority': 4
+    }
+]
 
 laptop_graphics_variants = [
     {
@@ -446,6 +467,105 @@ laptop_graphics_variants = [
         'short_title': '16GB',
         'slug': '16gb-dedicated-laptop-graphics',
         'cat_type': 'tag'
+    }
+]
+
+laptop_graphics_models = [
+    {
+        'title': 'Intel UHD',
+        'slug': 'intel-uhd-laptop-graphics',
+        'cat_type': 'tag',
+        'priority': 5
+    },
+    {
+        'title': 'Intel Iris Xe',
+        'slug': 'intel-iris-xe-laptop-graphics',
+        'cat_type': 'tag',
+        'priority': 5
+    },
+    {
+        'title': 'AMD Radeon',
+        'slug': 'amd-radeon-laptop-graphics',
+        'cat_type': 'tag',
+        'priority': 5
+    },
+    {
+        'title': 'NVIDIA 3050',
+        'slug': 'nvidia-3050-laptop-graphics',
+        'cat_type': 'tag',
+        'priority': 5
+    },
+    {
+        'title': 'NVIDIA 3060',
+        'slug': 'nvidia-3060-laptop-graphics',
+        'cat_type': 'tag',
+        'priority': 5
+    },
+    {
+        'title': 'NVIDIA 3070',
+        'slug': 'nvidia-3070-laptop-graphics',
+        'cat_type': 'tag',
+        'priority': 5
+    },
+    {
+        'title': 'NVIDIA 3080',
+        'slug': 'nvidia-3080-laptop-graphics',
+        'cat_type': 'tag',
+        'priority': 5
+    },
+    {
+        'title': 'NVIDIA 4050',
+        'slug': 'nvidia-4050-laptop-graphics',
+        'cat_type': 'tag',
+        'priority': 5
+    },
+    {
+        'title': 'NVIDIA 4060',
+        'slug': 'nvidia-4060-laptop-graphics',
+        'cat_type': 'tag',
+        'priority': 5
+    },
+    {
+        'title': 'NVIDIA 4070',
+        'slug': 'nvidia-4070-laptop-graphics',
+        'cat_type': 'tag',
+        'priority': 5
+    },
+    {
+        'title': 'AMD Radeon RX 6600M',
+        'slug': 'amd-radeon-rx-6600m-laptop-graphics',
+        'cat_type': 'tag',
+        'priority': 5
+    },
+    {
+        'title': 'AMD Radeon RX 6700M',
+        'slug': 'amd-radeon-rx-6700m-laptop-graphics',
+        'cat_type': 'tag',
+        'priority': 5
+    },
+    {
+        'title': 'AMD Radeon RX 6800M',
+        'slug': 'amd-radeon-rx-6800m-laptop-graphics',
+        'cat_type': 'tag',
+        'priority': 5
+    },
+    {
+        'title': 'AMD Radeon RX 7600M',
+        'slug': 'amd-radeon-rx-7600m-laptop-graphics',
+        'cat_type': 'tag',
+        'priority': 5
+    },
+    {
+        'title': 'AMD Radeon RX 7700M',
+        'slug': 'amd-radeon-rx-7700m-laptop-graphics',
+        'cat_type': 'tag',
+        'priority': 5
+    },
+    {
+        'title': 'AMD Radeon RX 7800M',
+        'slug': 'amd-radeon-rx-7800m-laptop-graphics',
+        'cat_type': 'tag',
+        'priority': 5
     }
 ]
 
@@ -629,7 +749,6 @@ laptop_ram_tags = [
     }
 ]
 
-
 laptop_acceesories = [
     {
         'title': 'Laptop Ram',
@@ -719,7 +838,9 @@ ALL_LAPTOP_CATEGORIES = [
     *laptop_processor_series,
     *laptop_display_variants,
     *laptop_storage_variants,
+    *laptop_ssd_type,
     *laptop_graphics_variants,
+    *laptop_graphics_models,
     *laptop_serieses,
     *laptop_ram_tags,
     *laptop_acceesories,
@@ -772,14 +893,24 @@ LAPTOP_GROUPS = [
         'priority': 3
     },
     {
+        'title': 'SSD Type',
+        'slug': 'laptop-ssd-type',
+        'priority': 3
+    },
+    {
         'title': 'HDD Capacity',
         'slug': 'laptop-hdd',
-        'priority': 3
+        'priority': 2
     },
     {
         'title': 'Graphics',
         'slug': 'laptop-graphics',
-        'priority': 3
+        'priority': 2
+    },
+    {
+        'title': 'Graphics',
+        'slug': 'laptop-graphics-models',
+        'priority': 1
     },
 ]
 
