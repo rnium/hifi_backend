@@ -1,6 +1,14 @@
 from typing import Dict, List
-from hificom.models import Category, SpecificationTable, Specification, ProductSpec, ProductImage, TitleAlias, Product
+from hificom.models import (Category, 
+                            SpecificationTable, 
+                            Specification, 
+                            ProductSpec, 
+                            ProductImage, 
+                            TitleAlias,
+                            Cart,
+                            Product)
 from django.db.models import Model, Count, Q
+from django.shortcuts import get_object_or_404
 
 
 def delete_db_objects(model: Model, ids: List[int]):
@@ -102,3 +110,30 @@ def filter_products(slug: str, request):
         availibility_list = list(map(lambda s: bool(int(s)), availibility.split(',')))
         filtered_products = filtered_products.filter(in_stock__in=availibility_list)
     return filtered_products
+
+
+def get_cart(request) -> Cart:
+    new_cart_args = {}
+    if request.user.is_authenticated:
+        cart = Cart.objects.filter(owner=request.user, checked_out=False).first()
+        if cart:
+            return cart
+        else:
+            new_cart_args['owner'] = request.user
+    elif cartid:=request.data.get('cartid'):
+        try:
+            return get_object_or_404(Cart, cartid=cartid)
+        except Cart.DoesNotExist:
+            pass
+    cart = Cart.objects.create(**new_cart_args)
+    return cart
+
+
+def update_cart(cart: Cart, cartinfo: dict):
+    prod_ids = cartinfo.keys()
+    for pid in prod_ids:
+        prod_payload = {
+            'cart': cart.id,
+            'product': pid,
+            'quantity': cartinfo[pid]
+        }

@@ -5,8 +5,12 @@ from django.contrib.auth import get_user_model
 from django.utils import timezone
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from uuid import uuid4
 
 User = get_user_model()
+
+def hexcode_gen():
+    return uuid4().hex
 
 
 class Carousel(models.Model):
@@ -178,3 +182,16 @@ class Review(models.Model):
     account = models.ForeignKey(User, on_delete=models.CASCADE)
     rating = models.FloatField(default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
     description = models.CharField(max_length=1000)
+
+
+class Cart(models.Model):
+    cartid = models.CharField(max_length=50, unique=True, default=hexcode_gen, db_index=True)
+    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    checked_out = models.BooleanField(default=False)
+    added_at = models.DateTimeField(auto_now_add=True)
+
+
+class CartProduct(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
