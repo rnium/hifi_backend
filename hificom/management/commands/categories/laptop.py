@@ -903,12 +903,12 @@ LAPTOP_GROUPS = [
         'priority': 2
     },
     {
-        'title': 'Graphics',
+        'title': 'Graphics Memory',
         'slug': 'laptop-graphics',
         'priority': 2
     },
     {
-        'title': 'Graphics',
+        'title': 'Graphics Model',
         'slug': 'laptop-graphics-models',
         'priority': 1
     },
