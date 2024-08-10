@@ -1,7 +1,8 @@
 from rest_framework.serializers import ModelSerializer, Serializer
 from rest_framework import serializers
 from hificom.models import (Category, CategoryGroup, SpecificationTable, ProductSpec, 
-                            Specification, Product, ProductImage, KeyFeature, Carousel, ProductCollection)
+                            Specification, Product, ProductImage, KeyFeature, Carousel, 
+                            ProductCollection, Cart, CartProduct)
 from . import utils
 
 
@@ -24,6 +25,7 @@ class CategorySerializer(ModelSerializer):
     def get_parent_name(self, obj):
         if p:=obj.parent:
             return p.title
+
 
 class CategoryGroupSerializer(ModelSerializer):
     categories = serializers.SerializerMethodField()
@@ -60,6 +62,7 @@ class SpecTableSerializer(ModelSerializer):
     def get_aliases(self, obj):
         return [ a.alias for a in obj.aliases.all()]
 
+
 class ProductSpecSerializer(ModelSerializer):
     title = serializers.SerializerMethodField()
 
@@ -69,6 +72,7 @@ class ProductSpecSerializer(ModelSerializer):
 
     def get_title(self, obj):
         return obj.specification.title
+
 
 class CategoryDetailSerializer(CategorySerializer):
     childs = serializers.SerializerMethodField()
@@ -181,7 +185,6 @@ class ProductDetailSerializer(ProductSemiDetailSerializer):
         return CategoryBasicSerializer(obj.category.category_tree, many=True).data
 
 
-
 class ProductImageSerializer(ModelSerializer):
     class Meta:
         model = ProductImage
@@ -231,6 +234,7 @@ class CarouselSerializer(ModelSerializer):
             return req.build_absolute_uri(obj.banner.url)
         return obj.banner.url
 
+
 class ProductCollectionSerializer(ModelSerializer):
     products = serializers.SerializerMethodField()
     class Meta:
@@ -243,3 +247,4 @@ class ProductCollectionSerializer(ModelSerializer):
             many=True,
             context=self.context
         ).data
+

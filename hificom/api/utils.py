@@ -1,12 +1,7 @@
 from typing import Dict, List
-from hificom.models import (Category, 
-                            SpecificationTable, 
-                            Specification, 
-                            ProductSpec, 
-                            ProductImage, 
-                            TitleAlias,
-                            Cart,
-                            Product)
+from hificom.models import (Category, SpecificationTable, 
+                            Specification, ProductSpec, ProductImage, 
+                            TitleAlias, Product, Cart, CartProduct)
 from django.db.models import Model, Count, Q
 from django.shortcuts import get_object_or_404
 
@@ -17,6 +12,7 @@ def delete_db_objects(model: Model, ids: List[int]):
     qs = model.objects.filter(id__in=ids)
     qs.delete()
 
+
 def set_aliases(obj, aliases):
     if type(aliases) == str:
         obj.aliases.clear()
@@ -26,6 +22,7 @@ def set_aliases(obj, aliases):
                 continue
             alias, _ = TitleAlias.objects.get_or_create(alias=alias_text)
             obj.aliases.add(alias)
+
 
 def update_specs(table: SpecificationTable, data: List[Dict]):
     spec_ids = {spec['id'] for spec in data if spec.get('id')}
@@ -121,19 +118,21 @@ def get_cart(request) -> Cart:
         else:
             new_cart_args['owner'] = request.user
     elif cartid:=request.data.get('cartid'):
-        try:
-            return get_object_or_404(Cart, cartid=cartid)
-        except Cart.DoesNotExist:
-            pass
+        cart = Cart.objects.filter(cartid=cartid).first()
+        if cart:
+            return cart
     cart = Cart.objects.create(**new_cart_args)
     return cart
 
 
 def update_cart(cart: Cart, cartinfo: dict):
-    prod_ids = cartinfo.keys()
-    for pid in prod_ids:
-        prod_payload = {
-            'cart': cart.id,
-            'product': pid,
-            'quantity': cartinfo[pid]
-        }
+    prod_ids = list(map(int, cartinfo.keys()))
+    cart_products = [cart_prod for cart_prod in cart.cartproduct_set.all()]
+    for cart_prod in cart_products:
+        if cart_prod.product.id not in prod_ids:
+            cart_prod.delete()
+    for pid in cartinfo.keys():
+        product = get_object_or_404(Product, pk=pid)
+        cart_prod, _ = CartProduct.objects.get_or_create(cart=cart, product=product)
+        cart_prod.quantity = cartinfo[pid]
+        cart_prod.save()
