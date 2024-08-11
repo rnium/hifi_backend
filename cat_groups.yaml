@@ -251,3 +251,27 @@ printer:
     - professional-photo-printer
     - duplex-printer
     - printer-w-networking-interface
+
+ssd:
+  ssd-form-factor:
+    - 2.5inch-ssd
+    - m.2-ssd
+  ssd-interface:
+    - sata-ssd
+    - nvme-ssd
+  ssd-capacity:
+    - upto-128gb-ssd
+    - 129gb-to-256gb-ssd
+    - 257gb-to-512gb-ssd
+    - 513gb-to-1tb-ssd
+    - above-1tb-ssd
+  ssd-read-speed:
+    - upto-500mbps-read-ssd
+    - 501mbps-to-1000mbps-read-ssd
+    - 1001mbps-to-1500mbps-read-ssd
+    - above-1500mbps-read-ssd
+  ssd-write-speed:
+    - upto-500mbps-write-ssd
+    - 501mbps-to-1000mbps-write-ssd
+    - 1001mbps-to-1500mbps-write-ssd
+    - above-1500mbps-write-ssd

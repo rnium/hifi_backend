@@ -231,6 +231,47 @@ pc-component:
     - 80plus-gold-efficiency-powersupply
     - 80plus-bronze-efficiency-powersupply
     - 80plus-white-efficiency-powersupply
+  - storage:
+    - ssd:
+      - samsung-ssd
+      - seagate-ssd
+      - transcend-ssd
+      - twinmos-ssd
+      - western-digital-ssd
+      - team-ssd
+      - acer-ssd
+      - adata-ssd
+      - apacer-ssd
+      - corsair-ssd
+      - dahua-ssd
+      - gigabyte-ssd
+      - hp-ssd
+      - kingston-ssd
+      - lexar-ssd
+      - msi-ssd
+      - netac-ssd
+      - ocpc-ssd
+      - patriot-ssd
+      - pny-ssd
+      # ssd tags
+      - 2.5inch-ssd
+      - m.2-ssd
+      - sata-ssd
+      - nvme-ssd
+      - upto-128gb-ssd
+      - 129gb-to-256gb-ssd
+      - 257gb-to-512gb-ssd
+      - 513gb-to-1tb-ssd
+      - above-1tb-ssd
+      - upto-500mbps-read-ssd
+      - 501mbps-to-1000mbps-read-ssd
+      - 1001mbps-to-1500mbps-read-ssd
+      - above-1500mbps-read-ssd
+      - upto-500mbps-write-ssd
+      - 501mbps-to-1000mbps-write-ssd
+      - 1001mbps-to-1500mbps-write-ssd
+      - above-1500mbps-write-ssd
+    - hdd
 
 monitor:
   - acer-monitor

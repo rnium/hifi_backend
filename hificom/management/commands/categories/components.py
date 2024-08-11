@@ -1,6 +1,7 @@
 from .motherboard import ALL_MOTHERBOARD_CATEGORIES, MOTHERBOARD_CATEGORY_GROUPS
 from .pc_casing import PC_CASING_CATEGORIES, PC_CASING_CATEGORY_GROUPS
 from .power_supply import POWER_SUPPLY_CATEGORIES, POWER_SUPPLY_CATEGORY_GROUPS
+from .storage import STORAGE_CATEGORIES, STORAGE_GROUPS
 
 main_component_categories = [
     {
@@ -38,6 +39,13 @@ main_component_categories = [
         'seo_title': 'Power Supplies at HiFi Computer',
         'description': 'Ensure reliable power delivery for your PC setup with high-quality power supplies from HiFi Computer. Explore efficient and stable PSU options suitable for gaming rigs, workstations, and custom builds, available at competitive prices in Bangladesh. Choose from trusted brands and wattage options to meet your system\'s power requirements.',
     },
+    {
+        'title': 'Storage',
+        'slug': 'storage',
+        'priority': 3,
+        'seo_title': 'Storage Solutions at HiFi Computer',
+        'description': 'Upgrade your system’s performance with top-notch storage solutions from HiFi Computer. Discover a wide range of SSDs and HDDs designed for reliability and speed, perfect for boosting your PC’s storage capacity and efficiency. Whether you need high-speed SSDs for quick access or ample HDDs for large data storage, find the best options at competitive prices in Bangladesh. Choose from trusted brands and enhance your computing experience with our storage solutions.'
+    }
 ]
 
 PC_COMPONENT_CATEGORIES = [
@@ -45,10 +53,12 @@ PC_COMPONENT_CATEGORIES = [
     *ALL_MOTHERBOARD_CATEGORIES,
     *PC_CASING_CATEGORIES,
     *POWER_SUPPLY_CATEGORIES,
+    *STORAGE_CATEGORIES,
 ]
 
 PC_COMPONENT_CATEGORY_GROUPS = [
     *MOTHERBOARD_CATEGORY_GROUPS,
     *PC_CASING_CATEGORY_GROUPS,
     *POWER_SUPPLY_CATEGORY_GROUPS,
+    *STORAGE_GROUPS,
 ]
