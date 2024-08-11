@@ -275,3 +275,32 @@ ssd:
     - 501mbps-to-1000mbps-write-ssd
     - 1001mbps-to-1500mbps-write-ssd
     - above-1500mbps-write-ssd
+
+hdd:
+  hdd-form-factor:
+    - 2.5inch-hdd
+    - 3.5inch-hdd
+  hdd-type:
+    - laptop-hdd
+    - desktop-hdd
+    - nas-hdd
+    - surveillance-hdd
+  hdd-capacity:
+    - 500gb-hdd
+    - 1tb-hdd
+    - 2tb-hdd
+    - 3tb-hdd
+    - 4tb-hdd
+    - 5tb-hdd
+    - 6tb-hdd
+    - 8tb-hdd
+    - 10tb-hdd
+    - 12tb-hdd
+    - 14tb-hdd
+    - 16tb-hdd
+    - 20tb-hdd
+  hdd-speed:
+    - 5400rpm-hdd
+    - 5700rpm-hdd
+    - 7200rpm-hdd
+    - 10000rpm-hdd

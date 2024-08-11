@@ -1,4 +1,5 @@
 from .storage__ssd import SSD_CATEGORIES, SSD_GROUPS
+from .storage__hdd import HDD_CATEGORIES, HDD_GROUPS
 
 storage_types = [
     {
@@ -34,9 +35,11 @@ storage_types = [
 
 STORAGE_CATEGORIES = [
     *storage_types,
-    *SSD_CATEGORIES
+    *SSD_CATEGORIES,
+    *HDD_CATEGORIES,
 ]
 
 STORAGE_GROUPS = [
-    *SSD_GROUPS
+    *SSD_GROUPS,
+    *HDD_GROUPS,
 ]
