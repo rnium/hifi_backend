@@ -274,41 +274,55 @@ ssd_interface = [
 
 ssd_capacity = [
     {
-        'title': 'Up to 128GB',
-        'slug': 'upto-128gb-ssd',
+        'title': '128GB',
+        'slug': '128gb-ssd',
         'priority': 5,
         'cat_type': 'tag',
-        'seo_title': 'Up to 128GB SSDs at HiFi Computer'
+        'seo_title': '128GB SSDs at HiFi Computer',
+        'description': 'Experience efficient storage and fast data access with 128GB SSDs from HiFi Computer. Ideal for boot drives and applications, these SSDs offer a balance of speed and capacity, ensuring a smooth performance for everyday computing tasks.'
     },
     {
-        'title': '129GB to 256GB',
-        'slug': '129gb-to-256gb-ssd',
+        'title': '240GB',
+        'slug': '240gb-ssd',
         'priority': 5,
         'cat_type': 'tag',
-        'seo_title': '129GB to 256GB SSDs at HiFi Computer'
+        'seo_title': '240GB SSDs at HiFi Computer',
+        'description': '240GB SSDs provide a solid middle ground between capacity and speed, perfect for users needing more storage for applications and files. Available at HiFi Computer, these SSDs offer enhanced performance and reliability for your computing needs.'
     },
     {
-        'title': '257GB to 512GB',
-        'slug': '257gb-to-512gb-ssd',
+        'title': '256GB',
+        'slug': '256gb-ssd',
         'priority': 5,
         'cat_type': 'tag',
-        'seo_title': '257GB to 512GB SSDs at HiFi Computer'
+        'seo_title': '256GB SSDs at HiFi Computer',
+        'description': 'Upgrade your system with a 256GB SSD from HiFi Computer. This capacity offers ample space for your operating system, essential applications, and files, along with the speed to reduce load times and improve overall system responsiveness.'
     },
     {
-        'title': '513GB to 1TB',
-        'slug': '513gb-to-1tb-ssd',
+        'title': '480GB',
+        'slug': '480gb-ssd',
         'priority': 5,
         'cat_type': 'tag',
-        'seo_title': '513GB to 1TB SSDs at HiFi Computer'
+        'seo_title': '480GB SSDs at HiFi Computer',
+        'description': 'For those requiring more space for media, games, and applications, 480GB SSDs from HiFi Computer provide a reliable solution. Benefit from quick access times and faster boot speeds, all while having the capacity to store larger files.'
     },
     {
-        'title': 'Above 1TB',
-        'slug': 'above-1tb-ssd',
+        'title': '512GB',
+        'slug': '512gb-ssd',
         'priority': 5,
         'cat_type': 'tag',
-        'seo_title': 'Above 1TB SSDs at HiFi Computer'
+        'seo_title': '512GB SSDs at HiFi Computer',
+        'description': 'With 512GB SSDs from HiFi Computer, enjoy a significant boost in storage space and performance. Ideal for power users and gamers, these SSDs offer fast read/write speeds and the capacity needed for a more extensive software library.'
+    },
+    {
+        'title': '1TB',
+        'slug': '1tb-ssd',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '1TB SSDs at HiFi Computer',
+        'description': '1TB SSDs from HiFi Computer are perfect for users who require both high capacity and top-notch speed. Store large amounts of data, including games, videos, and extensive software libraries, while enjoying faster load times and enhanced system performance.'
     }
 ]
+
 
 ssd_read_speed = [
     {
@@ -372,6 +386,38 @@ ssd_write_speed = [
     }
 ]
 
+pcie_ssd_gen_tags = [
+    {
+        'title': 'Gen 3',
+        'slug': 'pcie-gen-3',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': 'PCIe Gen 3 SSDs at HiFi Computer',
+        'description': 'Explore PCIe Gen 3 SSDs at HiFi Computer for a balance of speed and affordability. These SSDs offer reliable performance, making them an excellent choice for mainstream users looking to upgrade their system without breaking the bank.'
+    },
+    {
+        'title': 'Gen 4',
+        'slug': 'pcie-gen-4',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': 'PCIe Gen 4 SSDs at HiFi Computer',
+        'description': 'Experience the next level of speed with PCIe Gen 4 SSDs from HiFi Computer. Offering faster data transfer rates, these SSDs are perfect for gaming, video editing, and other demanding applications, ensuring your system operates at peak performance.'
+    },
+    {
+        'title': 'Gen 5',
+        'slug': 'pcie-gen-5',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': 'PCIe Gen 5 SSDs at HiFi Computer',
+        'description': 'Maximize your system\'s potential with PCIe Gen 5 SSDs from HiFi Computer. These cutting-edge SSDs deliver unparalleled speeds, making them the ultimate choice for enthusiasts and professionals who demand the best performance available.'
+    },
+    {
+        'title': 'Not Applicable',
+        'slug': 'pcie-gen-not-applicable',
+        'priority': 5,
+        'cat_type': 'tag',
+    }
+]
 
 SSD_CATEGORIES = [
     *ssd_brands,
@@ -379,7 +425,8 @@ SSD_CATEGORIES = [
     *ssd_interface,
     *ssd_capacity,
     *ssd_read_speed,
-    *ssd_write_speed
+    *ssd_write_speed,
+    *pcie_ssd_gen_tags
 ]
 
 SSD_GROUPS = [
@@ -407,5 +454,10 @@ SSD_GROUPS = [
         'title': 'Write Speed',
         'slug': 'ssd-write-speed',
         'priority': 4
+    },
+    {
+        'title': 'PCIe Gen',
+        'slug': 'pcie-ssd-gen',
+        'priority': 3
     },
 ]

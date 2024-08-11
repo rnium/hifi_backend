@@ -258,11 +258,12 @@ pc-component:
       - m.2-ssd
       - sata-ssd
       - nvme-ssd
-      - upto-128gb-ssd
-      - 129gb-to-256gb-ssd
-      - 257gb-to-512gb-ssd
-      - 513gb-to-1tb-ssd
-      - above-1tb-ssd
+      - 128gb-ssd
+      - 240gb-ssd
+      - 256gb-ssd
+      - 480gb-ssd
+      - 512gb-ssd
+      - 1tb-ssd
       - upto-500mbps-read-ssd
       - 501mbps-to-1000mbps-read-ssd
       - 1001mbps-to-1500mbps-read-ssd
@@ -271,6 +272,10 @@ pc-component:
       - 501mbps-to-1000mbps-write-ssd
       - 1001mbps-to-1500mbps-write-ssd
       - above-1500mbps-write-ssd
+      - pcie-gen-3
+      - pcie-gen-4
+      - pcie-gen-5
+      - pcie-gen-not-applicable
     - hdd:
       - seagate-hdd
       - toshiba-hdd
