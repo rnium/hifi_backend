@@ -3,8 +3,6 @@ from django.utils.text import slugify
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth import get_user_model
 from django.utils import timezone
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from uuid import uuid4
 
 User = get_user_model()
@@ -12,6 +10,12 @@ User = get_user_model()
 def hexcode_gen():
     return uuid4().hex
 
+order_status_options = (
+    ('pending', 'Pending'),
+    ('processing', 'Processing'),
+    ('shipped', 'Shipped'),
+    ('delivered', 'Delivered'),
+)
 
 class Carousel(models.Model):
     banner = models.ImageField(upload_to='features')
@@ -200,3 +204,42 @@ class CartProduct(models.Model):
         constraints = [
             models.UniqueConstraint(fields=['cart', 'product'], name='unique_product_in_cart')
         ]
+
+
+class Coupon(models.Model):
+    code = models.CharField(max_length=200, unique=True, db_index=True)
+    discount_percent = models.FloatField(validators=[MinValueValidator(0.1), MaxValueValidator(100)], null=True, blank=True)
+    max_amount = models.FloatField(null=True, blank=True)
+    discount_amount = models.FloatField(validators=[MinValueValidator(1)], null=True, blank=True)
+    min_spend = models.FloatField(default=0)
+    max_usage = models.IntegerField(null=True, blank=True)
+    expiry = models.DateTimeField()
+    added_at = models.DateTimeField(auto_now_add=True)
+
+
+class Order(models.Model):
+    location_choices = (
+        ('inside', 'Sylhet City'),
+        ('outside', 'Outside Sylhet City'),
+    )
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100, null=True, blank=True)
+    phone = models.CharField(max_length=20)
+    email = models.EmailField(max_length=256, null=True)
+    location = models.CharField(max_length=20, choices=location_choices)
+    address = models.CharField(max_length=512)
+    cart = models.OneToOneField(Cart, on_delete=models.CASCADE)
+    status = models.CharField(max_length=20, choices=order_status_options, default='pending')
+    added_at = models.DateField(auto_now_add=True)
+
+
+class OrderStatusTimestamp(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    status = models.CharField(max_length=20, choices=order_status_options, default='pending')
+    completed_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['order', 'status'], name='uniqe status in an order')
+        ]
+
