@@ -3,6 +3,7 @@ from django.utils.text import slugify
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth import get_user_model
 from django.utils import timezone
+from typing import Tuple
 from uuid import uuid4
 
 User = get_user_model()
@@ -145,6 +146,12 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+    
+    @property
+    def selling_price(self):
+        if dis:=self.discount:
+            return self.price - dis
+        return self.price
 
 
 class KeyFeature(models.Model):
@@ -194,6 +201,13 @@ class Cart(models.Model):
     checked_out = models.BooleanField(default=False)
     added_at = models.DateTimeField(auto_now_add=True)
 
+    def cart_total(self) -> Tuple[int, float]:
+        items = 0
+        amount = 0
+        for cart_prod in self.cartproduct_set.all():
+            items += cart_prod.quantity
+            amount += (cart_prod.product.selling_price * cart_prod.quantity)
+        return (items, amount)
 
 class CartProduct(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
@@ -215,6 +229,9 @@ class Coupon(models.Model):
     max_usage = models.IntegerField(null=True, blank=True)
     expiry = models.DateTimeField()
     added_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.code
 
 
 class Order(models.Model):

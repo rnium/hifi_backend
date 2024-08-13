@@ -1,8 +1,10 @@
 from typing import Dict, List
 from hificom.models import (Category, SpecificationTable, 
                             Specification, ProductSpec, ProductImage, 
-                            TitleAlias, Product, Cart, CartProduct)
+                            TitleAlias, Product, Cart, CartProduct, Coupon)
 from django.db.models import Model, Count, Q
+from django.utils import timezone
+from django.core.exceptions import ValidationError
 from django.shortcuts import get_object_or_404
 
 
@@ -136,3 +138,22 @@ def update_cart(cart: Cart, cartinfo: dict):
         cart_prod, _ = CartProduct.objects.get_or_create(cart=cart, product=product)
         cart_prod.quantity = cartinfo[pid]
         cart_prod.save()
+
+
+def get_coupon_discount_amount(cart: Cart, coupon: Coupon):
+    if coupon.expiry < timezone.now():
+        raise ValidationError('Expired Coupon')
+    items_count, cart_total_amount = cart.cart_total()
+    if cart_total_amount < coupon.min_spend:
+        raise ValidationError(f'You have to spend at least {coupon.min_spend} to apply this coupon')
+    discount_amount = 0
+    print(cart_total_amount, flush=1)
+    if percent:=coupon.discount_percent:
+        discount_draft = (cart_total_amount * percent) / 100
+        if max_dis:=coupon.max_amount:
+            discount_amount = min(max_dis, discount_draft)
+        else:
+            discount_amount = discount_draft
+    elif discount:=coupon.discount_amount:
+        discount_amount = min(cart_total_amount, discount)
+    return discount_amount

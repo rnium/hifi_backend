@@ -5,12 +5,16 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.db.models import Q
 from django.contrib.auth import get_user_model
+from django.utils import timezone
+from django.core.exceptions import ValidationError
 import json
 from hificom.models import (Category, 
                             CategoryGroup, 
                             Product,
                             ProductCollection,
-                            Carousel)
+                            Carousel,
+                            Cart,
+                            Coupon)
 
 from .serializer import (CategorySerializer, 
                          CategoryDetailSerializer, 
@@ -176,3 +180,15 @@ def get_cart_products(request):
         serializer = ProductBasicSerializer(products, many=True, context={'request': request})
         data['prod_data'] = serializer.data
     return Response(data)
+
+
+@api_view(['POST'])
+def apply_coupon(request):
+    coupon = get_object_or_404(Coupon, code=request.data.get('couponCode'))
+    cart = get_object_or_404(Cart, cartid=request.data.get('cartid'))
+    try:
+        discount_amount = utils.get_coupon_discount_amount(cart, coupon)
+    except ValidationError as e:
+        return Response({'detail': e.message}, status=status.HTTP_400_BAD_REQUEST)
+    return Response({'discount': discount_amount})
+

@@ -13,6 +13,7 @@ urlpatterns = [
     path('t/<str:slug>/products/', views.TaggedProductsView.as_view(), name="tagged_products"),
     path('categories/<str:slug>/addproduct/', views.add_product, name="add_product"),
     path('cartproducts/', views.get_cart_products, name="cartproducts"),
+    path('applycoupon/', views.apply_coupon, name="apply_coupon"),
     path('product/<str:slug>/', views.ProductDetailView.as_view(), name="detailed_product"),
     path('product/<int:pk>/delete/', views.DeleteProduct.as_view(), name="delete_product"),
     path('relatedproducts/<int:pk>/', views.RelatedProductsView.as_view(), name="related_products"),
