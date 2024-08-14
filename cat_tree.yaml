@@ -126,7 +126,58 @@ desktop:
 
 pc-component:
   - processor
-  - ram
+  - ram:
+    - adata-desktop-ram
+    - apacer-desktop-ram
+    - corsair-desktop-ram
+    - crucial-desktop-ram
+    - dahua-desktop-ram
+    - gskill-desktop-ram
+    - gigabyte-desktop-ram
+    - hiksemi-desktop-ram
+    - hp-desktop-ram
+    - kingston-desktop-ram
+    - lexar-desktop-ram
+    - netac-desktop-ram
+    - ocpc-desktop-ram
+    - patriot-desktop-ram
+    - redragon-desktop-ram
+    - team-desktop-ram
+    - thermaltake-desktop-ram
+    - transcend-desktop-ram
+    - twinmos-desktop-ram
+    # Tags
+    - 4gb-desktop-ram
+    - 8gb-desktop-ram
+    - 16gb-desktop-ram
+    - 32gb-desktop-ram
+    - ddr3-desktop-ram
+    - ddr4-desktop-ram
+    - ddr5-desktop-ram
+    - 1600mhz-desktop-ram
+    - 2400mhz-desktop-ram
+    - 2666mhz-desktop-ram
+    - 2933mhz-desktop-ram
+    - 3000mhz-desktop-ram
+    - 3200mhz-desktop-ram
+    - 3466mhz-desktop-ram
+    - 3600mhz-desktop-ram
+    - 4000mhz-desktop-ram
+    - 4266mhz-desktop-ram
+    - 4600mhz-desktop-ram
+    - 4800mhz-desktop-ram
+    - 5200mhz-desktop-ram
+    - 5600mhz-desktop-ram
+    - 6000mhz-desktop-ram
+    - 6200mhz-desktop-ram
+    - 6400mhz-desktop-ram
+    - 6600mhz-desktop-ram
+    - 6800mhz-desktop-ram
+    - 7200mhz-desktop-ram
+    - 8000mhz-desktop-ram
+    - desktop-ram-w-heatsink
+    - desktop-ram-w-rgb
+
   - motherboard:
     - asus-motherboard
     - asrock-motherboard
