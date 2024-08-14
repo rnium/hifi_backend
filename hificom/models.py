@@ -200,6 +200,7 @@ class Cart(models.Model):
     owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     checked_out = models.BooleanField(default=False)
     added_at = models.DateTimeField(auto_now_add=True)
+    coupon = models.ForeignKey('Coupon', null=True, blank=True, on_delete=models.CASCADE)
 
     def cart_total(self) -> Tuple[int, float]:
         items = 0

@@ -1,5 +1,10 @@
 from django.shortcuts import get_object_or_404
-from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveAPIView, DestroyAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import (ListAPIView, 
+                                     CreateAPIView, 
+                                     ListCreateAPIView, 
+                                     RetrieveAPIView, 
+                                     DestroyAPIView, 
+                                     RetrieveUpdateDestroyAPIView)
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
@@ -14,7 +19,8 @@ from hificom.models import (Category,
                             ProductCollection,
                             Carousel,
                             Cart,
-                            Coupon)
+                            Coupon,
+                            Order,)
 
 from .serializer import (CategorySerializer, 
                          CategoryDetailSerializer, 
@@ -24,7 +30,8 @@ from .serializer import (CategorySerializer,
                          ProductDetailSerializer,
                          ProductCreateSerializer,
                          CarouselSerializer,
-                         ProductCollectionSerializer)
+                         ProductCollectionSerializer,
+                         OrderSerializer)
 
 from .permission import IsAdminOrReadOnly, IsAdmin
 from .pagination import ProductsPagination
@@ -66,6 +73,7 @@ class CategoriesView(ListCreateAPIView):
             categories = categories.filter(parent__id=parent_id)
         return categories
 
+
 class CategoryGroupsView(ListAPIView):
     serializer_class = CategoryGroupSerializer
 
@@ -82,6 +90,7 @@ class ViewCategory(RetrieveUpdateDestroyAPIView):
 
     def get_object(self):
         return get_object_or_404(Category, slug=self.kwargs.get('slug'))
+
 
 class CategoryProductsView(ListAPIView):
     serializer_class = ProductBasicSerializer
@@ -107,7 +116,8 @@ class AllProductsSemiDetailView(ListAPIView):
     def get_queryset(self):
         slug = self.kwargs.get('slug')
         return utils.filter_products(slug, self.request)
-    
+
+
 class ProductDetailView(RetrieveAPIView):
     serializer_class = ProductDetailSerializer
     queryset = Product.objects.all()
@@ -129,6 +139,17 @@ class DeleteProduct(DestroyAPIView):
     serializer_class = ProductBasicSerializer
     queryset = Product.objects.all()
     permission_classes=[IsAdmin]
+
+
+class ConfirmOrder(CreateAPIView):
+    serializer_class = OrderSerializer
+    queryset = Order.objects.all()
+
+
+@api_view(['POST'])
+def placeorderdemo(request):
+    print(request.data, flush=1)
+    return Response('Demo run')
 
 
 @api_view(['POST'])
@@ -156,6 +177,7 @@ def add_product(request, slug):
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     return Response('testing')
+
 
 @api_view()
 @permission_classes([IsAdmin])
@@ -191,4 +213,5 @@ def apply_coupon(request):
     except ValidationError as e:
         return Response({'detail': e.message}, status=status.HTTP_400_BAD_REQUEST)
     return Response({'discount': discount_amount})
+
 
