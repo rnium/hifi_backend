@@ -200,7 +200,6 @@ class Cart(models.Model):
     owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     checked_out = models.BooleanField(default=False)
     added_at = models.DateTimeField(auto_now_add=True)
-    coupon = models.ForeignKey('Coupon', null=True, blank=True, on_delete=models.CASCADE)
 
     def cart_total(self) -> Tuple[int, float]:
         items = 0
@@ -240,6 +239,7 @@ class Order(models.Model):
         ('inside', 'Sylhet City'),
         ('outside', 'Outside Sylhet City'),
     )
+    oid = models.CharField(max_length=50, unique=True, default=hexcode_gen, db_index=True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100, null=True, blank=True)
     phone = models.CharField(max_length=20)
@@ -247,6 +247,8 @@ class Order(models.Model):
     location = models.CharField(max_length=20, choices=location_choices)
     address = models.CharField(max_length=512)
     cart = models.OneToOneField(Cart, on_delete=models.CASCADE)
+    coupon = models.ForeignKey(Coupon, null=True, blank=True, on_delete=models.SET_NULL)
+    payable = models.FloatField(default=0)
     status = models.CharField(max_length=20, choices=order_status_options, default='pending')
     added_at = models.DateField(auto_now_add=True)
 

@@ -145,6 +145,23 @@ class ConfirmOrder(CreateAPIView):
     serializer_class = OrderSerializer
     queryset = Order.objects.all()
 
+    def create(self, request, *args, **kwargs):
+        data = request.data.copy()
+        cart = get_object_or_404(Cart, cartid=data.pop('cartid'))
+        item_count, payable = cart.cart_total()
+        payable += utils.get_shipping_charges(item_count, data['location'])
+        coupon_code = data.get('coupon')
+        if coupon := Coupon.objects.filter(code=coupon_code).first():
+            payable -= utils.get_coupon_discount_amount(cart, coupon)
+            data['coupon'] = coupon.id
+        data['payable'] = payable
+        data['cart'] = cart.id
+        serializer = self.get_serializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        utils.update_cart_checked_out(cart, request)
+        return Response(serializer.data)
+
 
 @api_view(['POST'])
 def placeorderdemo(request):
@@ -201,12 +218,13 @@ def get_cart_products(request):
     if products:
         serializer = ProductBasicSerializer(products, many=True, context={'request': request})
         data['prod_data'] = serializer.data
+    data['total_items'], data['total_amount'] = cart.cart_total()
     return Response(data)
 
 
 @api_view(['POST'])
 def apply_coupon(request):
-    coupon = get_object_or_404(Coupon, code=request.data.get('couponCode'))
+    coupon = get_object_or_404(Coupon, code=request.data.get('coupon'))
     cart = get_object_or_404(Cart, cartid=request.data.get('cartid'))
     try:
         discount_amount = utils.get_coupon_discount_amount(cart, coupon)

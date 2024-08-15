@@ -6,6 +6,7 @@ from django.db.models import Model, Count, Q
 from django.utils import timezone
 from django.core.exceptions import ValidationError
 from django.shortcuts import get_object_or_404
+from django.conf import settings
 
 
 def delete_db_objects(model: Model, ids: List[int]):
@@ -157,3 +158,21 @@ def get_coupon_discount_amount(cart: Cart, coupon: Coupon):
     elif discount:=coupon.discount_amount:
         discount_amount = min(cart_total_amount, discount)
     return discount_amount
+
+
+# def get_payable_amount(cartid, couponcode):
+
+def update_cart_checked_out(cart: Cart, request):
+    if request.user.is_authenticated:
+        cart.owner = request.user
+    else:
+        cart.owner = None
+    cart.checked_out = True
+    cart.save()
+
+
+def get_shipping_charges(item_count, location):
+    charge_per_item = settings.SHIPPING_CHARGES.get(location)
+    if not charge_per_item:
+        charge_per_item = settings.SHIPPING_CHARGES['outside']
+    return charge_per_item * item_count

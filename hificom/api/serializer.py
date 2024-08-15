@@ -2,8 +2,9 @@ from rest_framework.serializers import ModelSerializer, Serializer
 from rest_framework import serializers
 from hificom.models import (Category, CategoryGroup, SpecificationTable, ProductSpec, 
                             Specification, Product, ProductImage, KeyFeature, Carousel, 
-                            ProductCollection, Cart, CartProduct, Order)
+                            ProductCollection, Cart, Coupon, Order)
 from . import utils
+from django.shortcuts import get_object_or_404
 
 
 class CategoryBasicSerializer(ModelSerializer):

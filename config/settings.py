@@ -140,6 +140,12 @@ DJOSER = {
     'USER_CREATE_PASSWORD_RETYPE': True,
 }
 
+
+SHIPPING_CHARGES = {
+    'inside': 60,
+    'outside': 120
+}
+
 try:
     from .local_settings import *
 except ImportError:
