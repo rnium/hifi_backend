@@ -353,6 +353,7 @@ keyboard:
   keyboard-interface:
     - wired-keyboard
     - wireless-keyboard
+    - bluetooth-keyboard
     - tri-mode-keyboard
     - type-c-keyboard
   keyboard-special-feature:

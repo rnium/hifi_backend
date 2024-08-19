@@ -140,16 +140,23 @@ keyboard_interface = [
         'seo_title': 'Wireless Keyboards at HiFi Computer'
     },
     {
+        'title': 'Bluetooth',
+        'slug': 'bluetooth-keyboard',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': 'Wireless Keyboards at HiFi Computer'
+    },
+    {
         'title': 'Tri-Mode',
         'slug': 'tri-mode-keyboard',
-        'priority': 5,
+        'priority': 4,
         'cat_type': 'tag',
         'seo_title': 'Tri-Mode Keyboards at HiFi Computer'
     },
     {
         'title': 'Type-C',
         'slug': 'type-c-keyboard',
-        'priority': 5,
+        'priority': 4,
         'cat_type': 'tag',
         'seo_title': 'Type-C Keyboards at HiFi Computer'
     }
