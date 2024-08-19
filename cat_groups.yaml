@@ -346,3 +346,18 @@ ram:
   desktop-ram-extra-features:
     - desktop-ram-w-heatsink
     - desktop-ram-w-rgb
+
+keyboard:
+  keyboard-type:
+    - membrane-keyboard
+    - mechanical-keyboard
+  keyboard-interface:
+    - wired-keyboard
+    - wireless-keyboard
+    - tri-mode-keyboard
+    - type-c-keyboard
+  keyboard-special-feature:
+    - keyboard-w-rgb
+    - keyboard-w-backlit
+    - programmable-keyboard
+    - bangla-keyboard

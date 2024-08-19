@@ -146,6 +146,7 @@ pc-component:
     - thermaltake-desktop-ram
     - transcend-desktop-ram
     - twinmos-desktop-ram
+    - pny-desktop-ram
     # Tags
     - 4gb-desktop-ram
     - 8gb-desktop-ram
@@ -414,7 +415,31 @@ monitor:
 
 
 accessories:
-  - keyboard
+  - keyboard:
+    - a4tech-keyboard
+    - aula-keyboard
+    - belkin-keyboard
+    - corsair-keyboard
+    - dareu-keyboard
+    - fantech-keyboard
+    - gamdias-keyboard
+    - golden-field-keyboard
+    - havit-keyboard
+    - logitech-keyboard
+    - rapoo-keyboard
+    - redragon-keyboard
+    - royal-kludge-keyboard
+    # Tags
+    - membrane-keyboard
+    - mechanical-keyboard
+    - wired-keyboard
+    - wireless-keyboard
+    - tri-mode-keyboard
+    - type-c-keyboard
+    - keyboard-w-rgb
+    - keyboard-w-backlit
+    - programmable-keyboard
+    - bangla-keyboard
   - mouse
   - ups
 

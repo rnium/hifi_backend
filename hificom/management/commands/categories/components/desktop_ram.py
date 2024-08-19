@@ -150,6 +150,14 @@ desktop_ram_brands = [
         'cat_type': 'brand',
         'seo_title': 'TwinMOS Desktop RAM at HiFi Computer',
         'description': 'TwinMOS Desktop RAM delivers reliable performance and speed, making it a great choice for upgrading your PC. Available at HiFi Computer, TwinMOS RAM ensures smooth operation across various applications and tasks.'
+    },
+    {
+        'title': 'PNY',
+        'slug': 'pny-desktop-ram',
+        'priority': 5,
+        'cat_type': 'brand',
+        'seo_title': 'PNY Desktop RAM at HiFi Computer',
+        'description': 'PNY Desktop RAM offers high-quality performance and reliability, ideal for upgrading your PC. Available at HiFi Computer, PNY RAM provides enhanced speed and stability, ensuring smooth operation for gaming, professional, and everyday computing tasks.'
     }
 ]
 
