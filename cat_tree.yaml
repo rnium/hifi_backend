@@ -440,7 +440,45 @@ accessories:
     - keyboard-w-backlit
     - programmable-keyboard
     - bangla-keyboard
-  - mouse
+  - mouse:
+    - a4tech-mouse
+    - asus-mouse
+    - aula-mouse
+    - corsair-mouse
+    - dareu-mouse
+    - deepcool-mouse
+    - dell-mouse
+    - fantech-mouse
+    - gamemax-mouse
+    - gigabyte-mouse
+    - havit-mouse
+    - hyperx-mouse
+    - lenovo-mouse
+    - logitech-mouse
+    - micropack-mouse
+    - rapoo-mouse
+    - razer-mouse
+    - ugreen-mouse
+    - xiaomi-mouse
+    - xtreme-mouse
+    # Tags
+    - standard-mouse
+    - gaming-mouse
+    - wired-mouse
+    - wireless-mouse
+    - bluetooth-mouse
+    - type-c-mouse
+    - upto-800-dpi-mouse
+    - 801-2000-dpi-mouse
+    - 2001-3000-dpi-mouse
+    - 3001-8000-dpi-mouse
+    - 8001-20000-dpi-mouse
+    - higher-than-20000-dpi-mouse
+    - mouse-w-rgb
+    - programmable-mouse
+    - ultra-thin-laser-mouse
+    - multicolor-mouse
+
   - ups
 
 networking:

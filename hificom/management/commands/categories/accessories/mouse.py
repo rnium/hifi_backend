@@ -160,3 +160,146 @@ mouse_brands = [
         'description': 'Upgrade your setup with Xtreme mice available at HiFi Computer. Known for their performance and durability, Xtreme mice are great for gamers and professionals looking for reliability.'
     }
 ]
+
+
+mouse_type = [
+    {
+        'title': 'Standard Mouse',
+        'slug': 'standard-mouse',
+        'priority': 5,
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Gaming Mouse',
+        'slug': 'gaming-mouse',
+        'priority': 5,
+        'cat_type': 'tag'
+    }
+]
+
+
+mouse_interface = [
+    {
+        'title': 'Wired Mouse',
+        'slug': 'wired-mouse',
+        'priority': 5,
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Wireless Mouse',
+        'slug': 'wireless-mouse',
+        'priority': 5,
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Bluetooth Mouse',
+        'slug': 'bluetooth-mouse',
+        'priority': 5,
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Type-C Mouse',
+        'slug': 'type-c-mouse',
+        'priority': 5,
+        'cat_type': 'tag'
+    }
+]
+
+
+mouse_dpi = [
+    {
+        'title': 'Up to 800 DPI',
+        'slug': 'upto-800-dpi-mouse',
+        'priority': 5,
+        'cat_type': 'tag'
+    },
+    {
+        'title': '801-2000 DPI',
+        'slug': '801-2000-dpi-mouse',
+        'priority': 5,
+        'cat_type': 'tag'
+    },
+    {
+        'title': '2001-3000 DPI',
+        'slug': '2001-3000-dpi-mouse',
+        'priority': 5,
+        'cat_type': 'tag'
+    },
+    {
+        'title': '3001-8000 DPI',
+        'slug': '3001-8000-dpi-mouse',
+        'priority': 5,
+        'cat_type': 'tag'
+    },
+    {
+        'title': '8001-20000 DPI',
+        'slug': '8001-20000-dpi-mouse',
+        'priority': 5,
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Higher than 20000 DPI',
+        'slug': 'higher-than-20000-dpi-mouse',
+        'priority': 5,
+        'cat_type': 'tag'
+    }
+]
+
+mouse_special_features = [
+    {
+        'title': 'RGB',
+        'slug': 'mouse-w-rgb',
+        'priority': 5,
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Programmable',
+        'slug': 'programmable-mouse',
+        'priority': 5,
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Ultra-Thin Laser',
+        'slug': 'ultra-thin-laser-mouse',
+        'priority': 5,
+        'cat_type': 'tag'
+    },
+    {
+        'title': 'Multicolor',
+        'slug': 'multicolor-mouse',
+        'priority': 5,
+        'cat_type': 'tag'
+    }
+]
+
+
+MOUSE_CATEGORIES = [
+    *mouse_brands,
+    *mouse_type,
+    *mouse_interface,
+    *mouse_dpi,
+    *mouse_special_features
+]
+
+MOUSE_CATEGORY_GROUPS = [
+    {
+        'title': 'Type',
+        'slug': 'mouse-type',
+        'priority': 3
+    },
+    {
+        'title': 'Interface',
+        'slug': 'mouse-interface',
+        'priority': 3
+    },
+    {
+        'title': 'Mouse DPI',
+        'slug': 'mouse-dpi',
+        'priority': 3
+    },
+    {
+        'title': 'Special Feature',
+        'slug': 'mouse-special-features',
+        'priority': 3
+    },
+]

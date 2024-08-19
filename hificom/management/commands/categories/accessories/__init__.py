@@ -1,4 +1,5 @@
 from .keyboard import KEYBOARD_CATEGORIES, KEYBOARD_CATEGORY_GROUPS
+from .mouse import MOUSE_CATEGORIES, MOUSE_CATEGORY_GROUPS
 
 main_categories = [
     {
@@ -24,11 +25,15 @@ main_categories = [
     },
 ]
 
+
 ACCESSORIES_CATEGORIES = [
     *main_categories,
     *KEYBOARD_CATEGORIES,
+    *MOUSE_CATEGORIES,
 ]
+
 
 ACCESSORIES_CATEGORY_GROUPS = [
     *KEYBOARD_CATEGORY_GROUPS,
+    *MOUSE_CATEGORY_GROUPS,
 ]
