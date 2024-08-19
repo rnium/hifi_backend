@@ -513,9 +513,45 @@ office-equipment:
   - photocopy-machine
 
 sound-system:
+  - headphones:
+    - a4tech-headphone
+    - asus-headphone
+    - corsair-headphone
+    - edifier-headphone
+    - havit-headphone
+    - hyperx-headphone
+    - jbl-headphone
+    - lenovo-headphone
+    - logitech-headphone
+    - maono-headphone
+    - microlab-headphone
+    - micropack-headphone
+    - rapoo-headphone
+    - razer-headphone
+    - redragon-headphone
+    - sony-headphone
+    - wiwu-headphone
+    # tags
+    - regular-headphone
+    - gaming-headphone
+    - professional-headphone
+    - studio-headphone
+    - wired-headphone
+    - wireless-headphone
+    - usb-headphone
+    - type-c-headphone
+    - headphone-w-rgb
+    - headphone-w-microphone
+    - noise-cancellation-headphone
+    - 7-1-headphone
+    - waterproof-headphone
+
+  - earphone
   - speaker-system
-  - headphones
-  - microlab
+  - microphone
+
+
+
 
 software:
   - productivity-software

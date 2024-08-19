@@ -100,7 +100,6 @@ laptop:
     - amd-radeon-rx-7600m-laptop-graphics
     - amd-radeon-rx-7700m-laptop-graphics
     - amd-radeon-rx-7800m-laptop-graphics
-
   
 monitor:
   monitor-screen-size:
@@ -383,3 +382,21 @@ mouse:
     - programmable-mouse
     - ultra-thin-laser-mouse
     - multicolor-mouse
+
+headphones:
+  headphone-type:
+    - regular-headphone
+    - gaming-headphone
+    - professional-headphone
+    - studio-headphone
+  headphone-interface:
+    - wired-headphone
+    - wireless-headphone
+    - usb-headphone
+    - type-c-headphone
+  headphone-extra-features:
+    - headphone-w-rgb
+    - headphone-w-microphone
+    - noise-cancellation-headphone
+    - 7-1-headphone
+    - waterproof-headphone
