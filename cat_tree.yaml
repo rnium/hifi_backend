@@ -429,6 +429,8 @@ accessories:
     - rapoo-keyboard
     - redragon-keyboard
     - royal-kludge-keyboard
+    - pc-power-keyboard
+    - imice-keyboard
     # Tags
     - membrane-keyboard
     - mechanical-keyboard

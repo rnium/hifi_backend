@@ -102,6 +102,22 @@ keyboard_brands = [
         'cat_type': 'brand',
         'seo_title': 'Royal Kludge Keyboards at HiFi Computer',
         'description': 'Explore Royal Kludge keyboards at HiFi Computer, blending style and functionality for gamers and typists alike. Royal Kludge keyboards are known for their mechanical switches, customizable features, and ergonomic designs, making them a top choice for enthusiasts.'
+    },
+    {
+        'title': 'PC Power',
+        'slug': 'pc-power-keyboard',
+        'priority': 5,
+        'cat_type': 'brand',
+        'seo_title': 'PC Power Keyboards at HiFi Computer',
+        'description': 'PC Power keyboards deliver reliable performance and ergonomic design for a comfortable typing experience. Available at HiFi Computer, these keyboards are ideal for both home and office use, offering durability and efficiency at competitive prices.'
+    },
+    {
+        'title': 'iMICE',
+        'slug': 'imice-keyboard',
+        'priority': 5,
+        'cat_type': 'brand',
+        'seo_title': 'iMICE Keyboards at HiFi Computer',
+        'description': 'iMICE keyboards combine innovative design with responsive keys for an enhanced typing experience. Available at HiFi Computer, iMICE keyboards offer excellent value with features suited for gaming and professional use, all at competitive prices.'
     }
 ]
 
