@@ -88,8 +88,8 @@ class CategoryGroupsView(ListAPIView):
     serializer_class = CategoryGroupSerializer
 
     def get_queryset(self):
-        root_slug = self.kwargs.get('slug')
-        root_cat = get_object_or_404(Category, slug=root_slug)
+        identifier = self.kwargs.get('identifier')
+        root_cat = get_object_or_404(Category, Q(id=identifier) if identifier.isdigit() else Q(slug=identifier))
         return CategoryGroup.objects.filter(root__in=root_cat.category_tree)
 
 
@@ -99,7 +99,8 @@ class ViewCategory(RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
 
     def get_object(self):
-        return get_object_or_404(Category, slug=self.kwargs.get('slug'))
+        identifier = self.kwargs.get('identifier')
+        return get_object_or_404(Category, Q(id=identifier) if identifier.isdigit() else Q(slug=identifier))
 
 
 class CategoryProductsView(ListAPIView):
@@ -131,9 +132,7 @@ class AllProductsSemiDetailView(ListAPIView):
 class ProductDetailView(RetrieveAPIView):
     serializer_class = ProductDetailSerializer
     queryset = Product.objects.all()
-
-    def get_object(self):
-        return get_object_or_404(Product, slug=self.kwargs.get('slug'))
+    lookup_field = 'slug'
 
 
 class RelatedProductsView(ListAPIView):
