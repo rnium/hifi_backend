@@ -63,14 +63,21 @@ class CategoriesView(ListCreateAPIView):
     def get_queryset(self):
         cat_type = self.request.GET.get('type', 'all')
         parent= self.request.GET.get('parent', 'null')
+        parent_in_tree_of = self.request.GET.get('treeof', 'null')
         categories = Category.objects.all()
         if cat_type != 'all':
             categories = categories.filter(cat_type=cat_type)
-        if parent == 'null':
+        if parent == 'null' and parent_in_tree_of == 'null':
             categories = categories.filter(parent=None)
-        elif parent != 'null' and  parent.isdigit():
-            parent_id = int(parent)
-            categories = categories.filter(parent__id=parent_id)
+        elif parent == 'null' and parent_in_tree_of != 'null':
+            tree_of = get_object_or_404(Category, slug=parent_in_tree_of)
+            categories = categories.filter(parent__in=tree_of.category_tree)
+        elif parent != 'null':
+            if parent.isdigit():
+                parent_id = int(parent)
+                categories = categories.filter(parent__id=parent_id)
+            else:
+                categories = categories.filter(parent__slug=parent)
         return categories
 
 
