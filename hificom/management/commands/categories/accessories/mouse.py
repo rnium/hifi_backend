@@ -158,6 +158,30 @@ mouse_brands = [
         'cat_type': 'brand',
         'seo_title': 'Xtreme Mice at HiFi Computer',
         'description': 'Upgrade your setup with Xtreme mice available at HiFi Computer. Known for their performance and durability, Xtreme mice are great for gamers and professionals looking for reliability.'
+    },
+    {
+        'title': 'iMICE',
+        'slug': 'imice-mouse',
+        'priority': 5,
+        'cat_type': 'brand',
+        'seo_title': 'iMICE Mice at HiFi Computer',
+        'description': 'iMICE mice offer precise control and ergonomic design for both gaming and everyday use. Available at HiFi Computer, iMICE mice feature customizable buttons and high DPI sensitivity, ensuring a smooth and responsive experience at competitive prices.'
+    },
+    {
+        'title': 'Delux',
+        'slug': 'delux-mouse',
+        'priority': 5,
+        'cat_type': 'brand',
+        'seo_title': 'Delux Mice at HiFi Computer',
+        'description': 'Delux mice combine sleek design with advanced technology to deliver a superior user experience. Available at HiFi Computer, Delux mice are designed for comfort and precision, making them a great choice for both gaming and professional tasks.'
+    },
+    {
+        'title': 'Aorus',
+        'slug': 'aorus-mouse',
+        'priority': 5,
+        'cat_type': 'brand',
+        'seo_title': 'Aorus Mice at HiFi Computer',
+        'description': 'Aorus mice are engineered for gamers, offering high-performance sensors and customizable features for an edge in gaming. Available at HiFi Computer, Aorus mice are built with durability and precision in mind, ensuring top-tier performance at competitive prices.'
     }
 ]
 
