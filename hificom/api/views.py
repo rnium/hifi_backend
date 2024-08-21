@@ -70,14 +70,17 @@ class CategoriesView(ListCreateAPIView):
         if parent == 'null' and parent_in_tree_of == 'null':
             categories = categories.filter(parent=None)
         elif parent == 'null' and parent_in_tree_of != 'null':
-            tree_of = get_object_or_404(Category, slug=parent_in_tree_of)
+            tree_of = get_object_or_404(
+                Category,
+                Q(pk=parent_in_tree_of) | Q(slug=parent_in_tree_of) if parent_in_tree_of.isdigit() 
+                else Q(slug=parent_in_tree_of)
+            )
             categories = categories.filter(parent__in=tree_of.category_tree)
         elif parent != 'null':
-            if parent.isdigit():
-                parent_id = int(parent)
-                categories = categories.filter(parent__id=parent_id)
-            else:
-                categories = categories.filter(parent__slug=parent)
+            categories = categories.filter(
+                Q(parent__pk=parent) | Q(parent__slug=parent) if parent.isdigit()
+                else Q(parent__slug=parent)
+            )
         return categories
 
 
