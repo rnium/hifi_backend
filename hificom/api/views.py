@@ -1,10 +1,11 @@
 from django.shortcuts import get_object_or_404
-from rest_framework.generics import (ListAPIView, 
-                                     CreateAPIView, 
+from rest_framework.generics import (CreateAPIView, 
+                                     DestroyAPIView, 
+                                     ListAPIView, 
                                      ListCreateAPIView, 
                                      RetrieveAPIView, 
-                                     DestroyAPIView, 
                                      RetrieveUpdateDestroyAPIView)
+
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
@@ -13,25 +14,28 @@ from django.contrib.auth import get_user_model
 from django.utils import timezone
 from django.core.exceptions import ValidationError
 import json
-from hificom.models import (Category, 
-                            CategoryGroup, 
-                            Product,
-                            ProductCollection,
-                            Carousel,
+from hificom.models import (Carousel,
                             Cart,
+                            Category, 
+                            CategoryGroup,
                             Coupon,
-                            Order,)
+                            KeyFeature,
+                            Order,
+                            Product,
+                            ProductCollection,)
 
-from .serializer import (CategorySerializer, 
+from .serializer import (CarouselSerializer,
                          CategoryDetailSerializer, 
-                         ProductSemiDetailSerializer,
                          CategoryGroupSerializer,
+                         CategorySerializer,
+                         KeyFeatureSerializer,
+                         OrderSerializer,
                          ProductBasicSerializer,
-                         ProductDetailSerializer,
-                         ProductCreateSerializer,
-                         CarouselSerializer,
                          ProductCollectionSerializer,
-                         OrderSerializer)
+                         ProductCreateSerializer,
+                         ProductDetailSerializer,
+                         ProductSemiDetailSerializer)
+
 
 from .permission import IsAdminOrReadOnly, IsAdmin
 from .pagination import ProductsPagination
@@ -135,6 +139,14 @@ class ProductDetailView(RetrieveAPIView):
     lookup_field = 'slug'
 
 
+class ProductKeyFeaturesView(ListAPIView):
+    serializer_class = KeyFeatureSerializer
+
+    def get_queryset(self):
+        slug = self.kwargs.get('slug')
+        return KeyFeature.objects.filter(product__slug=slug)
+    
+
 class RelatedProductsView(ListAPIView):
     serializer_class = ProductBasicSerializer
     
@@ -143,7 +155,7 @@ class RelatedProductsView(ListAPIView):
         prod = get_object_or_404(Product, pk=pk)
         return Product.objects.filter(tags__in=prod.tags.all()).distinct()
 
- 
+
 class DeleteProduct(DestroyAPIView):
     serializer_class = ProductBasicSerializer
     queryset = Product.objects.all()

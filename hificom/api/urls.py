@@ -15,6 +15,7 @@ urlpatterns = [
     path('cartproducts/', views.get_cart_products, name="cartproducts"),
     path('applycoupon/', views.apply_coupon, name="apply_coupon"),
     path('product/<str:slug>/', views.ProductDetailView.as_view(), name="detailed_product"),
+    path('product/<str:slug>/keyfeatures/', views.ProductKeyFeaturesView.as_view(), name="product_keyfeatures"),
     path('product/<int:pk>/delete/', views.DeleteProduct.as_view(), name="delete_product"),
     path('relatedproducts/<int:pk>/', views.RelatedProductsView.as_view(), name="related_products"),
     path('order/confirm/', views.ConfirmOrder.as_view(), name="confirm_order"),
