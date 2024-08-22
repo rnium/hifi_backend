@@ -80,7 +80,7 @@ class CategoriesView(ListCreateAPIView):
                 else Q(slug=parent_in_tree_of)
             )
             categories = categories.filter(parent__in=tree_of.category_tree)
-        elif parent != 'null':
+        elif parent != 'null' and parent != 'all':
             categories = categories.filter(
                 Q(parent__pk=parent) | Q(parent__slug=parent) if parent.isdigit()
                 else Q(parent__slug=parent)
