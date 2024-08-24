@@ -69,7 +69,7 @@ class ProductSpecSerializer(ModelSerializer):
 
     class Meta:
         model = ProductSpec
-        fields = ['title', 'value']
+        fields = ['id', 'title', 'value']
 
     def get_title(self, obj):
         return obj.specification.title
@@ -174,6 +174,7 @@ class ProductDetailSerializer(ProductSemiDetailSerializer):
             table_specs = product_specs.filter(specification__table=table)
             table_data = {
                 'title': table.title,
+                'id': table.id,
                 'specs': ProductSpecSerializer(table_specs, many=True).data
             }
             data.append(table_data)

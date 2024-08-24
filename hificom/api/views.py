@@ -22,7 +22,8 @@ from hificom.models import (Carousel,
                             KeyFeature,
                             Order,
                             Product,
-                            ProductCollection,)
+                            ProductCollection,
+                            SpecificationTable)
 
 from .serializer import (CarouselSerializer,
                          CategoryDetailSerializer, 
@@ -34,7 +35,8 @@ from .serializer import (CarouselSerializer,
                          ProductCollectionSerializer,
                          ProductCreateSerializer,
                          ProductDetailSerializer,
-                         ProductSemiDetailSerializer)
+                         ProductSemiDetailSerializer,
+                         SpecTableSerializer)
 
 
 from .permission import IsAdminOrReadOnly, IsAdmin
@@ -92,8 +94,7 @@ class CategoryGroupsView(ListAPIView):
     serializer_class = CategoryGroupSerializer
 
     def get_queryset(self):
-        identifier = self.kwargs.get('identifier')
-        root_cat = get_object_or_404(Category, Q(id=identifier) if identifier.isdigit() else Q(slug=identifier))
+        root_cat = utils.get_category_from_identifier(self.kwargs.get('identifier'))
         return CategoryGroup.objects.filter(root__in=root_cat.category_tree)
 
 
@@ -103,8 +104,22 @@ class ViewCategory(RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
 
     def get_object(self):
-        identifier = self.kwargs.get('identifier')
-        return get_object_or_404(Category, Q(id=identifier) if identifier.isdigit() else Q(slug=identifier))
+        return utils.get_category_from_identifier(self.kwargs.get('identifier'))
+
+
+class CategorTablesView(ListAPIView):
+    serializer_class = SpecTableSerializer
+
+    def get_object(self):
+        return utils.get_category_from_identifier(self.kwargs.get('identifier'))
+    
+    def get_queryset(self):
+        category = self.get_object()
+        if self.request.GET.get('tree'):
+            return SpecificationTable.objects.filter(category__in=category.category_tree)
+        else:
+            category.specificationtable_set.all()
+
 
 
 class CategoryProductsView(ListAPIView):

@@ -16,6 +16,10 @@ def delete_db_objects(model: Model, ids: List[int]):
     qs.delete()
 
 
+def get_category_from_identifier(identifier):
+    return get_object_or_404(Category, Q(id=identifier) if identifier.isdigit() else Q(slug=identifier))
+
+
 def set_aliases(obj, aliases):
     if type(aliases) == str:
         obj.aliases.clear()
