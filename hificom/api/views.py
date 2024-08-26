@@ -229,7 +229,27 @@ def add_product(request, slug):
             return Response({'detail': f'Cannot add product. Error: {str(e)}'}, status=status.HTTP_400_BAD_REQUEST)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    return Response('testing')
+    return Response('added')
+
+
+@api_view(['POST'])
+@permission_classes([IsAdmin])
+def edit_product(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    data = json.loads(request.data['json'])
+    data['prev_images'] = data.pop('images')
+    data['images'] = request.FILES.getlist('new_images')
+    serializer = ProductCreateSerializer(product, data=data)
+    if serializer.is_valid():
+        try:
+            serializer.save()
+        except Exception as e:
+            return Response({'detail': f'Cannot edit product. Error: {str(e)}'}, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response('Edited')
+
+
 
 
 @api_view()

@@ -1,6 +1,6 @@
 from typing import Dict, List
 from hificom.models import (Category, SpecificationTable, 
-                            Specification, ProductSpec, ProductImage, 
+                            Specification, ProductSpec, ProductImage, KeyFeature, 
                             TitleAlias, Product, Cart, CartProduct, Coupon)
 from django.db.models import Model, Count, Q
 from django.utils import timezone
@@ -88,6 +88,26 @@ def update_product_specs(product: Product, tables):
                 prod_spec = ProductSpec.objects.filter(specification__id=spec_data['id']).first()
                 if prod_spec:
                     prod_spec.delete()
+
+
+def manage_product_prev_images(product, existing_images):
+    prev_image_ids = [pimg.id for pimg in product.productimage_set.all()]
+    existing_image_ids = [eimg['id'] for eimg in existing_images]
+    deletable_ids = list(set(prev_image_ids) - set(existing_image_ids))
+    deletables = ProductImage.objects.filter(id__in=deletable_ids)
+    if deletables.count():
+        deletables.delete()
+
+
+def manage_product_prev_keyfeatures(product, keyfeatures_data):
+    kf_data_with_id = filter(lambda kf: kf.get('id'), keyfeatures_data)
+    prev_kf_ids = [kf.id for kf in product.keyfeature_set.all()]
+    existing_kf_ids = [kf['id'] for kf in kf_data_with_id]
+    deletable_ids = list(set(prev_kf_ids) - set(existing_kf_ids))
+    deletables = KeyFeature.objects.filter(id__in=deletable_ids)
+    if deletables.count():
+        deletables.delete()
+    
 
 
 def filter_products(slug: str, request):

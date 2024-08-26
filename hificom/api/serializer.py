@@ -198,11 +198,31 @@ class ProductCreateSerializer(ModelSerializer):
         child = serializers.ImageField(),
         required = False
     )
+    prev_images = serializers.ListField(required=False)
     tables = serializers.ListField()
     key_features = serializers.ListField()
     class Meta:
         model = Product
         exclude = ['slug']
+
+    def add_images(self, prod_id, images):
+        img_list = [{'product': prod_id, 'main': img} for img in images]
+        image_serializer = ProductImageSerializer(data=img_list, many=True)
+        if image_serializer.is_valid():
+            image_serializer.save()
+        else:
+            print(image_serializer.errors, flush=1)
+    
+    def update_keyfeatures(self, prod_id, keyfeatures_data):
+        for kf_data in keyfeatures_data:
+            if 'id' in kf_data:
+                kf_instance = get_object_or_404(KeyFeature, pk=kf_data.pop('id'))
+                serializer = KeyFeatureSerializer(kf_instance, data=kf_data)
+            else:
+                kf_data['product'] = prod_id
+                serializer = KeyFeatureSerializer(data=kf_data)
+            if serializer.is_valid():
+                serializer.save()
     
     def create(self, validated_data):
         images = validated_data.pop('images')
@@ -210,19 +230,22 @@ class ProductCreateSerializer(ModelSerializer):
         key_features = validated_data.pop('key_features')
         product = super().create(validated_data)
         utils.update_product_specs(product, tables)
-        img_list = [{'product': product.id, 'main': img} for img in images]
-        image_serializer = ProductImageSerializer(data=img_list, many=True)
-        if image_serializer.is_valid():
-            image_serializer.save()
-        else:
-            print(image_serializer.errors, flush=1)
-        kf_list = [{**kf, 'product': product.id} for kf in key_features]
-        kf_serializer = KeyFeatureSerializer(data=kf_list, many=True)
-        if kf_serializer.is_valid():
-            kf_serializer.save()
-        else:
-            print(kf_serializer.errors, flush=1)
+        self.add_images(product.id, images)
+        self.update_keyfeatures(product.id, key_features)
         return product
+    
+    def update(self, instance, validated_data):
+        existing_images = validated_data.pop('prev_images')
+        utils.manage_product_prev_images(instance, existing_images)
+        new_images = validated_data.pop('images')
+        tables = validated_data.pop('tables')
+        key_features = validated_data.pop('key_features')
+        utils.manage_product_prev_keyfeatures(instance, key_features)
+        utils.update_product_specs(instance, tables)
+        self.add_images(instance.id, new_images)
+        self.update_keyfeatures(instance.id, key_features)
+        return super().update(instance, validated_data)
+        
 
 
 class CarouselSerializer(ModelSerializer):
