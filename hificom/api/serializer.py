@@ -69,7 +69,7 @@ class ProductSpecSerializer(ModelSerializer):
 
     class Meta:
         model = ProductSpec
-        fields = ['id', 'title', 'value']
+        fields = ['id', 'title', 'value', 'specification']
 
     def get_title(self, obj):
         return obj.specification.title
