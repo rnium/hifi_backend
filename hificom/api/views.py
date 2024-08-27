@@ -250,6 +250,17 @@ def edit_product(request, pk):
     return Response({'category': product.category.slug})
 
 
+@api_view(['POST'])
+@permission_classes([IsAdmin])
+def alter_stock_status(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    stock_status = request.data.get('in_stock')
+    if type(stock_status) == bool:
+        product.in_stock = stock_status
+        product.save()
+        return Response({'in_stock': product.in_stock})
+    else:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view()
