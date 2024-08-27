@@ -247,7 +247,7 @@ def edit_product(request, pk):
             return Response({'detail': f'Cannot edit product. Error: {str(e)}'}, status=status.HTTP_400_BAD_REQUEST)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    return Response('Edited')
+    return Response({'category': product.category.slug})
 
 
 

@@ -85,7 +85,7 @@ def update_product_specs(product: Product, tables):
                         value = value
                     )
             else:
-                prod_spec = ProductSpec.objects.filter(specification__id=spec_data['id']).first()
+                prod_spec = ProductSpec.objects.filter(specification__id=spec_data['id'], product=product).first()
                 if prod_spec:
                     prod_spec.delete()
 
