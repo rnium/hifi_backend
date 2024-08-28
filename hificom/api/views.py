@@ -121,22 +121,26 @@ class CategorTablesView(ListAPIView):
             category.specificationtable_set.all()
 
 
-
-class CategoryProductsView(ListAPIView):
+class CategoryUnpaginatedProductsView(ListAPIView):
     serializer_class = ProductBasicSerializer
-    pagination_class = ProductsPagination
 
     def get_queryset(self):
         return Product.objects.filter(category__slug=self.kwargs.get('slug'))
 
 
-class TaggedProductsView(ListAPIView):
-    serializer_class = ProductBasicSerializer
+class CategoryProductsView(CategoryUnpaginatedProductsView):
     pagination_class = ProductsPagination
+
+
+class TaggedProductsUnpaginatedView(ListAPIView):
+    serializer_class = ProductBasicSerializer
     
     def get_queryset(self):
         slug = self.kwargs.get('slug')
         return Product.objects.filter(Q(category__slug=slug) | Q(tags__slug=slug)).distinct()
+
+class TaggedProductsView(TaggedProductsUnpaginatedView):
+    pagination_class = ProductsPagination
 
 
 class AllProductsSemiDetailView(ListAPIView):
