@@ -17,6 +17,7 @@ urlpatterns = [
     path('categories/<str:slug>/addproduct/', views.add_product, name="add_product"),
     path('cartproducts/', views.get_cart_products, name="cartproducts"),
     path('applycoupon/', views.apply_coupon, name="apply_coupon"),
+    path('searchproduct/', views.SearchProduct.as_view(), name="search_product"),
     path('product/<str:slug>/', views.ProductDetailView.as_view(), name="detailed_product"),
     path('product/<str:slug>/keyfeatures/', views.ProductKeyFeaturesView.as_view(), name="product_keyfeatures"),
     path('product/<int:pk>/edit/', views.edit_product, name="edit_product"),

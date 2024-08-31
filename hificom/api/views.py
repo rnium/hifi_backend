@@ -143,6 +143,15 @@ class TaggedProductsView(TaggedProductsUnpaginatedView):
     pagination_class = ProductsPagination
 
 
+class SearchProduct(ListAPIView):
+    serializer_class = ProductBasicSerializer
+
+    def get_queryset(self):
+        query = self.request.GET.get('query')
+        products = Product.objects.filter(Q(title__icontains=query))
+        return products
+
+
 class AllProductsSemiDetailView(ListAPIView):
     serializer_class = ProductSemiDetailSerializer
     pagination_class = ProductsPagination
