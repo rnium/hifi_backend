@@ -2,7 +2,7 @@ from rest_framework.serializers import ModelSerializer, Serializer
 from rest_framework import serializers
 from hificom.models import (Category, CategoryGroup, SpecificationTable, ProductSpec, 
                             Specification, Product, ProductImage, KeyFeature, Carousel, 
-                            ProductCollection, Cart, Coupon, Order)
+                            ProductCollection, WishList, Order)
 from . import utils
 from django.shortcuts import get_object_or_404
 
@@ -278,3 +278,10 @@ class OrderSerializer(ModelSerializer):
     class Meta:
         model = Order
         fields = '__all__'
+
+
+class WishlistSerializer(ModelSerializer):
+    class Meta:
+        model = WishList
+        fields = "__all__"
+        read_only_fields = ['id', 'owner']

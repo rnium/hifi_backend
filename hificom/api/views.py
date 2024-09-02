@@ -3,7 +3,8 @@ from rest_framework.generics import (CreateAPIView,
                                      DestroyAPIView, 
                                      ListAPIView, 
                                      ListCreateAPIView, 
-                                     RetrieveAPIView, 
+                                     RetrieveAPIView,
+                                     UpdateAPIView,
                                      RetrieveUpdateDestroyAPIView)
 
 from rest_framework.decorators import api_view, permission_classes
@@ -11,7 +12,6 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.db.models import Q
 from django.contrib.auth import get_user_model
-from django.utils import timezone
 from django.core.exceptions import ValidationError
 import json
 from hificom.models import (Carousel,
@@ -23,7 +23,8 @@ from hificom.models import (Carousel,
                             Order,
                             Product,
                             ProductCollection,
-                            SpecificationTable)
+                            SpecificationTable,
+                            WishList)
 
 from .serializer import (CarouselSerializer,
                          CategoryDetailSerializer, 
@@ -36,7 +37,8 @@ from .serializer import (CarouselSerializer,
                          ProductCreateSerializer,
                          ProductDetailSerializer,
                          ProductSemiDetailSerializer,
-                         SpecTableSerializer)
+                         SpecTableSerializer,
+                         WishlistSerializer)
 
 
 from .permission import IsAdminOrReadOnly, IsAdmin
@@ -139,6 +141,7 @@ class TaggedProductsUnpaginatedView(ListAPIView):
         slug = self.kwargs.get('slug')
         return Product.objects.filter(Q(category__slug=slug) | Q(tags__slug=slug)).distinct()
 
+
 class TaggedProductsView(TaggedProductsUnpaginatedView):
     pagination_class = ProductsPagination
 
@@ -210,12 +213,6 @@ class ConfirmOrder(CreateAPIView):
         self.perform_create(serializer)
         utils.update_cart_checked_out(cart, request)
         return Response(serializer.data)
-
-
-@api_view(['POST'])
-def placeorderdemo(request):
-    print(request.data, flush=1)
-    return Response('Demo run')
 
 
 @api_view(['POST'])
@@ -313,3 +310,7 @@ def apply_coupon(request):
     return Response({'discount': discount_amount})
 
 
+@api_view(['POST'])
+def sync_wishlist(request):
+    wlist = utils.perform_wishlist_sync(request)
+    return Response(WishlistSerializer(wlist).data)

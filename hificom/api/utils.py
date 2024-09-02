@@ -1,7 +1,7 @@
 from typing import Dict, List
 from hificom.models import (Category, SpecificationTable, 
                             Specification, ProductSpec, ProductImage, KeyFeature, 
-                            TitleAlias, Product, Cart, CartProduct, Coupon)
+                            TitleAlias, Product, Cart, CartProduct, Coupon, WishList)
 from django.db.models import Model, Count, Q
 from django.utils import timezone
 from django.core.exceptions import ValidationError
@@ -150,6 +150,36 @@ def get_cart(request) -> Cart:
             return cart
     cart = Cart.objects.create(**new_cart_args)
     return cart
+
+
+def update_wlist_products(wlist: WishList, prod_ids):
+    products = Product.objects.filter(id__in=prod_ids)
+    removable = list(set(wlist.products.all()) - set(products))
+    wlist.products.add(*products)
+    wlist.products.remove(*removable)
+
+
+def perform_wishlist_sync(request) -> WishList:
+    new_wishlist_args = {}
+    product_ids = request.data.get('products')
+    wishlist_obj = WishList.objects.filter(id=request.data.get('id')).first()
+    print("WL Obj: {}".format(wishlist_obj), flush=1)
+    if request.user.is_authenticated:
+        wlist_temp = WishList.objects.filter(owner=request.user).first()
+        if wlist_temp:
+            wishlist_obj = wlist_temp
+        elif wishlist_obj and wishlist_obj.owner is None:
+            wishlist_obj.owner = request.user
+            wishlist_obj.save()
+            product_ids.extend([prod.id for prod in wishlist_obj.products.all()])
+        else:
+            new_wishlist_args['owner'] = request.user
+    if wishlist_obj is None:
+        print("Creating WL", flush=1)
+        wishlist_obj = WishList.objects.create(**new_wishlist_args)
+    update_wlist_products(wishlist_obj, product_ids)
+    print("WL Obj: {}".format(wishlist_obj), flush=1)
+    return wishlist_obj
 
 
 def update_cart(cart: Cart, cartinfo: dict):

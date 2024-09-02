@@ -196,6 +196,14 @@ class Review(models.Model):
     description = models.CharField(max_length=1000)
 
 
+class WishList(models.Model):
+    id = models.CharField(max_length=50, primary_key=True, unique=True, default=hexcode_gen, db_index=True)
+    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    products = models.ManyToManyField(Product, related_name='wishlists')
+    added = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+
 class Cart(models.Model):
     cartid = models.CharField(max_length=50, unique=True, default=hexcode_gen, db_index=True)
     owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
@@ -209,6 +217,9 @@ class Cart(models.Model):
             items += cart_prod.quantity
             amount += (cart_prod.product.selling_price * cart_prod.quantity)
         return (items, amount)
+    
+    def __str__(self) -> str:
+        return self.cartid
 
 class CartProduct(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
