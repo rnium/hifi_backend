@@ -18,7 +18,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: 22
           script: |
-            cd /home/rony/hifi_backend/
+            cd /home/hifi_backend/
             git pull origin
             source venv/bin/activate
             python manage.py migrate
