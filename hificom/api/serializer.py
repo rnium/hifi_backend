@@ -281,6 +281,7 @@ class OrderSerializer(ModelSerializer):
 
 
 class WishlistSerializer(ModelSerializer):
+    products = ProductBasicSerializer(many=True)
     class Meta:
         model = WishList
         fields = "__all__"

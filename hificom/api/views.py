@@ -310,6 +310,11 @@ def apply_coupon(request):
     return Response({'discount': discount_amount})
 
 
+@api_view()
+def initiate_wishlist(request):
+    wlist = utils.perform_wishlist_initiation(request)
+    return Response(WishlistSerializer(wlist).data)
+
 @api_view(['POST'])
 def sync_wishlist(request):
     wlist = utils.perform_wishlist_sync(request)

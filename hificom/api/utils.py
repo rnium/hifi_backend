@@ -159,11 +159,10 @@ def update_wlist_products(wlist: WishList, prod_ids):
     wlist.products.remove(*removable)
 
 
-def perform_wishlist_sync(request) -> WishList:
+def perform_wishlist_initiation(request) -> WishList:
     new_wishlist_args = {}
-    product_ids = request.data.get('products')
-    wishlist_obj = WishList.objects.filter(id=request.data.get('id')).first()
-    print("WL Obj: {}".format(wishlist_obj), flush=1)
+    wl_id = request.GET.get('id')
+    wishlist_obj = WishList.objects.filter(id=wl_id).first()
     if request.user.is_authenticated:
         wlist_temp = WishList.objects.filter(owner=request.user).first()
         if wlist_temp:
@@ -171,14 +170,18 @@ def perform_wishlist_sync(request) -> WishList:
         elif wishlist_obj and wishlist_obj.owner is None:
             wishlist_obj.owner = request.user
             wishlist_obj.save()
-            product_ids.extend([prod.id for prod in wishlist_obj.products.all()])
         else:
             new_wishlist_args['owner'] = request.user
     if wishlist_obj is None:
-        print("Creating WL", flush=1)
         wishlist_obj = WishList.objects.create(**new_wishlist_args)
+    return wishlist_obj
+
+
+def perform_wishlist_sync(request) -> WishList:
+    product_ids = request.data.get('products')
+    print('syncing prods: {}'.format(product_ids), flush=1)
+    wishlist_obj = get_object_or_404(WishList, id=request.data.get('id'))
     update_wlist_products(wishlist_obj, product_ids)
-    print("WL Obj: {}".format(wishlist_obj), flush=1)
     return wishlist_obj
 
 
