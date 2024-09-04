@@ -182,12 +182,12 @@ class RelatedProductsView(ListAPIView):
     serializer_class = ProductBasicSerializer
     
     def get_queryset(self):
-        pk = self.kwargs.get('pk')
+        slug = self.kwargs.get('slug')
         limit = self.request.GET.get('limit', '10')
         if limit.isdigit():
             limit = int(limit)
-        prod = get_object_or_404(Product, pk=pk)
-        all_related_products = Product.objects.filter(tags__in=prod.tags.all()).exclude(pk=pk)
+        prod = get_object_or_404(Product, slug=slug)
+        all_related_products = Product.objects.filter(tags__in=prod.tags.all()).exclude(pk=prod.id)
         updated_qs = all_related_products.annotate(
             num_matching_tags_count = Count('tags', filter=Q(tags__in=prod.tags.all()))
         ).order_by('-num_matching_tags_count')[:limit]
