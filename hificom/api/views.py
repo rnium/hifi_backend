@@ -10,13 +10,13 @@ from rest_framework.generics import (CreateAPIView,
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 import json
 from hificom.models import (Carousel,
                             Cart,
-                            Category, 
+                            Category,
                             CategoryGroup,
                             Coupon,
                             KeyFeature,
@@ -183,8 +183,15 @@ class RelatedProductsView(ListAPIView):
     
     def get_queryset(self):
         pk = self.kwargs.get('pk')
+        limit = self.request.GET.get('limit', '10')
+        if limit.isdigit():
+            limit = int(limit)
         prod = get_object_or_404(Product, pk=pk)
-        return Product.objects.filter(tags__in=prod.tags.all()).distinct()
+        all_related_products = Product.objects.filter(tags__in=prod.tags.all()).exclude(pk=pk)
+        updated_qs = all_related_products.annotate(
+            num_matching_tags_count = Count('tags', filter=Q(tags__in=prod.tags.all()))
+        ).order_by('-num_matching_tags_count')[:limit]
+        return updated_qs
 
 
 class DeleteProduct(DestroyAPIView):
@@ -313,9 +320,9 @@ def apply_coupon(request):
 @api_view()
 def initiate_wishlist(request):
     wlist = utils.perform_wishlist_initiation(request)
-    return Response(WishlistSerializer(wlist).data)
+    return Response(WishlistSerializer(wlist, context={'request': request}).data)
 
 @api_view(['POST'])
 def sync_wishlist(request):
     wlist = utils.perform_wishlist_sync(request)
-    return Response(WishlistSerializer(wlist).data)
+    return Response(WishlistSerializer(wlist, context={'request': request}).data)

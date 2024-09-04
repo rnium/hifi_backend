@@ -281,8 +281,15 @@ class OrderSerializer(ModelSerializer):
 
 
 class WishlistSerializer(ModelSerializer):
-    products = ProductBasicSerializer(many=True)
+    products = serializers.SerializerMethodField()
     class Meta:
         model = WishList
         fields = "__all__"
         read_only_fields = ['id', 'owner']
+    
+    def get_products(self, obj):
+        return ProductBasicSerializer(
+            obj.products.all(),
+            many=True,
+            context=self.context
+        ).data
