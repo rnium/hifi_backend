@@ -108,49 +108,49 @@ ups_types = [
 
 ups_capacity = [
     {
-        'title': '650VA UPS',
+        'title': '650VA',
         'slug': '650va-ups',
         'priority': 5,
         'cat_type': 'tag',
         'seo_title': '650VA UPS at HiFi Computer'
     },
     {
-        'title': '800VA UPS',
+        'title': '800VA',
         'slug': '800va-ups',
         'priority': 5,
         'cat_type': 'tag',
         'seo_title': '800VA UPS at HiFi Computer'
     },
     {
-        'title': '1000VA UPS',
+        'title': '1000VA',
         'slug': '1000va-ups',
         'priority': 5,
         'cat_type': 'tag',
         'seo_title': '1000VA UPS at HiFi Computer'
     },
     {
-        'title': '1200VA UPS',
+        'title': '1200VA',
         'slug': '1200va-ups',
         'priority': 5,
         'cat_type': 'tag',
         'seo_title': '1200VA UPS at HiFi Computer'
     },
     {
-        'title': '1500VA UPS',
+        'title': '1500VA',
         'slug': '1500va-ups',
         'priority': 5,
         'cat_type': 'tag',
         'seo_title': '1500VA UPS at HiFi Computer'
     },
     {
-        'title': '2000VA UPS',
+        'title': '2000VA',
         'slug': '2000va-ups',
         'priority': 5,
         'cat_type': 'tag',
         'seo_title': '2000VA UPS at HiFi Computer'
     },
     {
-        'title': '3000VA UPS',
+        'title': '3000VA',
         'slug': '3000va-ups',
         'priority': 5,
         'cat_type': 'tag',
