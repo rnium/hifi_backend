@@ -401,3 +401,29 @@ headphones:
     - noise-cancellation-headphone
     - 7-1-headphone
     - waterproof-headphone
+
+ups:
+  ups-type:
+    - online-ups
+    - offline-ups
+  ups-volt-ampere:
+    - 650va-ups
+    - 800va-ups
+    - 1000va-ups
+    - 1200va-ups
+    - 1500va-ups
+    - 2000va-ups
+    - 3000va-ups
+  ups-load-capacity:
+    - 300-450w-ups
+    - 451-600w-ups
+    - 601-800w-ups
+    - 801-1200w-ups
+    - 1201-1800w-ups
+    - 1801-2100w-ups
+    - 2101-2400w-ups
+    - 2401-2700w-ups
+  ups-extra-features:
+    - ups-w-led-display
+    - ups-w-fuse
+    - ups-w-stabilizer
