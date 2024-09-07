@@ -2,7 +2,7 @@ from rest_framework.serializers import ModelSerializer, Serializer
 from rest_framework import serializers
 from hificom.models import (Category, CategoryGroup, SpecificationTable, ProductSpec, 
                             Specification, Product, ProductImage, KeyFeature, Carousel, 
-                            ProductCollection, WishList, Order)
+                            ProductCollection, WishList, Order, Question, Review)
 from . import utils
 from django.shortcuts import get_object_or_404
 
@@ -293,3 +293,10 @@ class WishlistSerializer(ModelSerializer):
             many=True,
             context=self.context
         ).data
+    
+
+class QuestionSerializer(ModelSerializer):
+    account = serializers.StringRelatedField()
+    class Meta:
+        model = Question
+        fields = "__all__"

@@ -194,6 +194,14 @@ class Review(models.Model):
     account = models.ForeignKey(User, on_delete=models.CASCADE)
     rating = models.FloatField(default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
     description = models.CharField(max_length=1000)
+    added_at = models.DateTimeField(auto_now_add=True)
+
+
+class Question(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    account = models.ForeignKey(User, on_delete=models.CASCADE)
+    description = models.CharField(max_length=1000)
+    added_at = models.DateTimeField(auto_now_add=True)
 
 
 class WishList(models.Model):

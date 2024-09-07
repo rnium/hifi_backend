@@ -10,33 +10,20 @@ from rest_framework.generics import (CreateAPIView,
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from django.db.models import Q, Count
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 import json
-from hificom.models import (Carousel,
-                            Cart,
-                            Category,
-                            CategoryGroup,
-                            Coupon,
-                            KeyFeature,
-                            Order,
-                            Product,
-                            ProductCollection,
-                            SpecificationTable,
-                            WishList)
+from hificom.models import (Carousel, Cart, Category,
+                            CategoryGroup, Coupon, KeyFeature,
+                            Order, Product, ProductCollection,
+                            Question, Review, SpecificationTable)
 
-from .serializer import (CarouselSerializer,
-                         CategoryDetailSerializer, 
-                         CategoryGroupSerializer,
-                         CategorySerializer,
-                         KeyFeatureSerializer,
-                         OrderSerializer,
-                         ProductBasicSerializer,
-                         ProductCollectionSerializer,
-                         ProductCreateSerializer,
-                         ProductDetailSerializer,
-                         ProductSemiDetailSerializer,
+from .serializer import (CarouselSerializer, CategoryDetailSerializer, CategoryGroupSerializer,
+                         CategorySerializer, KeyFeatureSerializer, OrderSerializer,
+                         ProductBasicSerializer, ProductCollectionSerializer, ProductCreateSerializer,
+                         ProductDetailSerializer, ProductSemiDetailSerializer, QuestionSerializer,
                          SpecTableSerializer,
                          WishlistSerializer)
 
@@ -194,6 +181,14 @@ class RelatedProductsView(ListAPIView):
         return updated_qs
 
 
+class ProductQuestions(ListAPIView):
+    serializer_class = QuestionSerializer
+    
+    def get_queryset(self):
+        slug = self.kwargs.get('slug')
+        return Question.objects.filter(product__slug=slug)
+
+
 class DeleteProduct(DestroyAPIView):
     serializer_class = ProductBasicSerializer
     queryset = Product.objects.all()
@@ -265,6 +260,20 @@ def edit_product(request, pk):
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     return Response({'category': product.category.slug})
+
+
+@api_view(['POST'])
+@permission_classes[IsAuthenticated]
+def post_product_question(request, pk):
+    data = request.data.copy()
+    data['product'] = pk
+    data['account'] = request.user.id
+    serializer = QuestionSerializer(data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    else:
+        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])
