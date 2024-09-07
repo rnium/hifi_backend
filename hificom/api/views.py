@@ -263,7 +263,7 @@ def edit_product(request, pk):
 
 
 @api_view(['POST'])
-@permission_classes[IsAuthenticated]
+@permission_classes([IsAuthenticated])
 def post_product_question(request, pk):
     data = request.data.copy()
     data['product'] = pk
