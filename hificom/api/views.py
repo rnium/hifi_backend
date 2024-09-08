@@ -24,7 +24,7 @@ from .serializer import (CarouselSerializer, CategoryDetailSerializer, CategoryG
                          CategorySerializer, KeyFeatureSerializer, OrderSerializer,
                          ProductBasicSerializer, ProductCollectionSerializer, ProductCreateSerializer,
                          ProductDetailSerializer, ProductSemiDetailSerializer, QuestionSerializer,
-                         SpecTableSerializer,
+                         SpecTableSerializer, ReviewSerializer,
                          WishlistSerializer)
 
 
@@ -193,6 +193,26 @@ class ProductQuestions(ListCreateAPIView):
     def get_queryset(self):
         product = self.get_object()
         return product.question_set.all()
+    
+    def perform_create(self, serializer):
+        serializer.save(
+            product = self.get_object(),
+            account = self.request.user
+        )
+
+
+class ProductReviews(ListCreateAPIView):
+    serializer_class = ReviewSerializer
+    permission_classes=[IsAuthenticatedOrReadOnly]
+    pagination_class = QuestionsReviewsPagination
+
+    def get_object(self):
+        slug = self.kwargs.get('slug')
+        return get_object_or_404(Product, slug=slug)
+    
+    def get_queryset(self):
+        product = self.get_object()
+        return product.review_set.all()
     
     def perform_create(self, serializer):
         serializer.save(

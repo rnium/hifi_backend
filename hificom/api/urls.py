@@ -23,6 +23,7 @@ urlpatterns = [
     path('product/<str:slug>/', views.ProductDetailView.as_view(), name="detailed_product"),
     path('product/<str:slug>/keyfeatures/', views.ProductKeyFeaturesView.as_view(), name="product_keyfeatures"),
     path('product/<str:slug>/relatedproducts/', views.RelatedProductsView.as_view(), name="related_products"),
+    path('product/<str:slug>/reviews/', views.ProductReviews.as_view(), name="product_reviews"),
     path('product/<str:slug>/questions/', views.ProductQuestions.as_view(), name="product_questions"),
     path('product/<int:pk>/edit/', views.edit_product, name="edit_product"),
     path('product/<int:pk>/delete/', views.DeleteProduct.as_view(), name="delete_product"),

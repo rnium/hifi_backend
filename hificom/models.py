@@ -136,7 +136,7 @@ class Product(models.Model):
     added_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     priority = models.IntegerField(default=0)
-    
+  
     class Meta:
         ordering = ['-priority']
 
@@ -147,6 +147,13 @@ class Product(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+    def update_rating(self):
+        all_reviews = self.review_set.all()
+        ratings = [review.rating for review in all_reviews]
+        self.rating = sum(ratings) / len(ratings)
+        self.save()
+
     
     @property
     def selling_price(self):
@@ -195,6 +202,11 @@ class Review(models.Model):
     rating = models.FloatField(default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
     description = models.CharField(max_length=1000)
     added_at = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        rv = super().save(*args, **kwargs)
+        self.product.update_rating()
+        return rv
 
 
 class Question(models.Model):
