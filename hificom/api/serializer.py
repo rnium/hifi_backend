@@ -299,4 +299,5 @@ class QuestionSerializer(ModelSerializer):
     account = serializers.StringRelatedField()
     class Meta:
         model = Question
-        fields = "__all__"
+        exclude = ['product']
+        read_only_fields = ['account']

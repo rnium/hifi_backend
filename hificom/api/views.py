@@ -10,7 +10,7 @@ from rest_framework.generics import (CreateAPIView,
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from django.db.models import Q, Count
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
@@ -29,7 +29,7 @@ from .serializer import (CarouselSerializer, CategoryDetailSerializer, CategoryG
 
 
 from .permission import IsAdminOrReadOnly, IsAdmin
-from .pagination import ProductsPagination
+from .pagination import ProductsPagination, QuestionsReviewsPagination
 from . import utils
 User = get_user_model()
 
@@ -181,12 +181,24 @@ class RelatedProductsView(ListAPIView):
         return updated_qs
 
 
-class ProductQuestions(ListAPIView):
+class ProductQuestions(ListCreateAPIView):
     serializer_class = QuestionSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    pagination_class = QuestionsReviewsPagination
+
+    def get_object(self):
+        slug = self.kwargs.get('slug')
+        return get_object_or_404(Product, slug=slug)
     
     def get_queryset(self):
-        slug = self.kwargs.get('slug')
-        return Question.objects.filter(product__slug=slug)
+        product = self.get_object()
+        return product.question_set.all()
+    
+    def perform_create(self, serializer):
+        serializer.save(
+            product = self.get_object(),
+            account = self.request.user
+        )
 
 
 class DeleteProduct(DestroyAPIView):
@@ -260,20 +272,6 @@ def edit_product(request, pk):
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     return Response({'category': product.category.slug})
-
-
-@api_view(['POST'])
-@permission_classes([IsAuthenticated])
-def post_product_question(request, pk):
-    data = request.data.copy()
-    data['product'] = pk
-    data['account'] = request.user.id
-    serializer = QuestionSerializer(data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data)
-    else:
-        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])

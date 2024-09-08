@@ -1,9 +1,8 @@
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 
-class ProductsPagination(PageNumberPagination):
-    page_size = 21
-
+class HifiPagination(PageNumberPagination):
+    page_size_query_param = 'page_size'
     def get_paginated_response(self, data):
         return Response({
             'current_page': self.page.number,
@@ -11,3 +10,9 @@ class ProductsPagination(PageNumberPagination):
             'per_page': self.page.paginator.per_page,
             'results': data,
         })
+
+class ProductsPagination(HifiPagination):
+    page_size = 21
+
+class QuestionsReviewsPagination(HifiPagination):
+    page_size = 10
