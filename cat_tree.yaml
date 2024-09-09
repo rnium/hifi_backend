@@ -520,8 +520,25 @@ accessories:
     - ups-w-stabilizer
 
 networking:
-  - router
-  - pocket-router
+  - router:
+    - tp-link-router
+    - tenda-router
+    - cudy-router
+    - netis-router
+    - ruijie-router
+    - d-link-router
+    # tags
+    - wired-router
+    - wireless-n-router
+    - dual-band-router
+    - tri-band-router
+    - pocket-router
+    - sim-router
+    - upto-150-mbps-router
+    - 151-300-mbps-router
+    - 301-600-mbps-router
+    - 601-1000-mbps-router
+    - higher-than-1000-mbps-router
   - wifi-adapter
 
 printer:

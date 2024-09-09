@@ -427,3 +427,18 @@ ups:
     - ups-w-led-display
     - ups-w-fuse
     - ups-w-stabilizer
+
+router:
+  router-type:
+    - wired-router
+    - wireless-n-router
+    - dual-band-router
+    - tri-band-router
+    - pocket-router
+    - sim-router
+  router-speed:
+    - upto-150-mbps-router
+    - 151-300-mbps-router
+    - 301-600-mbps-router
+    - 601-1000-mbps-router
+    - higher-than-1000-mbps-router
