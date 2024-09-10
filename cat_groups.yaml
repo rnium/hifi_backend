@@ -436,9 +436,46 @@ router:
     - tri-band-router
     - pocket-router
     - sim-router
+  router-wifi-generation:
+    - lan-only-router
+    - wifi-4-router
+    - wifi-5-router
+    - wifi-6-router
+  router-wifi-coverage-area:
+    - upto-1500-sq-ft-coverage-router
+    - 1501-2500-sq-ft-coverage-router
+    - 2501-3500-sq-ft-coverage-router
+    - 3501-5000-sq-ft-coverage-router
+    - higher-than-5000-sq-ft-coverage-router
   router-speed:
     - upto-150-mbps-router
     - 151-300-mbps-router
     - 301-600-mbps-router
     - 601-1000-mbps-router
     - higher-than-1000-mbps-router
+  router-lan-speed:
+    - lan-100-mbps-router
+    - lan-1000-mbps-router
+    - lan-1200-mbps-router
+    - lan-2500-mbps-router
+    - lan-10-gbps-router
+  router-wan-ports:
+    - 1-wan-port-router
+    - 2-wan-port-router
+    - 3-wan-port-router
+    - 4-wan-port-router
+    - no-wan-port-router
+  router-lan-ports:
+    - 1-lan-port-router
+    - 2-lan-port-router
+    - 3-lan-port-router
+    - 4-lan-port-router
+    - 5-lan-port-router
+    - 6-lan-port-router
+    - 7-lan-port-router
+    - 8-lan-port-router
+    - 9-lan-port-router
+    - 10-lan-port-router
+    - 13-lan-port-router
+    - 16-lan-port-router
+    - no-lan-port-router

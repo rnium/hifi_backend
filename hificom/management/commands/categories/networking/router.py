@@ -132,11 +132,254 @@ router_speeds = [
     }
 ]
 
+router_wifi_generations = [
+    {
+        'title': 'LAN Only',
+        'slug': 'lan-only-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': 'LAN Only Routers at HiFi Computer',
+    },
+    {
+        'title': 'WiFi 4',
+        'slug': 'wifi-4-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': 'WiFi 4 Routers at HiFi Computer',
+    },
+    {
+        'title': 'WiFi 5',
+        'slug': 'wifi-5-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': 'WiFi 5 Routers at HiFi Computer',
+    },
+    {
+        'title': 'WiFi 6',
+        'slug': 'wifi-6-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': 'WiFi 6 Routers at HiFi Computer',
+    }
+]
+
+router_wifi_coverage_areas = [
+    {
+        'title': 'Up to 1500 sq. ft.',
+        'slug': 'upto-1500-sq-ft-coverage-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': 'Up to 1500 sq. ft. Coverage Routers at HiFi Computer',
+    },
+    {
+        'title': '1501-2500 sq. ft.',
+        'slug': '1501-2500-sq-ft-coverage-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '1501-2500 sq. ft. Coverage Routers at HiFi Computer',
+    },
+    {
+        'title': '2501-3500 sq. ft.',
+        'slug': '2501-3500-sq-ft-coverage-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '2501-3500 sq. ft. Coverage Routers at HiFi Computer',
+    },
+    {
+        'title': '3501-5000 sq. ft.',
+        'slug': '3501-5000-sq-ft-coverage-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '3501-5000 sq. ft. Coverage Routers at HiFi Computer',
+    },
+    {
+        'title': 'Higher than 5000 sq. ft.',
+        'slug': 'higher-than-5000-sq-ft-coverage-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': 'Higher than 5000 sq. ft. Coverage Routers at HiFi Computer',
+    }
+]
+
+router_speed_lan = [
+    {
+        'title': '100 Mbps',
+        'slug': 'lan-100-mbps-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '100 Mbps Routers at HiFi Computer',
+    },
+    {
+        'title': '1000 Mbps',
+        'slug': 'lan-1000-mbps-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '1000 Mbps Routers at HiFi Computer',
+    },
+    {
+        'title': '1200 Mbps',
+        'slug': 'lan-1200-mbps-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '1200 Mbps Routers at HiFi Computer',
+    },
+    {
+        'title': '2500 Mbps',
+        'slug': 'lan-2500-mbps-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '2500 Mbps Routers at HiFi Computer',
+    },
+    {
+        'title': '10 Gbps',
+        'slug': 'lan-10-gbps-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '10 Gbps Routers at HiFi Computer',
+    }
+]
+
+router_wan_ports = [
+    {
+        'title': '1',
+        'slug': '1-wan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '1 WAN Port Routers at HiFi Computer',
+    },
+    {
+        'title': '2',
+        'slug': '2-wan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '2 WAN Ports Routers at HiFi Computer',
+    },
+    {
+        'title': '3',
+        'slug': '3-wan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '3 WAN Ports Routers at HiFi Computer',
+    },
+    {
+        'title': '4',
+        'slug': '4-wan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '4 WAN Ports Routers at HiFi Computer',
+    },
+    {
+        'title': 'None',
+        'slug': 'no-wan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': 'No WAN Port Routers at HiFi Computer',
+    }
+]
+
+router_lan_ports = [
+    {
+        'title': '1',
+        'slug': '1-lan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '1 LAN Port Routers at HiFi Computer',
+    },
+    {
+        'title': '2',
+        'slug': '2-lan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '2 LAN Ports Routers at HiFi Computer',
+    },
+    {
+        'title': '3',
+        'slug': '3-lan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '3 LAN Ports Routers at HiFi Computer',
+    },
+    {
+        'title': '4',
+        'slug': '4-lan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '4 LAN Ports Routers at HiFi Computer',
+    },
+    {
+        'title': '5',
+        'slug': '5-lan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '5 LAN Ports Routers at HiFi Computer',
+    },
+    {
+        'title': '6',
+        'slug': '6-lan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '6 LAN Ports Routers at HiFi Computer',
+    },
+    {
+        'title': '7',
+        'slug': '7-lan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '7 LAN Ports Routers at HiFi Computer',
+    },
+    {
+        'title': '8',
+        'slug': '8-lan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '8 LAN Ports Routers at HiFi Computer',
+    },
+    {
+        'title': '9',
+        'slug': '9-lan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '9 LAN Ports Routers at HiFi Computer',
+    },
+    {
+        'title': '10',
+        'slug': '10-lan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '10 LAN Ports Routers at HiFi Computer',
+    },
+    {
+        'title': '13',
+        'slug': '13-lan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '13 LAN Ports Routers at HiFi Computer',
+    },
+    {
+        'title': '16',
+        'slug': '16-lan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': '16 LAN Ports Routers at HiFi Computer',
+    },
+    {
+        'title': 'None',
+        'slug': 'no-lan-port-router',
+        'priority': 5,
+        'cat_type': 'tag',
+        'seo_title': 'No LAN Port Routers at HiFi Computer',
+    }
+]
 
 ROUTER_CATEGORIES = [
     *router_brands,
     *router_types,
-    *router_speeds
+    *router_speeds,
+    *router_speed_lan,
+    *router_wifi_generations,
+    *router_wifi_coverage_areas,
+    *router_wan_ports,
+    *router_lan_ports
 ]
 
 ROUTER_CATEGORY_GROUPS = [
@@ -146,8 +389,33 @@ ROUTER_CATEGORY_GROUPS = [
         'priority': 4
     },
     {
-        'title': 'Speed',
-        'slug': 'router-speed',
+        'title': 'WiFi Gen',
+        'slug': 'router-wifi-generation',
         'priority': 4
+    },
+    {
+        'title': 'WiFi Coverage',
+        'slug': 'router-wifi-coverage-area',
+        'priority': 4
+    },
+    {
+        'title': 'WiFi Speed',
+        'slug': 'router-speed',
+        'priority': 3
+    },
+    {
+        'title': 'LAN Speed',
+        'slug': 'router-lan-speed',
+        'priority': 2
+    },
+    {
+        'title': 'WAN Ports',
+        'slug': 'router-wan-ports',
+        'priority': 2
+    },
+    {
+        'title': 'LAN Ports',
+        'slug': 'router-lan-ports',
+        'priority': 2
     },
 ]
