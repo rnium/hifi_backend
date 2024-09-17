@@ -13,7 +13,7 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from django.db.models import Q, Count
 from django.contrib.auth import get_user_model
-from django.core.exceptions import ValidationError
+from django.core.exceptions import ValidationError, BadRequest
 import json
 from hificom.models import (Carousel, Cart, Category,
                             CategoryGroup, Coupon, KeyFeature,
@@ -232,6 +232,7 @@ class ConfirmOrder(CreateAPIView):
     queryset = Order.objects.all()
 
     def create(self, request, *args, **kwargs):
+        return Response('Sorry, cannot place order now', status=status.HTTP_406_NOT_ACCEPTABLE)
         data = request.data.copy()
         cart = get_object_or_404(Cart, cartid=data.pop('cartid'))
         item_count, payable = cart.cart_total()

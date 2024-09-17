@@ -15,4 +15,4 @@ class ProductsPagination(HifiPagination):
     page_size = 21
 
 class QuestionsReviewsPagination(HifiPagination):
-    page_size = 10
+    page_size = 5
