@@ -479,3 +479,88 @@ router:
     - 13-lan-port-router
     - 16-lan-port-router
     - no-lan-port-router
+
+processor:
+  processor-type:
+    - core-i3-processor
+    - core-i5-processor
+    - core-i7-processor
+    - core-i9-processor
+    - ryzen-3-processor
+    - ryzen-5-processor
+    - ryzen-7-processor
+    - ryzen-9-processor
+  processor-generation:
+    - 10th-gen-processor
+    - 11th-gen-processor
+    - 12th-gen-processor
+    - 13th-gen-processor
+    - 14th-gen-processor
+  processor-series:
+    - 3000-series-processor
+    - 5000-series-processor
+    - 7000-series-processor
+    - 8000-series-processor
+    - 9000-series-processor
+  processor-base-frequency:
+    - 2.10GHz-base-freq-processor
+    - 2.50GHz-base-freq-processor
+    - 2.60GHz-base-freq-processor
+    - 2.90GHz-base-freq-processor
+    - 3.00GHz-base-freq-processor
+    - 3.06GHz-base-freq-processor
+    - 3.40GHz-base-freq-processor
+    - 3.50GHz-base-freq-processor
+    - 3.60GHz-base-freq-processor
+    - 3.70GHz-base-freq-processor
+    - 3.80GHz-base-freq-processor
+    - 3.90GHz-base-freq-processor
+    - 4.20GHz-base-freq-processor
+    - 4.30GHz-base-freq-processor
+    - 4.50GHz-base-freq-processor
+    - 4.70GHz-base-freq-processor
+  processor-cores:
+    - 4-core-processor
+    - 6-core-processor
+    - 8-core-processor
+    - 10-core-processor
+    - 12-core-processor
+    - 14-core-processor
+    - 16-core-processor
+    - 20-core-processor
+    - 24-core-processor
+  processor-threads:
+    - 8-thread-processor
+    - 12-thread-processor
+    - 16-thread-processor
+    - 20-thread-processor
+    - 24-thread-processor
+    - 28-thread-processor
+    - 32-thread-processor
+  processor-caches:
+    - 6mb-cpu-cache
+    - 12mb-cpu-cache
+    - 16mb-cpu-cache
+    - 18mb-cpu-cache
+    - 19mb-cpu-cache
+    - 20mb-cpu-cache
+    - 22mb-cpu-cache
+    - 24mb-cpu-cache
+    - 25mb-cpu-cache
+    - 30mb-cpu-cache
+    - 33mb-cpu-cache
+    - 35mb-cpu-cache
+    - 36mb-cpu-cache
+    - 38mb-cpu-cache
+    - 40mb-cpu-cache
+  processor-sockets:
+    - am4-socket-processor
+    - am5-socket-processor
+    - lga1200-socket-processor
+    - lga1700-socket-processor
+    - tr4-socket-processor
+
+
+
+
+
