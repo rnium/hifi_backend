@@ -27,9 +27,10 @@ from .serializer import (CarouselSerializer, CategoryDetailSerializer, CategoryG
                          SpecTableSerializer, ReviewSerializer,
                          WishlistSerializer)
 
-
 from .permission import IsAdminOrReadOnly, IsAdmin
-from .pagination import ProductsPagination, QuestionsReviewsPagination
+from .pagination import (OrderPagination, 
+                        ProductsPagination, 
+                        QuestionsReviewsPagination)
 from . import utils
 User = get_user_model()
 
@@ -220,6 +221,21 @@ class ProductReviews(ListCreateAPIView):
             account = self.request.user
         )
 
+class OrderList(ListAPIView):
+    serializer_class = OrderSerializer
+    permission_classes = [IsAdmin]
+    pagination_class = OrderPagination
+
+    def get_queryset(self):
+        orders = Order.objects.all()
+        status = self.request.GET.get('status')
+        excludestatus = self.request.GET.get('excludestatus')
+        if status:
+            orders = orders.filter(status = status)
+        if excludestatus:
+            orders = orders.filter(status != excludestatus)
+        return orders
+
 
 class DeleteProduct(DestroyAPIView):
     serializer_class = ProductBasicSerializer
@@ -232,7 +248,6 @@ class ConfirmOrder(CreateAPIView):
     queryset = Order.objects.all()
 
     def create(self, request, *args, **kwargs):
-        return Response('Sorry, cannot place order now', status=status.HTTP_406_NOT_ACCEPTABLE)
         data = request.data.copy()
         cart = get_object_or_404(Cart, cartid=data.pop('cartid'))
         item_count, payable = cart.cart_total()

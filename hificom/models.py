@@ -16,6 +16,7 @@ order_status_options = (
     ('processing', 'Processing'),
     ('shipped', 'Shipped'),
     ('delivered', 'Delivered'),
+    ('cancelled', 'Cancelled'),
 )
 
 class Carousel(models.Model):
@@ -282,7 +283,10 @@ class Order(models.Model):
     coupon = models.ForeignKey(Coupon, null=True, blank=True, on_delete=models.SET_NULL)
     payable = models.FloatField(default=0)
     status = models.CharField(max_length=20, choices=order_status_options, default='pending')
-    added_at = models.DateField(auto_now_add=True)
+    added_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-added_at']
 
 
 class OrderStatusTimestamp(models.Model):

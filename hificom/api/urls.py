@@ -29,4 +29,5 @@ urlpatterns = [
     path('product/<int:pk>/delete/', views.DeleteProduct.as_view(), name="delete_product"),
     path('product/<int:pk>/alterstock/', views.alter_stock_status, name="alter_stock_status"),
     path('order/confirm/', views.ConfirmOrder.as_view(), name="confirm_order"),
+    path('orders/', views.OrderList.as_view(), name="view_orders"),
 ]
