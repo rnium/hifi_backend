@@ -21,7 +21,7 @@ from hificom.models import (Carousel, Cart, Category,
                             Question, Review, SpecificationTable)
 
 from .serializer import (CarouselSerializer, CategoryDetailSerializer, CategoryGroupSerializer,
-                         CategorySerializer, KeyFeatureSerializer, OrderSerializer,
+                         CategorySerializer, KeyFeatureSerializer, OrderSerializer, OrderDetailSerializer,
                          ProductBasicSerializer, ProductCollectionSerializer, ProductCreateSerializer,
                          ProductDetailSerializer, ProductSemiDetailSerializer, QuestionSerializer,
                          SpecTableSerializer, ReviewSerializer,
@@ -236,6 +236,14 @@ class OrderList(ListAPIView):
             orders = orders.filter(status != excludestatus)
         return orders
 
+class OrderDetail(RetrieveAPIView):
+    serializer_class = OrderDetailSerializer
+    permission_classes = []
+    queryset = Order.objects.all()
+    
+    def get_object(self):
+        oid = self.kwargs.get('oid')
+        return get_object_or_404(Order, oid=oid) 
 
 class DeleteProduct(DestroyAPIView):
     serializer_class = ProductBasicSerializer
@@ -369,3 +377,20 @@ def initiate_wishlist(request):
 def sync_wishlist(request):
     wlist = utils.perform_wishlist_sync(request)
     return Response(WishlistSerializer(wlist, context={'request': request}).data)
+
+
+@api_view(['POST'])
+def alter_order_status(request, oid):
+    order = get_object_or_404(Order, oid=oid)
+    try:
+        utils.change_order_status(
+            order,
+            request.data.get('newstatus')
+        )
+    except Exception as e:
+        return Response(
+            {'details': str(e)},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    return Response({'info': 'Status Changed'})
+    

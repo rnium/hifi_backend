@@ -233,3 +233,18 @@ def get_shipping_charges(item_count, location):
     if not charge_per_item:
         charge_per_item = settings.SHIPPING_CHARGES['outside']
     return charge_per_item * item_count
+
+
+def change_order_status(order, newstatus):
+    target_status_to_current_mapping = {
+        'processing': 'pending',
+        'shipped': 'processing',
+        'delivered': 'shipped'
+    }
+    if order.status in ['delivered', 'cancelled']:
+        raise ValidationError('Cannot Change Status Now')
+    if order.status != target_status_to_current_mapping.get(newstatus):
+        raise ValidationError('Broken Sequence')
+    order.status = newstatus
+    order.save()
+    

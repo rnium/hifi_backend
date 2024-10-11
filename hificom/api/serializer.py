@@ -2,7 +2,8 @@ from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
 from hificom.models import (Category, CategoryGroup, SpecificationTable, ProductSpec, 
                             Specification, Product, ProductImage, KeyFeature, Carousel, 
-                            ProductCollection, WishList, Order, Question, Review)
+                            ProductCollection, WishList, Order, Question, Review,
+                            CartProduct, Cart, Coupon)
 from . import utils
 from django.shortcuts import get_object_or_404
 from account.serializer import UserSerializer
@@ -275,10 +276,41 @@ class ProductCollectionSerializer(ModelSerializer):
         ).data
 
 
+class CartProductSerializer(ModelSerializer):
+    product = ProductBasicSerializer(read_only=True)
+    class Meta:
+        model = CartProduct
+        fields = ['product', 'quantity']
+
+
+class CouponSerializer(ModelSerializer):
+    class Meta:
+        model = Coupon
+        fields = '__all__'
+
+
 class OrderSerializer(ModelSerializer):
+    coupon = CouponSerializer()
     class Meta:
         model = Order
         fields = '__all__'
+        
+
+class OrderDetailSerializer(OrderSerializer):
+    cart = serializers.SerializerMethodField()
+    
+    def get_cart(self, obj):
+        products = CartProductSerializer(
+            obj.cart.cartproduct_set.all(),
+            many = True,
+            context = self.context
+        )
+        total_items, total_amount = obj.cart.cart_total()
+        return {
+            'total_items': total_items,
+            'total_amount': total_amount,
+            'products': products.data
+        }
 
 
 class WishlistSerializer(ModelSerializer):
