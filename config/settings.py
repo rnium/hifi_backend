@@ -1,4 +1,5 @@
 from pathlib import Path
+from datetime import timedelta
 import environ
 import os
 
@@ -17,6 +18,8 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+ORDER_STATUS_FLOW = ('pending', 'processing', 'shipped', 'delivered')
+STATUS_UNDO_TIMEOUT = timedelta(seconds=15)
 
 INSTALLED_APPS = [
     'django.contrib.admin',

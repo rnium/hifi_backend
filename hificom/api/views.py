@@ -380,17 +380,42 @@ def sync_wishlist(request):
 
 
 @api_view(['POST'])
+@permission_classes([IsAdmin])
 def alter_order_status(request, oid):
     order = get_object_or_404(Order, oid=oid)
     try:
-        utils.change_order_status(
-            order,
-            request.data.get('newstatus')
-        )
+        utils.change_order_status(order)
     except Exception as e:
         return Response(
-            {'details': str(e)},
+            {'detail': str(e)},
             status=status.HTTP_400_BAD_REQUEST
         )
-    return Response({'info': 'Status Changed'})
-    
+    return Response({'info': f'Status changed to {order.status.title()}'})
+
+
+@api_view(['POST'])
+@permission_classes([IsAdmin])
+def cancel_order(request, oid):
+    order = get_object_or_404(Order, oid=oid)
+    try:
+        utils.cancel_order(order)
+    except Exception as e:
+        return Response(
+            {'detail': str(e)},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    return Response({'info': 'Order cancelled'})
+
+
+@api_view(['POST'])
+@permission_classes([IsAdmin])
+def undo_alter_status(request, oid):
+    order = get_object_or_404(Order, oid=oid)
+    try:
+        utils.perform_undo_status_change(order)
+    except Exception as e:
+        return Response(
+            {'detail': str(e)},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    return Response({'info': f'Status changed back to {order.status.title()}'})

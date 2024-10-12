@@ -1,6 +1,7 @@
 from django.urls import path
 from hificom.api import views
 
+
 urlpatterns = [
     path('homepage/', views.user_homepage, name="user_homepage"),
     path('homepage/stats/', views.dashboard_stats, name="dashboard_stats"),
@@ -32,4 +33,6 @@ urlpatterns = [
     path('orders/', views.OrderList.as_view(), name="view_orders"),
     path('orders/<str:oid>/', views.OrderDetail.as_view(), name="view_order"),
     path('orders/<str:oid>/alterstatus/', views.alter_order_status, name="alter_order_status"),
+    path('orders/<str:oid>/alterstatus/undo/', views.undo_alter_status, name="undo_alter_status"),
+    path('orders/<str:oid>/cancel/', views.cancel_order, name="cancel_order"),
 ]

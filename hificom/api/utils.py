@@ -1,6 +1,7 @@
+from datetime import timedelta
 from typing import Dict, List
 from hificom.models import (Category, SpecificationTable, 
-                            Specification, ProductSpec, ProductImage, KeyFeature, 
+                            Specification, ProductSpec, ProductImage, KeyFeature, Order, OrderStatusTimestamp,
                             TitleAlias, Product, Cart, CartProduct, Coupon, WishList)
 from django.db.models import Model, Count, Q
 from django.utils import timezone
@@ -235,16 +236,55 @@ def get_shipping_charges(item_count, location):
     return charge_per_item * item_count
 
 
-def change_order_status(order, newstatus):
-    target_status_to_current_mapping = {
-        'processing': 'pending',
-        'shipped': 'processing',
-        'delivered': 'shipped'
-    }
+def change_order_status(order: Order):
     if order.status in ['delivered', 'cancelled']:
         raise ValidationError('Cannot Change Status Now')
-    if order.status != target_status_to_current_mapping.get(newstatus):
-        raise ValidationError('Broken Sequence')
+    newstatus_idx = settings.ORDER_STATUS_FLOW.index(order.status) + 1
+    newstatus = settings.ORDER_STATUS_FLOW[newstatus_idx]
+    order.status = newstatus
+    OrderStatusTimestamp.objects.create(
+        order = order,
+        status = newstatus
+    )
+    order.save()
+    
+
+def cancel_order(order: Order):
+    if order.status in ['delivered', 'cancelled']:
+        raise ValidationError('Cannot cancel order now')
+    newstatus = "cancelled"
+    order.status = newstatus
+    OrderStatusTimestamp.objects.create(
+        order = order,
+        status = newstatus
+    )
+    order.save()
+    
+
+def perform_undo_status_change(order: Order):
+    offset_time = timezone.now() - settings.STATUS_UNDO_TIMEOUT
+    current_status_ts = order.orderstatustimestamp_set.filter(
+        status = order.status,
+        completed_at__gte = offset_time
+    ).first()
+    if not current_status_ts:
+        raise ValidationError('Cannot undo status change')
+    newstatus = settings.ORDER_STATUS_FLOW[0]
+    if order.status == 'cancelled':
+        last_timestamp = OrderStatusTimestamp.objects.filter(
+            order = order
+        ).exclude(
+            id = current_status_ts.id
+        ).order_by(
+            '-completed_at'
+        ).first()
+        if last_timestamp:
+            newstatus = last_timestamp.status
+    else:
+        curr_status_idx = settings.ORDER_STATUS_FLOW.index(order.status)
+        if curr_status_idx > 0:
+            newstatus = settings.ORDER_STATUS_FLOW[curr_status_idx-1]
+    current_status_ts.delete()
     order.status = newstatus
     order.save()
     
