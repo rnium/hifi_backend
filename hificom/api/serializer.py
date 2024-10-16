@@ -6,6 +6,7 @@ from hificom.models import (Category, CategoryGroup, SpecificationTable, Product
                             CartProduct, Cart, Coupon)
 from . import utils
 from django.shortcuts import get_object_or_404
+from django.conf import settings
 from account.serializer import UserSerializer
 
 
@@ -117,10 +118,12 @@ class KeyFeatureSerializer(ModelSerializer):
 class ProductBasicSerializer(ModelSerializer):
     priceSale = serializers.SerializerMethodField()
     cover = serializers.SerializerMethodField()
+    category = serializers.StringRelatedField()
     class Meta:
         model = Product
         fields = [
             'id',
+            'category',
             'title',
             'slug',
             'price',
@@ -306,9 +309,15 @@ class OrderDetailSerializer(OrderSerializer):
             context = self.context
         )
         total_items, total_amount = obj.cart.cart_total()
+        shipping_charge = settings.SHIPPING_CHARGES.get(obj.location, 0) * total_items
+        coupon_discount_amount = 0
+        if coupon:=obj.coupon:
+            coupon_discount_amount = coupon.get_discount_amount(total_amount)
         return {
             'total_items': total_items,
             'total_amount': total_amount,
+            'shipping_charge': shipping_charge,
+            'coupon_discount': coupon_discount_amount,
             'products': products.data
         }
 

@@ -266,6 +266,18 @@ class Coupon(models.Model):
 
     def __str__(self):
         return self.code
+    
+    def get_discount_amount(self, subtotal):
+        discount_amount = 0
+        if percent:=self.discount_percent:
+            discount_draft = (subtotal * percent) / 100
+            if max_dis:=self.max_amount:
+                discount_amount = min(max_dis, discount_draft)
+            else:
+                discount_amount = discount_draft
+        elif discount:=self.discount_amount:
+            discount_amount = min(subtotal, discount)
+        return discount_amount
 
 
 class Order(models.Model):
