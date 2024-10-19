@@ -123,6 +123,78 @@ laptop:
 desktop:
   - brand-pc
   - all-in-one-pc
+  - mini-pc
+  - hifi-pc
+  - hifi-gaming-pc
+  # tags
+  - intel-desktop
+  - amd-desktop
+  - pentium-and-celeron-desktop
+  - core-i3-desktop
+  - core-i5-desktop
+  - core-i7-desktop
+  - core-i9-desktop
+  - ryzen-3-desktop
+  - ryzen-5-desktop
+  - ryzen-7-desktop
+  - ryzen-9-desktop
+  - intel-10th-gen-desktop
+  - intel-11th-gen-desktop
+  - intel-12th-gen-desktop
+  - intel-13th-gen-desktop
+  - intel-14th-gen-desktop
+  - ryzen-3000-series-desktop
+  - ryzen-4000-series-desktop
+  - ryzen-5000-series-desktop
+  - ryzen-6000-series-desktop
+  - ryzen-7000-series-desktop
+  - ryzen-8000-series-desktop
+  - 4gb-ram-desktop
+  - 8gb-ram-desktop
+  - 16gb-ram-desktop
+  - 32gb-ram-desktop
+  - 48gb-ram-desktop
+  - 64gb-ram-desktop
+  - 128gb-ram-desktop
+  - ddr4-ram-desktop
+  - ddr5-ram-desktop
+  - 128gb-ssd-desktop
+  - 256gb-ssd-desktop
+  - 512gb-ssd-desktop
+  - desktop-sata-ssd
+  - desktop-nvme-ssd
+  - 1tb-ssd-desktop
+  - 2tb-ssd-desktop
+  - 4tb-ssd-desktop
+  - 8tb-ssd-desktop
+  - 512gb-hdd-desktop
+  - 1tb-hdd-desktop
+  - desktop-shared-graphics
+  - 2gb-dedicated-desktop-graphics
+  - 4gb-dedicated-desktop-graphics
+  - 6gb-dedicated-desktop-graphics
+  - 8gb-dedicated-desktop-graphics
+  - 10gb-dedicated-desktop-graphics
+  - 12gb-dedicated-desktop-graphics
+  - 16gb-dedicated-desktop-graphics
+  - 24gb-dedicated-desktop-graphics
+  - intel-uhd-desktop-graphics
+  - intel-iris-xe-desktop-graphics
+  - amd-radeon-desktop-graphics
+  - nvidia-3050-desktop-graphics
+  - nvidia-3060-desktop-graphics
+  - nvidia-3070-desktop-graphics
+  - nvidia-3080-desktop-graphics
+  - nvidia-4050-desktop-graphics
+  - nvidia-4060-desktop-graphics
+  - nvidia-4070-desktop-graphics
+  - amd-radeon-rx-6600m-desktop-graphics
+  - amd-radeon-rx-6700m-desktop-graphics
+  - amd-radeon-rx-6800m-desktop-graphics
+  - amd-radeon-rx-7600m-desktop-graphics
+  - amd-radeon-rx-7700m-desktop-graphics
+  - amd-radeon-rx-7800m-desktop-graphics
+
 
 pc-component:
   - processor:
