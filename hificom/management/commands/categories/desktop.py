@@ -36,6 +36,41 @@ main_categories = [
     },
 ]
 
+desktop_pc_brands = [
+    {
+        'title': 'Lenovo',
+        'slug': 'lenovo-desktop-pc',
+        'priority': 4,
+        'seo_title': 'Lenovo Desktop PCs at HiFi Computer',
+        'description': 'Explore a range of reliable and stylish Lenovo desktop PCs designed for both home and office use, offering powerful performance and innovative features.',
+        'cat_type': 'brand',
+    },
+    {
+        'title': 'Dell',
+        'slug': 'dell-desktop-pc',
+        'priority': 4,
+        'seo_title': 'Dell Desktop PCs at HiFi Computer',
+        'description': 'Discover Dell desktop PCs known for their robust build quality, user-friendly designs, and excellent support, perfect for work or gaming.',
+        'cat_type': 'brand',
+    },
+    {
+        'title': 'HP',
+        'slug': 'hp-desktop-pc',
+        'priority': 4,
+        'seo_title': 'HP Desktop PCs at HiFi Computer',
+        'description': 'Find HP desktop PCs that combine cutting-edge technology with sleek designs, ideal for any task from everyday computing to gaming.',
+        'cat_type': 'brand',
+    },
+    {
+        'title': 'MSI',
+        'slug': 'msi-desktop-pc',
+        'priority': 4,
+        'seo_title': 'MSI Desktop PCs at HiFi Computer',
+        'description': 'Check out MSI desktop PCs tailored for gamers and creators, featuring high-performance components and stylish aesthetics.',
+        'cat_type': 'brand',
+    },
+]
+
 desktop_processor_brands = [
     {
         'title': 'Intel Desktop',
@@ -54,7 +89,6 @@ desktop_processor_brands = [
         'cat_type': 'brand',
     },
 ]
-
 
 desktop_categories_processor_type = [
     {
@@ -377,7 +411,6 @@ desktop_categories_hdd = [
     },
 ]
 
-
 desktop_categories_graphics_size = [
     {
         'title': 'Shared Graphics',
@@ -443,7 +476,6 @@ desktop_categories_graphics_size = [
         'cat_type': 'tag',
     },
 ]
-
 
 desktop_categories_graphics_models = [
     {
@@ -563,6 +595,7 @@ desktop_categories_graphics_models = [
 
 DESKTOP_CATEGORIES = [
     *main_categories,
+    *desktop_pc_brands,
     *desktop_processor_brands,
     *desktop_categories_processor_type,
     *desktop_categories_processor_series,

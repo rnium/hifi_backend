@@ -121,7 +121,11 @@ laptop:
   - amd-radeon-rx-7800m-laptop-graphics
   
 desktop:
-  - brand-pc
+  - brand-pc:
+    - lenovo-desktop-pc
+    - dell-desktop-pc
+    - hp-desktop-pc
+    - msi-desktop-pc
   - all-in-one-pc
   - mini-pc
   - hifi-pc
@@ -194,7 +198,6 @@ desktop:
   - amd-radeon-rx-7600m-desktop-graphics
   - amd-radeon-rx-7700m-desktop-graphics
   - amd-radeon-rx-7800m-desktop-graphics
-
 
 pc-component:
   - processor:
@@ -559,7 +562,6 @@ monitor:
   - audio-jack-input-monitor
   - monitor-with-speaker
   - monitor-without-speaker
-
 
 accessories:
   - keyboard:
