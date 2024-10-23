@@ -274,8 +274,6 @@ pc-component:
     - lga1200-socket-processor
     - lga1700-socket-processor
     - tr4-socket-processor
-
-
   - ram:
     - adata-desktop-ram
     - apacer-desktop-ram
@@ -328,7 +326,6 @@ pc-component:
     - 8000mhz-desktop-ram
     - desktop-ram-w-heatsink
     - desktop-ram-w-rgb
-
   - motherboard:
     - asus-motherboard
     - asrock-motherboard
@@ -506,6 +503,73 @@ pc-component:
       - 5700rpm-hdd
       - 7200rpm-hdd
       - 10000rpm-hdd
+    - portable-ssd
+    - portable-hdd
+  - cpu-cooler:
+    - first-player-cpu-cooler
+    - antec-cpu-cooler
+    - arctic-cpu-cooler
+    - asus-cpu-cooler
+    - cooler-master-cpu-cooler
+    - corsair-cpu-cooler
+    - deepcool-cpu-cooler
+    - gamdias-cpu-cooler
+    - gigabyte-cpu-cooler
+    - lian-li-cpu-cooler
+    - montech-cpu-cooler
+    - nzxt-cpu-cooler
+    - pc-cooler-cpu-cooler
+    - redragon-cpu-cooler
+    - team-cpu-cooler
+    - thermalright-cpu-cooler
+    - thermaltake-cpu-cooler
+    - value-top-cpu-cooler
+    - xigmatek-cpu-cooler
+    - xtreme-cpu-cooler
+    # tags
+    - air-cpu-cooler
+    - cpu-water-block-cpu-cooler
+    - liquid-cpu-cooler
+    - water-cooling-kit-cpu-cooler
+    - intel-cpu-cooler
+    - ryzen-cpu-cooler
+    - cpu-cooler-1200-rpm
+    - cpu-cooler-1400-rpm
+    - cpu-cooler-1500-rpm
+    - cpu-cooler-1550-rpm
+    - cpu-cooler-1600-rpm
+    - cpu-cooler-1700-rpm
+    - cpu-cooler-1750-rpm
+    - cpu-cooler-1800-rpm
+    - cpu-cooler-1850-rpm
+    - cpu-cooler-1900-rpm
+    - cpu-cooler-1950-rpm
+    - cpu-cooler-2000-rpm
+    - cpu-cooler-2100-rpm
+    - cpu-cooler-2150-rpm
+    - cpu-cooler-2200-rpm
+    - cpu-cooler-2250-rpm
+    - cpu-cooler-2300-rpm
+    - cpu-cooler-2400-rpm
+    - cpu-cooler-2500-rpm
+    - height-80mm-cpu-cooler
+    - height-92mm-cpu-cooler
+    - height-100mm-cpu-cooler
+    - height-110mm-cpu-cooler
+    - height-120mm-cpu-cooler
+    - height-136mm-cpu-cooler
+    - height-140mm-cpu-cooler
+    - height-360mm-cpu-cooler
+    - black-cpu-cooler
+    - black-and-silver-cpu-cooler
+    - grey-cpu-cooler
+    - pink-cpu-cooler
+    - silver-cpu-cooler
+    - white-cpu-cooler
+  - liquid-cooler
+  - graphics-card
+  - optical-disk-drive
+  - casing-cooling-fan
 
 monitor:
   - acer-monitor
@@ -633,7 +697,6 @@ accessories:
     - programmable-mouse
     - ultra-thin-laser-mouse
     - multicolor-mouse
-
   - ups:
     - apollo-ups
     - power-guard-ups
@@ -667,6 +730,20 @@ accessories:
     - ups-w-led-display
     - ups-w-fuse
     - ups-w-stabilizer
+  - mini-ups
+  - ups-battery
+  - power-strip
+  - power-bank
+  - power-cable
+  - usb-hub
+  - wireless-charger
+  - car-charger
+  - wall-charger
+  - phone-holder
+  - selfie-stick
+  - cable-organizer
+  - screen-cleaner
+  - blower-machine
 
 networking:
   - router:

@@ -30,7 +30,21 @@ storage_types = [
             'drive for work or personal use, we have a range of HDDs that deliver reliable performance. '
             'Shop now at competitive prices in Bangladesh.'
         )
-    }
+    },
+    {
+        'title': 'Portable SSD',
+        'slug': 'portable-ssd',
+        'priority': 4,
+        'seo_title': 'Portable SSDs at HiFi Computer',
+        'description': 'Discover high-speed portable SSDs for quick and reliable data storage on the go.',
+    },
+    {
+        'title': 'Portable HDD',
+        'slug': 'portable-hdd',
+        'priority': 4,
+        'seo_title': 'Portable HDDs at HiFi Computer',
+        'description': 'Explore portable HDDs for spacious and affordable data storage solutions.',
+    },
 ]
 
 STORAGE_CATEGORIES = [

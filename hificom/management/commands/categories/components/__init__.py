@@ -4,6 +4,7 @@ from .power_supply import POWER_SUPPLY_CATEGORIES, POWER_SUPPLY_CATEGORY_GROUPS
 from .storage import STORAGE_CATEGORIES, STORAGE_GROUPS
 from .desktop_ram import DESKTOP_RAM_CATEGORIES, DESKTOP_RAM_GROUPS
 from .processor import PROCESSOR_CATEGORIES, PROCESSOR_GROUPS
+from .cpu_cooler import CPU_COOLER_CATEGORIES, CPU_COOLER_GROUPS
 
 main_component_categories = [
     {
@@ -47,8 +48,44 @@ main_component_categories = [
         'priority': 3,
         'seo_title': 'Storage Solutions at HiFi Computer',
         'description': 'Upgrade your system\'s performance with top-notch storage solutions from HiFi Computer. Discover a wide range of SSDs and HDDs designed for reliability and speed, perfect for boosting your PC’s storage capacity and efficiency. Whether you need high-speed SSDs for quick access or ample HDDs for large data storage, find the best options at competitive prices in Bangladesh. Choose from trusted brands and enhance your computing experience with our storage solutions.'
-    }
+    },
+    {
+        'title': 'CPU Cooler',
+        'slug': 'cpu-cooler',
+        'priority': 4,
+        'seo_title': 'CPU Coolers at HiFi Computer',
+        'description': 'Browse our range of CPU coolers designed for optimal thermal performance.',
+    },
+    {
+        'title': 'Liquid Cooler',
+        'slug': 'liquid-cooler',
+        'priority': 4,
+        'seo_title': 'Liquid Coolers at HiFi Computer',
+        'description': 'Explore high-performance liquid coolers for superior cooling solutions.',
+    },
+    {
+        'title': 'Graphics Card',
+        'slug': 'graphics-card',
+        'priority': 4,
+        'seo_title': 'Graphics Cards at HiFi Computer',
+        'description': 'Find the latest graphics cards for enhanced gaming and performance.',
+    },
+    {
+        'title': 'Optical Disk Drive',
+        'slug': 'optical-disk-drive',
+        'priority': 4,
+        'seo_title': 'Optical Disk Drives at HiFi Computer',
+        'description': 'Discover optical disk drives for versatile media reading and writing.',
+    },
+    {
+        'title': 'Casing Cooling Fan',
+        'slug': 'casing-cooling-fan',
+        'priority': 4,
+        'seo_title': 'Casing Cooling Fans at HiFi Computer',
+        'description': 'Browse high-quality casing cooling fans to enhance airflow in your PC.',
+    },
 ]
+
 
 PC_COMPONENT_CATEGORIES = [
     *main_component_categories,
@@ -58,6 +95,7 @@ PC_COMPONENT_CATEGORIES = [
     *STORAGE_CATEGORIES,
     *DESKTOP_RAM_CATEGORIES,
     *PROCESSOR_CATEGORIES,
+    *CPU_COOLER_CATEGORIES,
 ]
 
 PC_COMPONENT_CATEGORY_GROUPS = [
@@ -67,4 +105,5 @@ PC_COMPONENT_CATEGORY_GROUPS = [
     *STORAGE_GROUPS,
     *DESKTOP_RAM_GROUPS,
     *PROCESSOR_GROUPS,
+    *CPU_COOLER_GROUPS
 ]

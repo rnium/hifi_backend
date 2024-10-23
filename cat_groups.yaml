@@ -647,7 +647,50 @@ processor:
     - lga1700-socket-processor
     - tr4-socket-processor
 
-
-
+cpu-cooler:
+  cpu-cooler-types:
+    - air-cpu-cooler
+    - cpu-water-block-cpu-cooler
+    - liquid-cpu-cooler
+    - water-cooling-kit-cpu-cooler
+  cpu-cooler-cpu-socket-brands:
+    - intel-cpu-cooler
+    - ryzen-cpu-cooler
+  cpu-cooler-fan-speed:
+    - cpu-cooler-1200-rpm
+    - cpu-cooler-1400-rpm
+    - cpu-cooler-1500-rpm
+    - cpu-cooler-1550-rpm
+    - cpu-cooler-1600-rpm
+    - cpu-cooler-1700-rpm
+    - cpu-cooler-1750-rpm
+    - cpu-cooler-1800-rpm
+    - cpu-cooler-1850-rpm
+    - cpu-cooler-1900-rpm
+    - cpu-cooler-1950-rpm
+    - cpu-cooler-2000-rpm
+    - cpu-cooler-2100-rpm
+    - cpu-cooler-2150-rpm
+    - cpu-cooler-2200-rpm
+    - cpu-cooler-2250-rpm
+    - cpu-cooler-2300-rpm
+    - cpu-cooler-2400-rpm
+    - cpu-cooler-2500-rpm
+  cpu-cooler-height:
+    - height-80mm-cpu-cooler
+    - height-92mm-cpu-cooler
+    - height-100mm-cpu-cooler
+    - height-110mm-cpu-cooler
+    - height-120mm-cpu-cooler
+    - height-136mm-cpu-cooler
+    - height-140mm-cpu-cooler
+    - height-360mm-cpu-cooler
+  cpu-cooler-color:
+    - black-cpu-cooler
+    - black-and-silver-cpu-cooler
+    - grey-cpu-cooler
+    - pink-cpu-cooler
+    - silver-cpu-cooler
+    - white-cpu-cooler
 
 
