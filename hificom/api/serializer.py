@@ -293,7 +293,7 @@ class CouponSerializer(ModelSerializer):
 
 
 class OrderSerializer(ModelSerializer):
-    coupon = CouponSerializer()
+    coupon = CouponSerializer(read_only=True)
     class Meta:
         model = Order
         fields = '__all__'
