@@ -16,10 +16,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
-# Application definition
+# Hificom settings
 ORDER_STATUS_FLOW = ('pending', 'processing', 'shipped', 'delivered')
 STATUS_UNDO_TIMEOUT = timedelta(seconds=15)
+
+DANGLING_CART_LIFETIME = timedelta(days=7)
+
+# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
