@@ -10,6 +10,7 @@ from .printer import PRINTER_CATEGORIES, PRINTER_GROUPS
 from .sound_system import SOUND_SYSTEM_CATEGORIES, SOUND_SYSTEM_GROUPS
 from .office_quipments import OFFICE_EQUIPMENT_CATEGORIES
 from .softwares import SOFTWARE_CATEGORIES
+from .smartphone import ALL_SMARTPHONE_CATEGORIES
 
 with open('cat_tree.yaml') as f:
     cat_tree = yaml.load(f, yaml.SafeLoader)
@@ -29,7 +30,8 @@ ALL_CATEGORIES = [
     *PRINTER_CATEGORIES,
     *SOUND_SYSTEM_CATEGORIES,
     *OFFICE_EQUIPMENT_CATEGORIES,
-    *SOFTWARE_CATEGORIES
+    *SOFTWARE_CATEGORIES,
+    *ALL_SMARTPHONE_CATEGORIES,
 ]
 
 ALL_GROUPS = [

@@ -800,28 +800,27 @@ networking:
 
   - wifi-adapter
 
-printer:
-  - brother-printer
-  - hp-printer
-  - canon-printer
-  - epson-printer
-  - pantum-printer
-  # Tags
-  - ink-printer
-  - inkjet-printer
-  - thermal-inkjet-printer
-  - inktank-printer
-  - laser-printer
-  - color-printer
-  - black-and-white-printer
-  - color-and-black-and-white-printer
-  - scan-copy-printer
-  - scan-copy-fax-printer
-  - professional-photo-printer
-  - duplex-printer
-  - printer-w-networking-interface
-
 office-equipment:
+  - printer:
+    - brother-printer
+    - hp-printer
+    - canon-printer
+    - epson-printer
+    - pantum-printer
+    # Tags
+    - ink-printer
+    - inkjet-printer
+    - thermal-inkjet-printer
+    - inktank-printer
+    - laser-printer
+    - color-printer
+    - black-and-white-printer
+    - color-and-black-and-white-printer
+    - scan-copy-printer
+    - scan-copy-fax-printer
+    - professional-photo-printer
+    - duplex-printer
+    - printer-w-networking-interface
   - scanner
   - projector
   - photocopy-machine
@@ -864,7 +863,26 @@ sound-system:
   - speaker-system
   - microphone
 
-
+smartphone:
+  - all-brand-phone:
+    - samsung-phone
+    - xiaomi-phone
+    - oppo-phone
+    - vivo-phone
+    - realme-phone
+    - huawei-phone
+    - apple-phone
+    - oneplus-phone
+    - nokia-phone
+    - motorola-phone
+    - tecno-phone
+    - infinix-phone
+    - symphony-phone
+    - walton-phone
+    - itel-phone
+    - lava-phone
+    - micromax-phone
+    - maximus-phone
 
 
 software:

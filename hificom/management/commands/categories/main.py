@@ -34,8 +34,8 @@ MAIN_CATEGORIES = [
         'title': 'Accessories',
         'slug': 'accessories',
         'priority': 6,
-        'seo_title': 'Computer Accessories at HiFi Computer',
-        'description': 'Complete your setup with computer accessories from HiFi Computer. Explore a wide range of keyboards, mice, adapters, and more at competitive prices in Bangladesh. Benefit from doorstep delivery and find all the accessories you need in one place.',
+        'seo_title': 'Accessories at HiFi Computer',
+        'description': 'Explore a wide range of essential gadgets and peripherals at competitive prices in Bangladesh. Benefit from doorstep delivery and find all the accessories you need in one place.',
     },
     {
         'title': 'Networking',
@@ -73,4 +73,11 @@ MAIN_CATEGORIES = [
         'seo_title': 'Software at HiFi Computer',
         'description': 'Explore essential software solutions at HiFi Computer, including operating systems, productivity software, security suites, and more. Find trusted brands and competitive prices in Bangladesh. Enjoy doorstep delivery and secure your devices with our range of software.',
     },
+    {
+        'title': 'Smartphone',
+        'slug': 'smartphone',
+        'priority': 0,
+        'seo_title': 'Smartphones at HiFi Computer',
+        'description': 'Discover the latest smartphones at HiFi Computer, featuring top brands and models for every budget. Whether you need a flagship device or a budget-friendly option, find the perfect smartphone at competitive prices in Bangladesh. Enjoy doorstep delivery and exclusive discounts on smartphones.',
+    }
 ]
