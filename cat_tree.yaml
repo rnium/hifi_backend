@@ -883,6 +883,28 @@ smartphone:
     - lava-phone
     - micromax-phone
     - maximus-phone
+  - phone-accessories:
+    - phone-case
+    - phone-protector
+    - phone-stand
+    - phone-holder
+    - phone-grip
+    - phone-charger
+    - phone-cable
+    - phone-adapter
+    - phone-battery
+    - phone-earphone
+    - phone-headphone
+    - phone-speaker
+    - phone-microphone
+    - phone-usb-hub
+    - phone-screen-protector
+    - phone-camera-lens
+    - phone-camera-stand
+    - phone-camera-remote
+    - phone-camera-light
+    - phone-camera-tripod
+    - phone-camera-gimbal
 
 
 software:

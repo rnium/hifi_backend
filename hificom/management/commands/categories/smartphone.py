@@ -3,8 +3,14 @@ sub_categories = [
         'title': 'All Brands',
         'slug': 'all-brand-phone',
         'seo_title': 'All Brands of Mobile Phones in Bangladesh',
-        'description': 'Discover a wide range of smartphones from top brands at HiFi Mobile. Explore the latest models and find the perfect device for your needs. Enjoy competitive prices and doorstep delivery on smartphones across Bangladesh.',
+        'description': 'Discover a wide range of smartphones from top brands at HiFi Computer. Explore the latest models and find the perfect device for your needs. Enjoy competitive prices and doorstep delivery on smartphones across Bangladesh.',
         'priority': 10
+    },
+    {
+        'title': 'Phone Accessories',
+        'slug': 'phone-accessories',
+        'seo_title': 'Mobile Phone Accessories in Bangladesh',
+        'description': 'Find the best mobile phone accessories at HiFi Computer. Shop for cases, covers, screen protectors, chargers, power banks, and more. Enjoy competitive prices and doorstep delivery on phone accessories across Bangladesh.',
     }
 ]
 
@@ -137,7 +143,138 @@ all_brands = [
     }
 ]
 
+
+accessories = [
+    {
+        'title': 'Phone Case',
+        'slug': 'phone-case',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Case in Bangladesh',
+    },
+    {
+        'title': 'Phone Protector',
+        'slug': 'phone-protector',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Protector in Bangladesh',
+    },
+    {
+        'title': 'Phone Stand',
+        'slug': 'phone-stand',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Stand in Bangladesh',
+    },
+    {
+        'title': 'Phone Holder',
+        'slug': 'phone-holder',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Holder in Bangladesh',
+    },
+    {
+        'title': 'Phone Grip',
+        'slug': 'phone-grip',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Grip in Bangladesh',
+    },
+    {
+        'title': 'Phone Charger',
+        'slug': 'phone-charger',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Charger in Bangladesh',
+    },
+    {
+        'title': 'Phone Cable',
+        'slug': 'phone-cable',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Cable in Bangladesh',
+    },
+    {
+        'title': 'Phone Adapter',
+        'slug': 'phone-adapter',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Adapter in Bangladesh',
+    },
+    {
+        'title': 'Phone Battery',
+        'slug': 'phone-battery',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Battery in Bangladesh',
+    },
+    {
+        'title': 'Phone Earphone',
+        'slug': 'phone-earphone',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Earphone in Bangladesh',
+    },
+    {
+        'title': 'Phone Headphone',
+        'slug': 'phone-headphone',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Headphone in Bangladesh',
+    },
+    {
+        'title': 'Phone Speaker',
+        'slug': 'phone-speaker',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Speaker in Bangladesh',
+    },
+    {
+        'title': 'Phone Microphone',
+        'slug': 'phone-microphone',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Microphone in Bangladesh',
+    },
+    {
+        'title': 'Phone USB Hub',
+        'slug': 'phone-usb-hub',
+        'priority': 3,
+        'seo_title': 'Mobile Phone USB Hub in Bangladesh',
+    },
+    {
+        'title': 'Phone Screen Protector',
+        'slug': 'phone-screen-protector',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Screen Protector in Bangladesh',
+    },
+    {
+        'title': 'Phone Camera Lens',
+        'slug': 'phone-camera-lens',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Camera Lens in Bangladesh',
+    },
+    {
+        'title': 'Phone Camera Stand',
+        'slug': 'phone-camera-stand',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Camera Stand in Bangladesh',
+    },
+    {
+        'title': 'Phone Camera Remote',
+        'slug': 'phone-camera-remote',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Camera Remote in Bangladesh',
+    },
+    {
+        'title': 'Phone Camera Light',
+        'slug': 'phone-camera-light',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Camera Light in Bangladesh',
+    },
+    {
+        'title': 'Phone Camera Tripod',
+        'slug': 'phone-camera-tripod',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Camera Tripod in Bangladesh',
+    },
+    {
+        'title': 'Phone Camera Gimbal',
+        'slug': 'phone-camera-gimbal',
+        'priority': 3,
+        'seo_title': 'Mobile Phone Camera Gimbal in Bangladesh',
+    },
+]
+
 ALL_SMARTPHONE_CATEGORIES = [
     *sub_categories,
-    *all_brands
+    *all_brands,
+    *accessories
 ]
