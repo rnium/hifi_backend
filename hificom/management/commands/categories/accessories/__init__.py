@@ -1,6 +1,8 @@
 from .keyboard import KEYBOARD_CATEGORIES, KEYBOARD_CATEGORY_GROUPS
 from .mouse import MOUSE_CATEGORIES, MOUSE_CATEGORY_GROUPS
 from .ups import UPS_CATEGORIES, UPS_CATEGORY_GROUPS
+from .smart_watch import SMART_WATCH_CATEGORIES
+from .pendrive import PENDRIVE_CATEGORIES
 
 main_categories = [
     {
@@ -122,6 +124,21 @@ main_categories = [
         'seo_title': 'Blower Machines at HiFi Computer',
         'description': 'Keep your electronics dust-free with powerful blower machines designed for cleaning sensitive components.',
     },
+    {
+        'title': 'Smart Watch',
+        'slug': 'smart-watch',
+        'priority': 3,
+        'seo_title': 'Smart Watches at HiFi Computer',
+        'description': 'Stay connected and track your fitness goals with stylish and feature-rich smart watches from HiFi Computer. Discover a range of brands and models tailored for different lifestyles and preferences, available at competitive prices in Bangladesh.',
+    },
+    {
+        'title': 'Pendrive',
+        'slug': 'pen-drive',
+        'priority': 3,
+        'seo_title': 'Pendrives at HiFi Computer',
+        'description': 'Store and transfer data with ease using high-speed pendrives from HiFi Computer. Choose from a variety of capacities, designs, and brands to suit your needs, available at competitive prices in Bangladesh.',
+    }
+    
 ]
 
 
@@ -130,6 +147,8 @@ ACCESSORIES_CATEGORIES = [
     *KEYBOARD_CATEGORIES,
     *MOUSE_CATEGORIES,
     *UPS_CATEGORIES,
+    *SMART_WATCH_CATEGORIES,
+    *PENDRIVE_CATEGORIES
 ]
 
 

@@ -730,6 +730,33 @@ accessories:
     - ups-w-led-display
     - ups-w-fuse
     - ups-w-stabilizer
+  - pen-drive:
+    - adata-pen-drive
+    - apacer-pen-drive
+    - corsair-pen-drive
+    - hp-pen-drive
+    - kingston-pen-drive
+    - lexar-pen-drive
+    - netac-pen-drive
+    - pny-pen-drive
+    - sandisk-pen-drive
+    - team-pen-drive
+    - transcend-pen-drive
+    - twinmos-pen-drive
+  - smart-watch:
+    - amazfit-smart-watch
+    - apple-smart-watch
+    - colmi-smart-watch
+    - havit-smart-watch
+    - hoco-smart-watch
+    - huawei-smart-watch
+    - honor-smart-watch
+    - oneplus-smart-watch
+    - oraimo-smart-watch
+    - qcy-smart-watch
+    - samsung-smart-watch
+    - xiaomi-smart-watch
+    - others-smart-watch
   - mini-ups
   - ups-battery
   - power-strip
