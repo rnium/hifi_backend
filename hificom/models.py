@@ -239,6 +239,12 @@ class Cart(models.Model):
             amount += (cart_prod.product.selling_price * cart_prod.quantity)
         return (items, amount)
     
+    def check_all_products_in_stock(self) -> bool:
+        for cart_prod in self.cartproduct_set.all():
+            if not cart_prod.product.in_stock:
+                return False
+        return True
+    
     def __str__(self) -> str:
         return self.cartid
 

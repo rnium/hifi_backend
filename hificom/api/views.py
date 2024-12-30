@@ -258,6 +258,11 @@ class ConfirmOrder(CreateAPIView):
     def create(self, request, *args, **kwargs):
         data = request.data.copy()
         cart = get_object_or_404(Cart, cartid=data.pop('cartid'))
+        if not cart.check_all_products_in_stock():
+            return Response(
+                {'detail': 'Some products in cart are out of stock'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
         item_count, payable = cart.cart_total()
         payable += utils.get_shipping_charges(item_count, data['location'])
         coupon_code = data.get('coupon')
@@ -354,6 +359,7 @@ def get_cart_products(request):
         serializer = ProductBasicSerializer(products, many=True, context={'request': request})
         data['prod_data'] = serializer.data
     data['total_items'], data['total_amount'] = cart.cart_total()
+    data['all_in_stock'] = cart.check_all_products_in_stock()
     return Response(data)
 
 

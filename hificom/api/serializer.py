@@ -119,6 +119,7 @@ class ProductBasicSerializer(ModelSerializer):
     priceSale = serializers.SerializerMethodField()
     cover = serializers.SerializerMethodField()
     category = serializers.StringRelatedField()
+    category_id = serializers.SerializerMethodField()
     class Meta:
         model = Product
         fields = [
@@ -131,6 +132,7 @@ class ProductBasicSerializer(ModelSerializer):
             'discount',
             'in_stock',
             'cover',
+            'category_id'
         ]
     
     def get_priceSale(self, obj):
@@ -144,6 +146,9 @@ class ProductBasicSerializer(ModelSerializer):
                 return request.build_absolute_uri(cover_img.main.url)
             else:
                 return cover_img.main.url
+            
+    def get_category_id(self, obj):
+        return obj.category.id
 
 
 class ProductSemiDetailSerializer(ProductBasicSerializer):
