@@ -134,6 +134,14 @@ headphone_brands = [
         'cat_type': 'brand',
         'seo_title': 'Wiwu Headphones at HiFi Computer',
         'description': 'Discover the latest Wiwu headphones at HiFi Computer. Offering quality sound and comfortable wear, Wiwu headphones are ideal for everyday use and entertainment. Find the best deals in Bangladesh now.'
+    },
+    {
+        'title': 'Eksa',
+        'slug': 'eksa-headphone',
+        'priority': 5,
+        'cat_type': 'brand',
+        'seo_title': 'Eksa Headphones at HiFi Computer',
+        'description': 'Experience premium audio quality with Eksa headphones from HiFi Computer. Designed for gamers and music lovers, Eksa headphones offer superior sound and comfort. Shop now for the best deals in Bangladesh.'
     }
 ]
 
