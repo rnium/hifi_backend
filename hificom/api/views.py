@@ -227,13 +227,15 @@ class OrderList(ListAPIView):
     pagination_class = OrderPagination
 
     def get_queryset(self):
-        orders = Order.objects.all()
+        orders = Order.objects.all().order_by('id')
         status = self.request.GET.get('status')
         excludestatus = self.request.GET.get('excludestatus')
         if status:
             orders = orders.filter(status = status)
         if excludestatus:
             orders = orders.filter(status != excludestatus)
+        if self.request.GET.get('running'):
+            orders = orders.filter(status__in=['pending', 'processing', 'shipped'])
         return orders
 
 class OrderDetail(RetrieveAPIView):
