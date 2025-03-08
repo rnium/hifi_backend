@@ -11,6 +11,11 @@ User = get_user_model()
 def hexcode_gen():
     return uuid4().hex
 
+def get_banner_title():
+    sl = Carousel.objects.count() + 1
+    return f"New Banner {sl}"
+    
+
 order_status_options = (
     ('pending', 'Pending'),
     ('processing', 'Processing'),
@@ -20,12 +25,16 @@ order_status_options = (
 )
 
 class Carousel(models.Model):
+    # Also referred as Banner
+    title = models.CharField(max_length=200, default=get_banner_title)
     banner = models.ImageField(upload_to='features')
     site_link = models.CharField(max_length=200, null=True, blank=True)
     added_at = models.DateTimeField(default=timezone.now)
+    priority = models.IntegerField(default=0)
+    active = models.BooleanField(default=True)
 
     class Meta:
-        ordering = ['-added_at']
+        ordering = ['-priority', '-added_at']
   
 
 class Category(models.Model):
