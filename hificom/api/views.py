@@ -433,3 +433,23 @@ def undo_alter_status(request, oid):
             status=status.HTTP_400_BAD_REQUEST
         )
     return Response({'info': f'Status changed back to {order.status.title()}'})
+
+@api_view()
+def category_graph(request):
+    categories = Category.objects.filter(cat_type__in=['general', 'brand', 'series', 'feature'])
+    nodes = []
+    edges = []
+    
+    for category in categories:
+        nodes.append({
+            "id": category.id,
+            "label": category.title,
+            # Add extra fields like description if needed
+        })
+        if category.parent:
+            edges.append({
+                "from": category.parent.id,
+                "to": category.id
+            })
+    
+    return Response({"nodes": nodes, "edges": edges})
