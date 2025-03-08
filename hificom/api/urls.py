@@ -35,4 +35,5 @@ urlpatterns = [
     path('orders/<str:oid>/alterstatus/', views.alter_order_status, name="alter_order_status"),
     path('orders/<str:oid>/alterstatus/undo/', views.undo_alter_status, name="undo_alter_status"),
     path('orders/<str:oid>/cancel/', views.cancel_order, name="cancel_order"),
+    path('carousels/', views.Carousels.as_view(), name="all_carousels"),
 ]

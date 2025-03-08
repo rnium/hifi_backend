@@ -280,6 +280,12 @@ class ConfirmOrder(CreateAPIView):
         return Response(serializer.data)
 
 
+class Carousels(ListCreateAPIView):
+    serializer_class = CarouselSerializer
+    permission_classes = [IsAdmin]
+    queryset = Carousel.objects.all()
+
+
 @api_view(['POST'])
 @permission_classes([IsAdminOrReadOnly])
 def update_tables(request, slug):
