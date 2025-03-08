@@ -10,17 +10,33 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy and Reload
+      # - name: Deploy and Reload
+      #   uses: appleboy/ssh-action@v1.0.3
+      #   with:
+      #     host: ${{ secrets.HOSTNAME }}
+      #     username: ${{ secrets.HOST_USER }}
+      #     password: ${{ secrets.PASSWORD }}
+      #     port: 22
+      #     script: |
+      #       cd /home/hifi_backend/
+      #       git pull origin
+      #       source venv/bin/activate
+      #       python manage.py migrate
+      #       python manage.py load_categories
+      #       systemctl reload-or-restart uwsgi
+      - name: Deploy to Dev and Reload
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.HOSTNAME }}
-          username: ${{ secrets.HOST_USER }}
-          password: ${{ secrets.PASSWORD }}
+          host: ${{ secrets.DEV_HOSTNAME }}
+          username: ${{ secrets.DEV_HOST_USER }}
+          password: ${{ secrets.DEV_PASSWORD }}
           port: 22
           script: |
             cd /home/hifi_backend/
             git pull origin
-            source venv/bin/activate
-            python manage.py migrate
-            python manage.py load_categories
-            systemctl reload-or-restart uwsgi
+            docker-compose down
+            docker-compose up -d
+            docker-compose exec -T app  python manage.py migrate
+            docker-compose exec -T app  python manage.py load_categories
+            docker-compose exec -T app  python manage.py collectstatic --noinput
+            docker-compose restart app
