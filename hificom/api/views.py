@@ -39,7 +39,7 @@ User = get_user_model()
 def user_homepage(request):
     data = {
         'carousels': CarouselSerializer(
-            Carousel.objects.all()[:10],
+            Carousel.objects.filter(active=True),
             many=True,
             context={'request': request}
         ).data,
