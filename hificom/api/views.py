@@ -447,6 +447,12 @@ def modify_carousel(request):
         )
     carousel = get_object_or_404(Carousel, pk=request.data.get('id'))
     if command == 'toggle_active':
+        # dont allow if its the only active carousel
+        if carousel.active and Carousel.objects.filter(active=True).count() == 1:
+            return Response(
+                {'detail': 'At least one carousel must be active'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
         carousel.active = not carousel.active
         carousel.save()
     elif command == 'edit':
