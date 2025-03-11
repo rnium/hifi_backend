@@ -1,6 +1,6 @@
 from datetime import timedelta
 from typing import Dict, List
-from hificom.models import (Category, SpecificationTable, 
+from hificom.models import (Category, SpecificationTable, Carousel,
                             Specification, ProductSpec, ProductImage, KeyFeature, Order, OrderStatusTimestamp,
                             TitleAlias, Product, Cart, CartProduct, Coupon, WishList)
 from django.db.models import Model, Count, Q
@@ -277,4 +277,12 @@ def perform_undo_status_change(order: Order):
     current_status_ts.delete()
     order.status = newstatus
     order.save()
-    
+
+
+def reorder_carousels(id_order: List[int]):
+    if not len(id_order) or len(set(id_order)) != Carousel.objects.count():
+        raise ValidationError('Invalid Order')
+    for idx, cid in enumerate(id_order):
+        carousel = get_object_or_404(Carousel, id=cid)
+        carousel.priority = len(id_order) - idx
+        carousel.save()

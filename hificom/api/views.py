@@ -480,7 +480,21 @@ def modify_carousel(request):
         carousel.delete()
     return Response('done')
 
+
+@api_view(['POST'])
+@permission_classes([IsAdmin])
+def reorder_carousels(request):
+    try:
+        utils.reorder_carousels(request.data.get('id_order', []))
+    except Exception as e:
+        return Response(
+            {'detail': str(e)},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    return Response('Reordered')
+
 @api_view()
+@permission_classes([IsAdmin])
 def category_graph(request):
     categories = Category.objects.filter(cat_type__in=['general', 'brand', 'series', 'feature'])
     nodes = []

@@ -38,5 +38,6 @@ urlpatterns = [
     path('carousels/', views.Carousels.as_view(), name="all_carousels"),
     path('add-carousel/', views.add_carousel, name="add_carousel"),
     path('modify-carousel/', views.modify_carousel, name="modify_carousel"),
+    path('reorder-carousels/', views.reorder_carousels, name="reorder_carousels"),
     path('category-graph/', views.category_graph, name="category_graph"),
 ]
