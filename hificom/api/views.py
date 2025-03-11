@@ -289,10 +289,12 @@ class Carousels(ListAPIView):
 @permission_classes([IsAdmin])
 def add_carousel(request):
     data = json.loads(request.data['json'])
-    data['banner'] = request.FILES.get('banner')
+    banner = request.FILES.get('banner')
     serializer = CarouselSerializer(data=data)
     if serializer.is_valid():
-        serializer.save()
+        carousel = serializer.save()
+        carousel.banner = banner
+        carousel.save()
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     return Response('added')
