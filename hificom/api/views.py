@@ -290,6 +290,8 @@ class Carousels(ListAPIView):
 def add_carousel(request):
     data = json.loads(request.data['json'])
     banner = request.FILES.get('banner')
+    if not banner:
+        return Response({'detail': 'No banner image provided'}, status=status.HTTP_400_BAD_REQUEST)
     serializer = CarouselSerializer(data=data)
     if serializer.is_valid():
         carousel = serializer.save()
