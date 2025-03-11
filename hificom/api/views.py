@@ -434,6 +434,31 @@ def undo_alter_status(request, oid):
         )
     return Response({'info': f'Status changed back to {order.status.title()}'})
 
+
+@api_view(['POST'])
+@permission_classes([IsAdmin])
+def modify_carousel(request):
+    allowed_commands = ['toggle_active', 'edit', 'delete']
+    command = request.data.get('command')
+    if command not in allowed_commands:
+        return Response(
+            {'detail': 'No operations can be performed'},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    carousel = get_object_or_404(Carousel, pk=request.data.get('id'))
+    if command == 'toggle_active':
+        carousel.active = not carousel.active
+        carousel.save()
+    elif command == 'edit':
+        serializer = CarouselSerializer(carousel, data=request.data.get('data'))
+        if serializer.is_valid():
+            serializer.save()
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif command == 'delete':
+        carousel.delete()
+    return Response('done')
+
 @api_view()
 def category_graph(request):
     categories = Category.objects.filter(cat_type__in=['general', 'brand', 'series', 'feature'])
