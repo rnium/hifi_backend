@@ -280,11 +280,22 @@ class ConfirmOrder(CreateAPIView):
         return Response(serializer.data)
 
 
-class Carousels(ListCreateAPIView):
+class Carousels(ListAPIView):
     serializer_class = CarouselSerializer
     permission_classes = [IsAdmin]
     queryset = Carousel.objects.all()
 
+@api_view(['POST'])
+@permission_classes([IsAdmin])
+def add_carousel(request):
+    data = json.loads(request.data['json'])
+    data['banner'] = request.FILES.get('banner')
+    serializer = CarouselSerializer(data=data)
+    if serializer.is_valid():
+        serializer.save()
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response('added')
 
 @api_view(['POST'])
 @permission_classes([IsAdminOrReadOnly])
