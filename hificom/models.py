@@ -35,6 +35,9 @@ class Carousel(models.Model):
 
     class Meta:
         ordering = ['-priority', '-added_at']
+        
+    def __str__(self):
+        return self.title
   
 
 class Category(models.Model):
