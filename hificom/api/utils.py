@@ -8,6 +8,8 @@ from django.utils import timezone
 from django.core.exceptions import ValidationError
 from django.shortcuts import get_object_or_404
 from django.conf import settings
+from PIL import Image
+import io
 
 
 def delete_db_objects(model: Model, ids: List[int]):
@@ -286,3 +288,52 @@ def reorder_carousels(id_order: List[int]):
         carousel = get_object_or_404(Carousel, id=cid)
         carousel.priority = len(id_order) - idx
         carousel.save()
+
+      
+def crop_to_1920x1080(image_file):
+    """
+    Crop an image to 1920x1080 resolution while maintaining aspect ratio
+    Returns the cropped image
+    """
+    try:
+        img = Image.open(image_file)
+        
+        # Get original dimensions
+        orig_width, orig_height = img.size
+        
+        # Target aspect ratio (1920/1080 = 1.7777...)
+        target_ratio = 1920 / 1080
+        current_ratio = orig_width / orig_height
+        
+        # Calculate new dimensions
+        if current_ratio > target_ratio:
+            # Image is wider than target - crop width
+            new_width = int(orig_height * target_ratio)
+            new_height = orig_height
+            left = (orig_width - new_width) // 2
+            top = 0
+            right = left + new_width
+            bottom = new_height
+        else:
+            # Image is taller than target - crop height
+            new_width = orig_width
+            new_height = int(orig_width / target_ratio)
+            left = 0
+            top = (orig_height - new_height) // 2
+            right = new_width
+            bottom = top + new_height
+        
+        # Crop the image
+        cropped_img = img.crop((left, top, right, bottom))
+        
+        # Resize to exactly 1920x1080
+        final_img = cropped_img.resize((1920, 1080), Image.Resampling.LANCZOS)
+        
+        # Convert to bytes for saving or further processing
+        img_byte_arr = io.BytesIO()
+        final_img.save(img_byte_arr, format='JPEG', quality=95)
+        img_byte_arr.seek(0)
+        return img_byte_arr
+    
+    except Exception as e:
+        raise Exception(f"Error processing image: {str(e)}")

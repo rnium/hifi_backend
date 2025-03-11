@@ -292,6 +292,10 @@ def add_carousel(request):
     banner = request.FILES.get('banner')
     if not banner:
         return Response({'detail': 'No banner image provided'}, status=status.HTTP_400_BAD_REQUEST)
+    try:
+        banner = utils.crop_to_1920x1080(banner)
+    except Exception as e:
+        return Response({'detail': f'Error processing image: {str(e)}'}, status=status.HTTP_400_BAD_REQUEST)
     serializer = CarouselSerializer(data=data)
     if serializer.is_valid():
         carousel = serializer.save()
