@@ -9,6 +9,7 @@ from django.core.exceptions import ValidationError
 from django.shortcuts import get_object_or_404
 from django.conf import settings
 from PIL import Image
+from django.core.files import File
 import io
 
 
@@ -293,9 +294,10 @@ def reorder_carousels(id_order: List[int]):
 def crop_to_1920x1080(image_file):
     """
     Crop an image to 1920x1080 resolution while maintaining aspect ratio
-    Returns the cropped image
+    Returns a Django File object with the cropped image
     """
     try:
+        # Open the image
         img = Image.open(image_file)
         
         # Get original dimensions
@@ -329,11 +331,18 @@ def crop_to_1920x1080(image_file):
         # Resize to exactly 1920x1080
         final_img = cropped_img.resize((1920, 1080), Image.Resampling.LANCZOS)
         
-        # Convert to bytes for saving or further processing
+        # Convert to bytes
         img_byte_arr = io.BytesIO()
         final_img.save(img_byte_arr, format='JPEG', quality=95)
         img_byte_arr.seek(0)
-        return img_byte_arr
+        
+        # Wrap in Django File object with a name
+        file_name = image_file.name if hasattr(image_file, 'name') else 'banner.jpg'
+        django_file = File(img_byte_arr, name=file_name)
+        return django_file
+    
+    except Exception as e:
+        raise Exception(f"Error processing image: {str(e)}")
     
     except Exception as e:
         raise Exception(f"Error processing image: {str(e)}")
