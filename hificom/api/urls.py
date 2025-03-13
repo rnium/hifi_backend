@@ -7,6 +7,7 @@ urlpatterns = [
     path('homepage/stats/', views.dashboard_stats, name="dashboard_stats"),
     path('collections/', views.ProductCollectionsView.as_view(), name="collections"),
     path('collections/remove-product/', views.remove_collection_product, name="remove_collection_product"),
+    path('collections/add-product/', views.add_collection_product, name="add_collection_product"),
     path('categories/', views.CategoriesView.as_view(), name="categories"),
     path('categories/<str:identifier>/', views.ViewCategory.as_view(), name="view_category"),
     path('categories/<str:identifier>/groups/', views.CategoryGroupsView.as_view(), name="view_category_groups"), # slug of root

@@ -529,3 +529,12 @@ def remove_collection_product(request):
     product = get_object_or_404(Product, pk=request.data.get('product'))
     collection.products.remove(product)
     return Response('Removed')
+
+
+@api_view(['POST'])
+@permission_classes([IsAdmin])
+def add_collection_product(request):
+    collection = get_object_or_404(ProductCollection, pk=request.data.get('collection'))
+    product = get_object_or_404(Product, pk=request.data.get('product'))
+    collection.products.add(product)
+    return Response('Added')
