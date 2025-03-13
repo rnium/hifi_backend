@@ -51,6 +51,9 @@ def user_homepage(request):
     }
     return Response(data)
 
+class ProductCollectionsView(ListAPIView):
+    serializer_class = ProductCollectionSerializer
+    queryset = ProductCollection.objects.all()
 
 class CategoriesView(ListCreateAPIView):
     serializer_class = CategorySerializer
