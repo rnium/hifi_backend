@@ -24,7 +24,7 @@ from .serializer import (CarouselSerializer, CategoryDetailSerializer, CategoryG
                          CategorySerializer, KeyFeatureSerializer, OrderSerializer, OrderDetailSerializer,
                          ProductBasicSerializer, ProductCollectionSerializer, ProductCreateSerializer,
                          ProductDetailSerializer, ProductSemiDetailSerializer, QuestionSerializer,
-                         SpecTableSerializer, ReviewSerializer,
+                         SpecTableSerializer, ReviewSerializer, CouponSerializer,
                          WishlistSerializer)
 
 from .permission import IsAdminOrReadOnly, IsAdmin
@@ -287,6 +287,12 @@ class Carousels(ListAPIView):
     serializer_class = CarouselSerializer
     permission_classes = [IsAdmin]
     queryset = Carousel.objects.all()
+    
+
+class CouponsView(ListCreateAPIView):
+    serializer_class = CouponSerializer
+    permission_classes = [IsAdmin]
+    queryset = Coupon.objects.all()
 
 @api_view(['POST'])
 @permission_classes([IsAdmin])

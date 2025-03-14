@@ -43,4 +43,5 @@ urlpatterns = [
     path('modify-carousel/', views.modify_carousel, name="modify_carousel"),
     path('reorder-carousels/', views.reorder_carousels, name="reorder_carousels"),
     path('category-graph/', views.category_graph, name="category_graph"),
+    path('coupons/', views.CouponsView.as_view(), name="coupons"),
 ]
