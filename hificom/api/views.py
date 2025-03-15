@@ -544,3 +544,11 @@ def add_collection_product(request):
     product = get_object_or_404(Product, pk=request.data.get('product'))
     collection.products.add(product)
     return Response('Added')
+
+
+@api_view(['POST'])
+@permission_classes([IsAdmin])
+def delete_coupon(request):
+    coupon = get_object_or_404(Coupon, pk=request.data.get('id'))
+    coupon.delete()
+    return Response('Deleted')
