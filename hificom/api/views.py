@@ -18,14 +18,14 @@ import json
 from hificom.models import (Carousel, Cart, Category,
                             CategoryGroup, Coupon, KeyFeature,
                             Order, Product, ProductCollection,
-                            Question, Review, SpecificationTable)
+                            Question, Review, SpecificationTable, FeedBack)
 
 from .serializer import (CarouselSerializer, CategoryDetailSerializer, CategoryGroupSerializer,
                          CategorySerializer, KeyFeatureSerializer, OrderSerializer, OrderDetailSerializer,
                          ProductBasicSerializer, ProductCollectionSerializer, ProductCreateSerializer,
                          ProductDetailSerializer, ProductSemiDetailSerializer, QuestionSerializer,
                          SpecTableSerializer, ReviewSerializer, CouponSerializer,
-                         WishlistSerializer)
+                         WishlistSerializer, FeedbackSerializer)
 
 from .permission import IsAdminOrReadOnly, IsAdmin
 from .pagination import (OrderPagination, 
@@ -552,3 +552,13 @@ def delete_coupon(request):
     coupon = get_object_or_404(Coupon, pk=request.data.get('id'))
     coupon.delete()
     return Response('Deleted')
+
+
+class FeedbackList(ListAPIView):
+    serializer_class = FeedbackSerializer
+    permission_classes = [IsAuthenticated]
+    
+    def get_queryset(self):
+        if self.request.user.is_staff:
+            return FeedBack.objects.all()
+        return FeedBack.objects.filter(user=self.request.user)

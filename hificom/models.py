@@ -330,3 +330,15 @@ class OrderStatusTimestamp(models.Model):
             models.UniqueConstraint(fields=['order', 'status'], name='uniqe status in an order')
         ]
 
+
+class FeedBack(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    subject = models.CharField(max_length=200)
+    description = models.CharField(max_length=5000)
+    added_at = models.DateTimeField(auto_now_add=True)
+    reply_text = models.CharField(max_length=5000, null=True, blank=True)
+    replied_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name='replies')
+    replied_at = models.DateTimeField(null=True, blank=True)
+    
+    class Meta:
+        ordering = ['-added_at']

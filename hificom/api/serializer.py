@@ -3,7 +3,7 @@ from rest_framework import serializers
 from hificom.models import (Category, CategoryGroup, SpecificationTable, ProductSpec, 
                             Specification, Product, ProductImage, KeyFeature, Carousel, 
                             ProductCollection, WishList, Order, Question, Review,
-                            CartProduct, Cart, Coupon)
+                            CartProduct, Cart, Coupon, FeedBack)
 from . import utils
 from django.shortcuts import get_object_or_404
 from django.conf import settings
@@ -356,3 +356,10 @@ class QuestionSerializer(ModelSerializer):
         model = Question
         exclude = ['product']
         read_only_fields = ['account']
+        
+
+class FeedbackSerializer(ModelSerializer):
+    class Meta:
+        model = FeedBack
+        fields = '__all__'
+        read_only_fields = ['id', 'user']
