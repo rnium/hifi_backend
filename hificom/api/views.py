@@ -562,3 +562,14 @@ class FeedbackList(ListAPIView):
         if self.request.user.is_staff:
             return FeedBack.objects.all()
         return FeedBack.objects.filter(user=self.request.user)
+ 
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def submit_feedback(request):
+    serializer = FeedbackSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save(user=request.user)
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response('Feedback submitted')

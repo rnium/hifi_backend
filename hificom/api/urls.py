@@ -45,4 +45,6 @@ urlpatterns = [
     path('category-graph/', views.category_graph, name="category_graph"),
     path('coupons/', views.CouponsView.as_view(), name="coupons"),
     path('coupons/delete/', views.delete_coupon, name="delete_coupon"),
+    path('feedbacks/', views.FeedbackList.as_view(), name="feedbacks"),
+    path('feedback/submit/', views.submit_feedback, name="submit_feedback"),
 ]

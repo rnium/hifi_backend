@@ -342,3 +342,17 @@ class FeedBack(models.Model):
     
     class Meta:
         ordering = ['-added_at']
+
+
+class Notification(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.CharField(max_length=500)
+    created_at = models.DateTimeField(auto_now_add=True)
+    read = models.BooleanField(default=False)
+    n_type = models.CharField(max_length=100, null=True, blank=True)
+    related_id = models.IntegerField(null=True, blank=True)
+    related_slug = models.CharField(max_length=300, null=True, blank=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
