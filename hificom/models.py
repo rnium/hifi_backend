@@ -24,6 +24,11 @@ order_status_options = (
     ('cancelled', 'Cancelled'),
 )
 
+feedback_status_options = (
+    ('pending', 'Pending'),
+    ('replied', 'Replied')
+)
+
 class Carousel(models.Model):
     # Also referred as Banner
     title = models.CharField(max_length=200, default=get_banner_title)
@@ -335,6 +340,7 @@ class FeedBack(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     subject = models.CharField(max_length=200)
     description = models.CharField(max_length=5000)
+    status = models.CharField(choices=feedback_status_options, default='pending', max_length=20)
     added_at = models.DateTimeField(auto_now_add=True)
     reply_text = models.CharField(max_length=5000, null=True, blank=True)
     replied_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name='replies')

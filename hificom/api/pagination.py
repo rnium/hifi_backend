@@ -23,3 +23,7 @@ class QuestionsReviewsPagination(HifiPagination):
 
 class OrderPagination(HifiPagination):
     page_size = 10
+    
+    
+class FeedbackPagination(HifiPagination):
+    page_size = 10

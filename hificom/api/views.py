@@ -30,8 +30,11 @@ from .serializer import (CarouselSerializer, CategoryDetailSerializer, CategoryG
 from .permission import IsAdminOrReadOnly, IsAdmin
 from .pagination import (OrderPagination, 
                         ProductsPagination, 
-                        QuestionsReviewsPagination)
+                        QuestionsReviewsPagination,
+                        FeedbackPagination)
 from . import utils
+from ..models import feedback_status_options
+
 User = get_user_model()
 
 
@@ -557,10 +560,15 @@ def delete_coupon(request):
 class FeedbackList(ListAPIView):
     serializer_class = FeedbackSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = FeedbackPagination
     
     def get_queryset(self):
         if self.request.user.is_staff:
-            return FeedBack.objects.all()
+            status = self.request.GET.get('status', 'all')
+            feedbacks = FeedBack.objects.all()
+            if status in [i[0] for i in feedback_status_options]:
+                feedbacks = feedbacks.filter(status=status)
+            return feedbacks
         return FeedBack.objects.filter(user=self.request.user)
  
 
