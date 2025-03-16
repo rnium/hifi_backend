@@ -360,6 +360,7 @@ class QuestionSerializer(ModelSerializer):
 
 class FeedbackSerializer(ModelSerializer):
     user = serializers.StringRelatedField()
+    replied_by = serializers.StringRelatedField()
     class Meta:
         model = FeedBack
         fields = '__all__'

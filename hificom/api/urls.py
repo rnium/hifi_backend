@@ -47,5 +47,6 @@ urlpatterns = [
     path('coupons/delete/', views.delete_coupon, name="delete_coupon"),
     path('feedbacks/', views.FeedbackList.as_view(), name="feedbacks"),
     path('feedbacks/<int:pk>/', views.FeedbackDetail.as_view(), name="feedback"),
+    path('feedbacks/<int:pk>/reply/', views.reply_feedback, name="reply_feedback"),
     path('feedback/submit/', views.submit_feedback, name="submit_feedback"),
 ]

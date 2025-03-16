@@ -13,6 +13,7 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from django.db.models import Q, Count
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 from django.core.exceptions import ValidationError, BadRequest
 import json
 from hificom.models import (Carousel, Cart, Category,
@@ -593,3 +594,14 @@ def submit_feedback(request):
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     return Response('Feedback submitted')
+
+@api_view(['POST'])
+@permission_classes([IsAdmin])
+def reply_feedback(request, pk):
+    feedback = get_object_or_404(FeedBack, pk=pk)
+    feedback.reply_text = request.data.get('reply_text')
+    feedback.status = 'replied'
+    feedback.replied_at = timezone.now()
+    feedback.replied_by = request.user
+    feedback.save()
+    return Response('Replied')
