@@ -605,3 +605,13 @@ def reply_feedback(request, pk):
     feedback.replied_by = request.user
     feedback.save()
     return Response('Replied')
+
+
+@api_view(['POST'])
+@permission_classes([IsAdmin])
+def delete_category(request, identifier):
+    cat = get_object_or_404(Category, slug=identifier)
+    if not cat.manual:
+        return Response({'detail': 'Cannot delete yaml generated categories'}, status=status.HTTP_400_BAD_REQUEST)
+    cat.delete()
+    return Response('Deleted')
