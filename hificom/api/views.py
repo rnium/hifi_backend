@@ -34,6 +34,7 @@ from .pagination import (OrderPagination,
                         FeedbackPagination)
 from . import utils
 from ..models import feedback_status_options
+from rest_framework.exceptions import ValidationError
 
 User = get_user_model()
 
@@ -570,7 +571,18 @@ class FeedbackList(ListAPIView):
                 feedbacks = feedbacks.filter(status=status)
             return feedbacks
         return FeedBack.objects.filter(user=self.request.user)
- 
+
+class FeedbackDetail(RetrieveAPIView):
+    serializer_class = FeedbackSerializer
+    permission_classes = [IsAuthenticated]
+    queryset = FeedBack.objects.all()
+
+    def get_object(self):
+        feedback = get_object_or_404(FeedBack, pk=self.kwargs.get('pk'))
+        if not self.request.user.is_staff and feedback.user != self.request.user:
+            raise ValidationError('You do not have permission to view this feedback')
+        return feedback
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
