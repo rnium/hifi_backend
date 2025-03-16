@@ -384,7 +384,7 @@ def dashboard_stats(request):
         'num_products': Product.objects.count(),
         'num_users': User.objects.count(),
         'num_orders': Order.objects.filter(status__in=['pending', 'processing', 'shipped']).count(),
-        'num_messages': 0,
+        'num_pending_feedbacks': FeedBack.objects.filter(status='pending').count(),
     }
     return Response(data)
 
