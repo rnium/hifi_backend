@@ -246,6 +246,13 @@ class OrderList(ListAPIView):
             orders = orders.filter(status__in=['pending', 'processing', 'shipped'])
         return orders
 
+class MyOrderList(OrderList):
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user).order_by('id')
+
+
 class OrderDetail(RetrieveAPIView):
     serializer_class = OrderDetailSerializer
     permission_classes = []
@@ -281,6 +288,8 @@ class ConfirmOrder(CreateAPIView):
             data['coupon'] = coupon.id
         data['payable'] = payable
         data['cart'] = cart.id
+        if request.user.is_authenticated:
+            data['user'] = request.user.id
         serializer = self.get_serializer(data=data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)

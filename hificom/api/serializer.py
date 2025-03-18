@@ -299,9 +299,19 @@ class CouponSerializer(ModelSerializer):
 
 class OrderSerializer(ModelSerializer):
     coupon = CouponSerializer(read_only=True)
+    thumbnail = serializers.SerializerMethodField()
+    
     class Meta:
         model = Order
         fields = '__all__'
+        
+    def get_thumbnail(self, obj):
+        if cover:=obj.cart.cartproduct_set.first().product.productimage_set.first():
+            request = self.context.get('request')
+            if request:
+                return request.build_absolute_uri(cover.main.url)
+            else:
+                return cover.main.url
         
 
 class OrderDetailSerializer(OrderSerializer):

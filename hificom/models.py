@@ -310,6 +310,7 @@ class Order(models.Model):
         ('outside', 'Outside Sylhet City'),
     )
     oid = models.CharField(max_length=50, unique=True, default=hexcode_gen, db_index=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100, null=True, blank=True)
     phone = models.CharField(max_length=20)
