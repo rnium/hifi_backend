@@ -250,7 +250,7 @@ class MyOrderList(OrderList):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return Order.objects.filter(user=self.request.user).order_by('id')
+        return Order.objects.filter(user=self.request.user).order_by('-added_at')
 
 
 class OrderDetail(RetrieveAPIView):
