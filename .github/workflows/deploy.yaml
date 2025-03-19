@@ -10,20 +10,20 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      # - name: Deploy and Reload
-      #   uses: appleboy/ssh-action@v1.0.3
-      #   with:
-      #     host: ${{ secrets.HOSTNAME }}
-      #     username: ${{ secrets.HOST_USER }}
-      #     password: ${{ secrets.PASSWORD }}
-      #     port: 22
-      #     script: |
-      #       cd /home/hifi_backend/
-      #       git pull origin
-      #       source venv/bin/activate
-      #       python manage.py migrate
-      #       python manage.py load_categories
-      #       systemctl reload-or-restart uwsgi
+      - name: Deploy and Reload
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOSTNAME }}
+          username: ${{ secrets.HOST_USER }}
+          password: ${{ secrets.PASSWORD }}
+          port: 22
+          script: |
+            cd /home/hifi_backend/
+            git pull origin
+            source venv/bin/activate
+            python manage.py migrate
+            python manage.py load_categories
+            systemctl reload-or-restart uwsgi
       - name: Deploy to Dev and Reload
         uses: appleboy/ssh-action@v1.0.3
         with:
